@@ -1,0 +1,44 @@
+export type RentalType = "courte-duree" | "longue-duree";
+
+export interface BookingFormValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  vehicle: string;
+  startDate: string;
+  endDate: string;
+  rentalType: RentalType;
+  location: string;
+  driverAge: string;
+  message: string;
+  consent: boolean;
+}
+
+export type BookingFormErrors = Partial<Record<keyof BookingFormValues, string>>;
+
+export interface ContactFormValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+  consent: boolean;
+}
+
+export type ContactFormErrors = Partial<Record<keyof ContactFormValues, string>>;
+
+export interface LongTermFormValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  profile: string;
+  duration: string;
+  vehicle: string;
+  message: string;
+  consent: boolean;
+}
+
+export type LongTermFormErrors = Partial<Record<keyof LongTermFormValues, string>>;
