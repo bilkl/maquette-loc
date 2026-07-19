@@ -6,13 +6,13 @@ import { InstagramIcon } from "@/components/ui/icons";
 export function Footer() {
   return (
     <footer className="border-t border-brand-line/60 bg-brand-charcoal">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <p className="text-lg font-bold tracking-[0.2em] text-brand-ivory">
+            <p className="font-display text-xl font-semibold tracking-[0.18em] text-brand-ivory">
               NL <span className="text-brand-red">PRESTIGE</span>
             </p>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-brand-silver">
+            <p className="mt-4 max-w-xs text-base leading-relaxed text-brand-silver">
               {siteConfig.tagline}
             </p>
             <a
@@ -93,7 +93,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-brand-line/60 pt-8 text-xs text-brand-silver sm:flex-row">
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-brand-line/60 pt-8 text-sm text-brand-silver sm:flex-row">
           <p>
             © {new Date().getFullYear()} {siteConfig.legalName}. Tous droits réservés.
           </p>

@@ -50,7 +50,7 @@ const includedServices = [
 export default function LongTermPage() {
   return (
     <div>
-      <section className="border-b border-brand-line/60 bg-brand-charcoal py-20">
+      <section className="border-b border-brand-line/60 bg-brand-charcoal py-24">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <SectionTitle
             eyebrow="Longue durée"
@@ -60,36 +60,36 @@ export default function LongTermPage() {
         </div>
       </section>
 
-      <section className="bg-brand-black py-20">
+      <section className="bg-brand-black py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {advantages.map(({ icon: Icon, title, description }) => (
               <div
                 key={title}
-                className="rounded-2xl border border-brand-line/60 bg-brand-charcoal/40 p-6"
+                className="rounded-2xl border border-brand-line/60 bg-brand-charcoal/40 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/50 hover:shadow-xl hover:shadow-black/30"
               >
-                <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-full bg-brand-red/10">
-                  <Icon className="h-5 w-5 text-brand-red" aria-hidden="true" />
+                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-red/10">
+                  <Icon className="h-6 w-6 text-brand-red" aria-hidden="true" />
                 </div>
-                <h3 className="text-base font-semibold text-brand-ivory">{title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-brand-silver">{description}</p>
+                <h3 className="text-lg font-semibold text-brand-ivory">{title}</h3>
+                <p className="mt-3 text-base leading-relaxed text-brand-silver">{description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-brand-charcoal py-20">
+      <section className="bg-brand-charcoal py-28">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <div>
-            <h2 className="text-2xl font-semibold tracking-tight text-brand-ivory">
+            <h2 className="font-display text-3xl font-semibold tracking-tight text-brand-ivory">
               Profils concernés
             </h2>
-            <ul className="mt-6 space-y-3">
+            <ul className="mt-7 space-y-3">
               {profiles.map((profile) => (
                 <li
                   key={profile}
-                  className="rounded-xl border border-brand-line/60 bg-brand-black/40 p-4 text-sm text-brand-silver"
+                  className="rounded-xl border border-brand-line/60 bg-brand-black/40 p-5 text-base text-brand-silver"
                 >
                   {profile}
                 </li>
@@ -98,14 +98,14 @@ export default function LongTermPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold tracking-tight text-brand-ivory">
+            <h2 className="font-display text-3xl font-semibold tracking-tight text-brand-ivory">
               Services inclus
             </h2>
-            <ul className="mt-6 space-y-3">
+            <ul className="mt-7 space-y-3">
               {includedServices.map((service) => (
                 <li
                   key={service}
-                  className="rounded-xl border border-brand-line/60 bg-brand-black/40 p-4 text-sm text-brand-silver"
+                  className="rounded-xl border border-brand-line/60 bg-brand-black/40 p-5 text-base text-brand-silver"
                 >
                   {service}
                 </li>
@@ -115,7 +115,7 @@ export default function LongTermPage() {
         </div>
       </section>
 
-      <section className="bg-brand-black py-20">
+      <section className="bg-brand-black py-28">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <SectionTitle
             eyebrow="Demande personnalisée"

@@ -26,21 +26,21 @@ const advantages = [
 
 export function Advantages() {
   return (
-    <section className="bg-brand-charcoal py-24">
+    <section className="bg-brand-charcoal py-28 lg:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionTitle eyebrow="Pourquoi NL Prestige" title="Une expérience de location pensée pour vous" />
 
-        <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {advantages.map(({ icon: Icon, title, description }) => (
             <div
               key={title}
-              className="rounded-2xl border border-brand-line/60 bg-brand-black/40 p-6 transition-colors hover:border-brand-red/50"
+              className="rounded-2xl border border-brand-line/60 bg-brand-black/40 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/50 hover:shadow-xl hover:shadow-black/30"
             >
-              <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-full bg-brand-red/10">
-                <Icon className="h-5 w-5 text-brand-red" aria-hidden="true" />
+              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-red/10">
+                <Icon className="h-6 w-6 text-brand-red" aria-hidden="true" />
               </div>
-              <h3 className="text-base font-semibold text-brand-ivory">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-brand-silver">{description}</p>
+              <h3 className="text-lg font-semibold text-brand-ivory">{title}</h3>
+              <p className="mt-3 text-base leading-relaxed text-brand-silver">{description}</p>
             </div>
           ))}
         </div>

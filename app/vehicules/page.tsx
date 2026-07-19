@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function VehiculesPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
       <SectionTitle
         eyebrow="Notre flotte"
         title="Nos véhicules"
@@ -19,7 +19,7 @@ export default function VehiculesPage() {
         align="left"
       />
 
-      <div className="mt-12">
+      <div className="mt-14">
         <VehiclesPageContent />
       </div>
     </div>

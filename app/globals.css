@@ -19,6 +19,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
+  --font-display: var(--font-display);
 
   --color-brand-black: var(--color-brand-black);
   --color-brand-charcoal: var(--color-brand-charcoal);

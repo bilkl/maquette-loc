@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
       <SectionTitle
         eyebrow="Contact"
         title="Parlons de votre projet de location"
@@ -28,10 +28,10 @@ export default function ContactPage() {
             <div className="flex items-start gap-3">
               <Mail className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" aria-hidden="true" />
               <div>
-                <p className="text-sm font-medium text-brand-ivory">E-mail</p>
+                <p className="text-base font-medium text-brand-ivory">E-mail</p>
                 <a
                   href={`mailto:${siteConfig.contact.email}`}
-                  className="text-sm text-brand-silver hover:text-brand-red"
+                  className="text-base text-brand-silver hover:text-brand-red"
                 >
                   {siteConfig.contact.email}
                 </a>
@@ -41,10 +41,10 @@ export default function ContactPage() {
             <div className="flex items-start gap-3">
               <Phone className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" aria-hidden="true" />
               <div>
-                <p className="text-sm font-medium text-brand-ivory">Téléphone</p>
+                <p className="text-base font-medium text-brand-ivory">Téléphone</p>
                 <a
                   href={`tel:${siteConfig.contact.phone.replace(/\s/g, "")}`}
-                  className="text-sm text-brand-silver hover:text-brand-red"
+                  className="text-base text-brand-silver hover:text-brand-red"
                 >
                   {siteConfig.contact.phone}
                 </a>
@@ -54,12 +54,12 @@ export default function ContactPage() {
             <div className="flex items-start gap-3">
               <MessageCircle className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" aria-hidden="true" />
               <div>
-                <p className="text-sm font-medium text-brand-ivory">WhatsApp</p>
+                <p className="text-base font-medium text-brand-ivory">WhatsApp</p>
                 <a
                   href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-brand-silver hover:text-brand-red"
+                  className="text-base text-brand-silver hover:text-brand-red"
                 >
                   Discuter avec NL Prestige
                 </a>
@@ -69,8 +69,8 @@ export default function ContactPage() {
             <div className="flex items-start gap-3">
               <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" aria-hidden="true" />
               <div>
-                <p className="text-sm font-medium text-brand-ivory">Adresse</p>
-                <p className="text-sm text-brand-silver">
+                <p className="text-base font-medium text-brand-ivory">Adresse</p>
+                <p className="text-base text-brand-silver">
                   {siteConfig.address.street}
                   <br />
                   {siteConfig.address.postalCode} {siteConfig.address.city}
@@ -86,8 +86,8 @@ export default function ContactPage() {
             <div className="flex items-start gap-3">
               <Clock className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" aria-hidden="true" />
               <div>
-                <p className="text-sm font-medium text-brand-ivory">Horaires</p>
-                <ul className="mt-1 space-y-1 text-sm text-brand-silver">
+                <p className="text-base font-medium text-brand-ivory">Horaires</p>
+                <ul className="mt-1 space-y-1 text-base text-brand-silver">
                   {siteConfig.hours.map((slot) => (
                     <li key={slot.day} className="flex justify-between gap-4">
                       <span>{slot.day}</span>
@@ -101,14 +101,14 @@ export default function ContactPage() {
             <div className="flex items-start gap-3">
               <InstagramIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" aria-hidden="true" />
               <div>
-                <p className="text-sm font-medium text-brand-ivory">Instagram</p>
+                <p className="text-base font-medium text-brand-ivory">Instagram</p>
                 <a
                   href={siteConfig.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-brand-silver hover:text-brand-red"
+                  className="text-base text-brand-silver hover:text-brand-red"
                 >
-                  @nlprestige.ch
+                  @nl.prestige
                 </a>
               </div>
             </div>

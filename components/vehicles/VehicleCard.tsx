@@ -11,7 +11,7 @@ interface VehicleCardProps {
 
 export function VehicleCard({ vehicle, priority = false }: VehicleCardProps) {
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-brand-line/60 bg-brand-charcoal/60 backdrop-blur-sm transition-colors duration-300 hover:border-brand-red/60">
+    <article className="group flex flex-col overflow-hidden rounded-2xl border border-brand-line/60 bg-brand-charcoal/60 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/60 hover:shadow-2xl hover:shadow-black/50">
       <div className="relative aspect-[16/10] w-full overflow-hidden">
         <Image
           src={vehicle.coverImage}
@@ -21,55 +21,55 @@ export function VehicleCard({ vehicle, priority = false }: VehicleCardProps) {
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <span className="absolute left-3 top-3 rounded-full bg-brand-black/70 px-3 py-1 text-xs font-medium tracking-wide text-brand-ivory backdrop-blur">
+        <span className="absolute left-3 top-3 rounded-full bg-brand-black/70 px-3 py-1 text-xs font-medium uppercase tracking-wide text-brand-ivory backdrop-blur">
           {vehicle.category}
         </span>
         {!vehicle.available ? (
-          <span className="absolute right-3 top-3 rounded-full bg-brand-black/80 px-3 py-1 text-xs font-medium tracking-wide text-brand-silver">
+          <span className="absolute right-3 top-3 rounded-full bg-brand-black/80 px-3 py-1 text-xs font-medium uppercase tracking-wide text-brand-silver">
             Indisponible
           </span>
         ) : null}
       </div>
 
-      <div className="flex flex-1 flex-col gap-4 p-5">
+      <div className="flex flex-1 flex-col gap-5 p-6">
         <div>
-          <h3 className="text-lg font-semibold text-brand-ivory">
+          <h3 className="font-display text-xl font-semibold text-brand-ivory">
             {vehicle.brand} {vehicle.model}
           </h3>
-          <p className="mt-1 text-sm text-brand-silver">
+          <p className="mt-2 text-base text-brand-silver">
             À partir de{" "}
-            <span className="font-semibold text-brand-red">
+            <span className="text-lg font-semibold text-brand-red">
               {formatChf(vehicle.pricePerDay)}
             </span>{" "}
             / jour
           </p>
         </div>
 
-        <ul className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-brand-silver">
+        <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-brand-silver">
           <li className="flex items-center gap-1.5">
-            <Users className="h-3.5 w-3.5 text-brand-red" aria-hidden="true" />
+            <Users className="h-4 w-4 text-brand-red" aria-hidden="true" />
             {vehicle.seats} places
           </li>
           <li className="flex items-center gap-1.5">
-            <Gauge className="h-3.5 w-3.5 text-brand-red" aria-hidden="true" />
+            <Gauge className="h-4 w-4 text-brand-red" aria-hidden="true" />
             {vehicle.transmission}
           </li>
           <li className="flex items-center gap-1.5">
-            <Fuel className="h-3.5 w-3.5 text-brand-red" aria-hidden="true" />
+            <Fuel className="h-4 w-4 text-brand-red" aria-hidden="true" />
             {vehicle.fuel}
           </li>
         </ul>
 
-        <div className="mt-auto flex flex-col gap-2 pt-2 sm:flex-row">
-          <LinkButton href={`/vehicules/${vehicle.slug}`} variant="secondary" className="flex-1">
-            Voir le véhicule
-          </LinkButton>
+        <div className="mt-auto flex flex-col gap-3 pt-2">
           <LinkButton
             href={`/vehicules/${vehicle.slug}#reservation`}
             variant="primary"
-            className="flex-1"
+            className="w-full"
           >
             Réserver
+          </LinkButton>
+          <LinkButton href={`/vehicules/${vehicle.slug}`} variant="secondary" className="w-full">
+            Voir le véhicule
           </LinkButton>
         </div>
       </div>

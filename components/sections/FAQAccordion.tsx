@@ -28,9 +28,9 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red"
+                className="flex w-full items-center justify-between gap-4 px-6 py-6 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red sm:px-8"
               >
-                <span className="text-sm font-medium text-brand-ivory sm:text-base">
+                <span className="text-base font-medium text-brand-ivory sm:text-lg">
                   {item.question}
                 </span>
                 <ChevronDown
@@ -49,7 +49,9 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
               className={cn("grid transition-all duration-200 ease-in-out", isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]")}
             >
               <div className="overflow-hidden">
-                <p className="px-6 pb-5 text-sm leading-relaxed text-brand-silver">{item.answer}</p>
+                <p className="px-6 pb-6 text-base leading-relaxed text-brand-silver sm:px-8">
+                  {item.answer}
+                </p>
               </div>
             </div>
           </div>

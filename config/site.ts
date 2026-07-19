@@ -24,7 +24,7 @@ export const siteConfig = {
   },
 
   social: {
-    instagram: "https://instagram.com/nlprestige.ch", // TODO: remplacer par le compte Instagram officiel de NL Prestige
+    instagram: "https://instagram.com/nl.prestige",
   },
 
   address: {

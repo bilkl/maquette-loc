@@ -47,7 +47,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           <Link
             href="/"
             onClick={onClose}
-            className="text-lg font-bold tracking-[0.2em] text-brand-ivory"
+            className="font-display text-xl font-semibold tracking-[0.18em] text-brand-ivory"
           >
             NL <span className="text-brand-red">PRESTIGE</span>
           </Link>
@@ -70,7 +70,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               key={link.href}
               href={link.href}
               onClick={onClose}
-              className="border-b border-brand-line/60 py-4 text-2xl font-medium text-brand-ivory transition-colors hover:text-brand-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red"
+              className="font-display border-b border-brand-line/60 py-4 text-3xl font-medium text-brand-ivory transition-colors hover:text-brand-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red"
             >
               {link.label}
             </Link>

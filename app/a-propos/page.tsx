@@ -21,7 +21,7 @@ const commitments = [
 export default function AboutPage() {
   return (
     <div>
-      <section className="border-b border-brand-line/60 bg-brand-charcoal py-20">
+      <section className="border-b border-brand-line/60 bg-brand-charcoal py-24">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <SectionTitle
             eyebrow="À propos de NL Prestige"
@@ -31,7 +31,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-brand-black py-20">
+      <section className="bg-brand-black py-28">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-brand-line/60">
             <Image
@@ -44,17 +44,17 @@ export default function AboutPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold tracking-tight text-brand-ivory">
+            <h2 className="font-display text-3xl font-semibold tracking-tight text-brand-ivory">
               Notre positionnement
             </h2>
-            <p className="mt-4 text-sm leading-relaxed text-brand-silver">
+            <p className="mt-5 text-base leading-relaxed text-brand-silver">
               NL Prestige propose un service de location de véhicules de prestige pensé pour la
               Suisse, avec une approche directe, transparente et personnalisée. Cette page présente
               le positionnement général de l&apos;entreprise ; les informations précises (historique,
               structure juridique, zone de couverture) seront complétées par NL Prestige avant
               publication officielle.
             </p>
-            <p className="mt-4 text-sm leading-relaxed text-brand-silver">
+            <p className="mt-4 text-base leading-relaxed text-brand-silver">
               Notre objectif est simple : rendre la location d&apos;un véhicule d&apos;exception aussi
               simple et rassurante qu&apos;un déplacement du quotidien, en s&apos;appuyant sur des
               échanges directs avec chaque client.
@@ -62,7 +62,7 @@ export default function AboutPage() {
 
             <ul className="mt-8 space-y-3">
               {commitments.map((commitment) => (
-                <li key={commitment} className="flex items-start gap-2 text-sm text-brand-silver">
+                <li key={commitment} className="flex items-start gap-2 text-base text-brand-silver">
                   <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" aria-hidden="true" />
                   {commitment}
                 </li>

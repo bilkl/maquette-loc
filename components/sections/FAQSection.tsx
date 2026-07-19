@@ -4,7 +4,7 @@ import { FAQAccordion } from "@/components/sections/FAQAccordion";
 
 export function FAQSection() {
   return (
-    <section id="faq" className="scroll-mt-24 bg-brand-black py-24">
+    <section id="faq" className="scroll-mt-24 bg-brand-black py-28 lg:py-32">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <SectionTitle
           eyebrow="Questions fréquentes"

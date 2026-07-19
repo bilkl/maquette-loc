@@ -10,7 +10,7 @@ const trustPoints = [
 
 export function TrustSection() {
   return (
-    <section className="bg-brand-black py-24">
+    <section className="bg-brand-black py-28 lg:py-32">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <SectionTitle
           eyebrow="Confiance"
@@ -18,11 +18,14 @@ export function TrustSection() {
           description="NL Prestige s'engage à instaurer une relation de confiance avec chaque client, avant, pendant et après la location."
         />
 
-        <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <ul className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2">
           {trustPoints.map((point) => (
-            <li key={point} className="flex items-start gap-3 rounded-xl border border-brand-line/60 bg-brand-charcoal/40 p-5">
+            <li
+              key={point}
+              className="flex items-start gap-4 rounded-xl border border-brand-line/60 bg-brand-charcoal/40 p-6 transition-colors duration-300 hover:border-brand-red/40"
+            >
               <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" aria-hidden="true" />
-              <span className="text-sm leading-relaxed text-brand-silver">{point}</span>
+              <span className="text-base leading-relaxed text-brand-silver">{point}</span>
             </li>
           ))}
         </ul>
