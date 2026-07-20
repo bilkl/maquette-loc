@@ -4,7 +4,7 @@ export function CTASection() {
   return (
     <section className="relative overflow-hidden bg-brand-charcoal py-28 lg:py-32">
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-red/10 blur-[120px]"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-accent/10 blur-[120px]"
         aria-hidden="true"
       />
       <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">

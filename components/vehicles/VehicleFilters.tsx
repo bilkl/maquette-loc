@@ -44,7 +44,7 @@ export function VehicleFilters({
             id="filter-brand"
             value={filters.brand}
             onChange={(event) => onChange({ ...filters, brand: event.target.value })}
-            className="mt-2 w-full rounded-lg border border-brand-line bg-brand-black px-3 py-2 text-sm text-brand-ivory focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red"
+            className="mt-2 w-full rounded-lg border border-brand-line bg-brand-black px-3 py-2 text-sm text-brand-ivory focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-accent"
           >
             <option value="toutes">Toutes les marques</option>
             {brands.map((brand) => (
@@ -66,7 +66,7 @@ export function VehicleFilters({
             id="filter-category"
             value={filters.category}
             onChange={(event) => onChange({ ...filters, category: event.target.value })}
-            className="mt-2 w-full rounded-lg border border-brand-line bg-brand-black px-3 py-2 text-sm text-brand-ivory focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red"
+            className="mt-2 w-full rounded-lg border border-brand-line bg-brand-black px-3 py-2 text-sm text-brand-ivory focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-accent"
           >
             <option value="toutes">Toutes les catégories</option>
             {categories.map((category) => (
@@ -90,7 +90,7 @@ export function VehicleFilters({
             onChange={(event) =>
               onChange({ ...filters, duration: event.target.value as VehicleFiltersState["duration"] })
             }
-            className="mt-2 w-full rounded-lg border border-brand-line bg-brand-black px-3 py-2 text-sm text-brand-ivory focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red"
+            className="mt-2 w-full rounded-lg border border-brand-line bg-brand-black px-3 py-2 text-sm text-brand-ivory focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-accent"
           >
             {durationOptions.map((option) => (
               <option key={option.value} value={option.value}>
@@ -115,7 +115,7 @@ export function VehicleFilters({
             step={10}
             value={filters.maxPrice}
             onChange={(event) => onChange({ ...filters, maxPrice: Number(event.target.value) })}
-            className="mt-3 w-full accent-[var(--color-brand-red)]"
+            className="mt-3 w-full accent-[var(--color-brand-accent)]"
           />
         </div>
       </div>
@@ -126,7 +126,7 @@ export function VehicleFilters({
           checked={filters.availableOnly}
           onChange={(event) => onChange({ ...filters, availableOnly: event.target.checked })}
           className={cn(
-            "h-4 w-4 rounded border-brand-line bg-brand-black text-brand-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red",
+            "h-4 w-4 rounded border-brand-line bg-brand-black text-brand-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-accent",
           )}
         />
         Afficher uniquement les véhicules disponibles

@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Briefcase, Handshake, ShieldCheck, Wallet } from "lucide-react";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { LongTermForm } from "@/components/forms/LongTermForm";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Location longue durée",
-  description:
-    "Découvrez la location longue durée NL Prestige : flexibilité, budget maîtrisé et services inclus pour un véhicule de prestige sans achat immédiat.",
+  description: `Découvrez la location longue durée ${siteConfig.name} : flexibilité, budget maîtrisé et services inclus pour un véhicule de prestige sans achat immédiat.`,
   alternates: { canonical: "/longue-duree" },
 };
 
@@ -55,7 +55,7 @@ export default function LongTermPage() {
           <SectionTitle
             eyebrow="Longue durée"
             title="Une solution automobile flexible, sans achat immédiat"
-            description="La location longue durée NL Prestige s'adresse à celles et ceux qui souhaitent profiter d'un véhicule de prestige avec une grande souplesse, sans les contraintes de la propriété."
+            description={`La location longue durée ${siteConfig.name} s'adresse à celles et ceux qui souhaitent profiter d'un véhicule de prestige avec une grande souplesse, sans les contraintes de la propriété.`}
           />
         </div>
       </section>
@@ -66,10 +66,10 @@ export default function LongTermPage() {
             {advantages.map(({ icon: Icon, title, description }) => (
               <div
                 key={title}
-                className="rounded-2xl border border-brand-line/60 bg-brand-charcoal/40 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/50 hover:shadow-xl hover:shadow-black/30"
+                className="rounded-2xl border border-brand-line/60 bg-brand-charcoal/40 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/50 hover:shadow-xl hover:shadow-black/30"
               >
-                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-red/10">
-                  <Icon className="h-6 w-6 text-brand-red" aria-hidden="true" />
+                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-accent/10">
+                  <Icon className="h-6 w-6 text-brand-accent" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-brand-ivory">{title}</h3>
                 <p className="mt-3 text-base leading-relaxed text-brand-silver">{description}</p>
@@ -120,7 +120,7 @@ export default function LongTermPage() {
           <SectionTitle
             eyebrow="Demande personnalisée"
             title="Construisons ensemble votre offre longue durée"
-            description="Décrivez votre besoin, un conseiller NL Prestige revient vers vous pour établir une proposition sur mesure."
+            description={`Décrivez votre besoin, un conseiller ${siteConfig.name} revient vers vous pour établir une proposition sur mesure.`}
             align="left"
           />
           <div className="mt-10 rounded-2xl border border-brand-line/60 bg-brand-charcoal/40 p-6 sm:p-8">

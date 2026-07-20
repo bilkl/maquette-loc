@@ -1,7 +1,4 @@
-export interface FaqItem {
-  question: string;
-  answer: string;
-}
+import type { FaqItem } from "./types";
 
 /**
  * Réponses volontairement prudentes : les conditions réelles doivent être

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { Clock3, Sparkles, Timer } from "lucide-react";
 import { LinkButton } from "@/components/ui/Button";
+import { siteConfig } from "@/config/site";
 
 const infoBlocks = [
   { icon: Timer, label: "Location courte durée" },
@@ -24,8 +25,8 @@ export function Hero() {
           className="relative h-full w-full"
         >
           <Image
-            src="/images/hero/hero-prestige.svg"
-            alt="Véhicule de prestige NL Prestige, image de démonstration"
+            src={siteConfig.images.hero}
+            alt={`Véhicule de prestige ${siteConfig.name}, image de démonstration`}
             fill
             priority
             sizes="100vw"
@@ -41,10 +42,10 @@ export function Hero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex items-center gap-4 text-sm font-semibold uppercase tracking-[0.35em] text-brand-red"
+          className="flex items-center gap-4 text-sm font-semibold uppercase tracking-[0.35em] text-brand-accent"
         >
-          <span className="h-px w-10 bg-brand-red/60" aria-hidden="true" />
-          NL Prestige — Suisse
+          <span className="h-px w-10 bg-brand-accent/60" aria-hidden="true" />
+          {siteConfig.name} — Suisse
         </motion.p>
 
         <motion.h1
@@ -87,7 +88,7 @@ export function Hero() {
         >
           {infoBlocks.map(({ icon: Icon, label }) => (
             <div key={label} className="flex items-center gap-3 py-5 sm:flex-1 sm:justify-center sm:py-8">
-              <Icon className="h-5 w-5 text-brand-red" aria-hidden="true" />
+              <Icon className="h-5 w-5 text-brand-accent" aria-hidden="true" />
               <span className="text-base font-medium uppercase tracking-wide text-brand-ivory">
                 {label}
               </span>
@@ -106,7 +107,7 @@ export function Hero() {
         <span className="text-xs font-medium uppercase tracking-[0.3em] text-brand-silver">
           Découvrir
         </span>
-        <span className="h-10 w-px animate-pulse bg-gradient-to-b from-brand-red to-transparent" />
+        <span className="h-10 w-px animate-pulse bg-gradient-to-b from-brand-accent to-transparent" />
       </motion.div>
     </section>
   );

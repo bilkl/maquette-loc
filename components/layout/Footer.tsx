@@ -10,7 +10,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <p className="font-display text-xl font-semibold tracking-[0.18em] text-brand-ivory">
-              NL <span className="text-brand-red">PRESTIGE</span>
+              {siteConfig.logo.primaryText} <span className="text-brand-accent">{siteConfig.logo.accentText}</span>
             </p>
             <p className="mt-4 max-w-xs text-base leading-relaxed text-brand-silver">
               {siteConfig.tagline}
@@ -19,7 +19,7 @@ export function Footer() {
               href={siteConfig.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 text-sm text-brand-silver transition-colors hover:text-brand-red"
+              className="mt-6 inline-flex items-center gap-2 text-sm text-brand-silver transition-colors hover:text-brand-accent"
             >
               <InstagramIcon className="h-4 w-4" aria-hidden="true" />
               Instagram
@@ -35,7 +35,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-brand-silver transition-colors hover:text-brand-red"
+                    className="text-sm text-brand-silver transition-colors hover:text-brand-accent"
                   >
                     {link.label}
                   </Link>
@@ -53,7 +53,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-brand-silver transition-colors hover:text-brand-red"
+                    className="text-sm text-brand-silver transition-colors hover:text-brand-accent"
                   >
                     {link.label}
                   </Link>
@@ -68,22 +68,22 @@ export function Footer() {
             </h3>
             <ul className="mt-4 space-y-3 text-sm text-brand-silver">
               <li className="flex items-start gap-2">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" aria-hidden="true" />
-                <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-brand-red">
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden="true" />
+                <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-brand-accent">
                   {siteConfig.contact.email}
                 </a>
               </li>
               <li className="flex items-start gap-2">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" aria-hidden="true" />
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden="true" />
                 <a
                   href={`tel:${siteConfig.contact.phone.replace(/\s/g, "")}`}
-                  className="hover:text-brand-red"
+                  className="hover:text-brand-accent"
                 >
                   {siteConfig.contact.phone}
                 </a>
               </li>
               <li className="flex items-start gap-2">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" aria-hidden="true" />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden="true" />
                 <span>
                   {siteConfig.address.street}, {siteConfig.address.postalCode}{" "}
                   {siteConfig.address.city}

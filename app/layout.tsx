@@ -22,19 +22,16 @@ const fraunces = Fraunces({
   axes: ["opsz"],
 });
 
+const pageTitle = `${siteConfig.name} | Location de véhicules de prestige en Suisse`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "NL Prestige | Location de véhicules de prestige en Suisse",
+    default: pageTitle,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: [
-    "location voiture de prestige",
-    "location voiture de luxe Suisse",
-    "location longue durée Suisse",
-    "NL Prestige",
-  ],
+  keywords: siteConfig.seo.keywords,
   alternates: {
     canonical: "/",
   },
@@ -43,22 +40,22 @@ export const metadata: Metadata = {
     locale: "fr_CH",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: "NL Prestige | Location de véhicules de prestige en Suisse",
+    title: pageTitle,
     description: siteConfig.description,
     images: [
       {
-        url: "/images/hero/hero-prestige.svg",
+        url: siteConfig.images.hero,
         width: 1200,
         height: 630,
-        alt: "NL Prestige — location de véhicules de prestige en Suisse",
+        alt: `${siteConfig.name} — location de véhicules de prestige en Suisse`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "NL Prestige | Location de véhicules de prestige en Suisse",
+    title: pageTitle,
     description: siteConfig.description,
-    images: ["/images/hero/hero-prestige.svg"],
+    images: [siteConfig.images.hero],
   },
   robots: {
     index: true,
@@ -94,6 +91,12 @@ export default function RootLayout({
       lang="fr"
       data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
+      style={
+        {
+          "--color-brand-accent": siteConfig.colors.accent,
+          "--color-brand-accent-soft": siteConfig.colors.accentSoft,
+        } as React.CSSProperties
+      }
     >
       <body className="flex min-h-full flex-col bg-brand-black text-brand-ivory">
         <script

@@ -10,8 +10,10 @@
   --color-brand-line: #33353a;
   --color-brand-ivory: #f5f1e8;
   --color-brand-silver: #9ca0a8;
-  --color-brand-red: #b81c2c;
-  --color-brand-red-soft: #e0384a;
+  /* Valeurs de repli ; chaque agence les redéfinit via un style inline sur
+     <html> (voir app/layout.tsx), à partir de config/brands/<id>.ts. */
+  --color-brand-accent: #b81c2c;
+  --color-brand-accent-soft: #e0384a;
 }
 
 @theme inline {
@@ -27,8 +29,8 @@
   --color-brand-line: var(--color-brand-line);
   --color-brand-ivory: var(--color-brand-ivory);
   --color-brand-silver: var(--color-brand-silver);
-  --color-brand-red: var(--color-brand-red);
-  --color-brand-red-soft: var(--color-brand-red-soft);
+  --color-brand-accent: var(--color-brand-accent);
+  --color-brand-accent-soft: var(--color-brand-accent-soft);
 }
 
 * {
@@ -55,6 +57,6 @@ body {
 }
 
 ::selection {
-  background: var(--color-brand-red);
+  background: var(--color-brand-accent);
   color: var(--color-brand-black);
 }

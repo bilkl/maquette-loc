@@ -28,14 +28,14 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="flex w-full items-center justify-between gap-4 px-6 py-6 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red sm:px-8"
+                className="flex w-full items-center justify-between gap-4 px-6 py-6 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent sm:px-8"
               >
                 <span className="text-base font-medium text-brand-ivory sm:text-lg">
                   {item.question}
                 </span>
                 <ChevronDown
                   className={cn(
-                    "h-5 w-5 shrink-0 text-brand-red transition-transform duration-200",
+                    "h-5 w-5 shrink-0 text-brand-accent transition-transform duration-200",
                     isOpen ? "rotate-180" : "",
                   )}
                   aria-hidden="true"

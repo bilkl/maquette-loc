@@ -11,7 +11,7 @@ interface VehicleCardProps {
 
 export function VehicleCard({ vehicle, priority = false }: VehicleCardProps) {
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-brand-line/60 bg-brand-charcoal/60 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/60 hover:shadow-2xl hover:shadow-black/50">
+    <article className="group flex flex-col overflow-hidden rounded-2xl border border-brand-line/60 bg-brand-charcoal/60 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/60 hover:shadow-2xl hover:shadow-black/50">
       <div className="relative aspect-[16/10] w-full overflow-hidden">
         <Image
           src={vehicle.coverImage}
@@ -38,7 +38,7 @@ export function VehicleCard({ vehicle, priority = false }: VehicleCardProps) {
           </h3>
           <p className="mt-2 text-base text-brand-silver">
             À partir de{" "}
-            <span className="text-lg font-semibold text-brand-red">
+            <span className="text-lg font-semibold text-brand-accent">
               {formatChf(vehicle.pricePerDay)}
             </span>{" "}
             / jour
@@ -47,15 +47,15 @@ export function VehicleCard({ vehicle, priority = false }: VehicleCardProps) {
 
         <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-brand-silver">
           <li className="flex items-center gap-1.5">
-            <Users className="h-4 w-4 text-brand-red" aria-hidden="true" />
+            <Users className="h-4 w-4 text-brand-accent" aria-hidden="true" />
             {vehicle.seats} places
           </li>
           <li className="flex items-center gap-1.5">
-            <Gauge className="h-4 w-4 text-brand-red" aria-hidden="true" />
+            <Gauge className="h-4 w-4 text-brand-accent" aria-hidden="true" />
             {vehicle.transmission}
           </li>
           <li className="flex items-center gap-1.5">
-            <Fuel className="h-4 w-4 text-brand-red" aria-hidden="true" />
+            <Fuel className="h-4 w-4 text-brand-accent" aria-hidden="true" />
             {vehicle.fuel}
           </li>
         </ul>

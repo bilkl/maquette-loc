@@ -8,6 +8,7 @@
  * un appel à Resend, Formspree, une API personnalisée, un workflow n8n,
  * Google Sheets ou un CRM. La signature des fonctions peut rester identique.
  */
+import { siteConfig } from "@/config/site";
 
 export interface SubmissionResult {
   success: boolean;
@@ -22,7 +23,7 @@ export async function submitBookingRequest(
   values: unknown,
 ): Promise<SubmissionResult> {
   await simulateNetworkDelay();
-  console.log("[NL Prestige] Nouvelle demande de réservation :", values);
+  console.log(`[${siteConfig.name}] Nouvelle demande de réservation :`, values);
 
   return {
     success: true,
@@ -35,7 +36,7 @@ export async function submitContactRequest(
   values: unknown,
 ): Promise<SubmissionResult> {
   await simulateNetworkDelay();
-  console.log("[NL Prestige] Nouveau message de contact :", values);
+  console.log(`[${siteConfig.name}] Nouveau message de contact :`, values);
 
   return {
     success: true,
@@ -47,11 +48,11 @@ export async function submitLongTermRequest(
   values: unknown,
 ): Promise<SubmissionResult> {
   await simulateNetworkDelay();
-  console.log("[NL Prestige] Nouvelle demande de location longue durée :", values);
+  console.log(`[${siteConfig.name}] Nouvelle demande de location longue durée :`, values);
 
   return {
     success: true,
     message:
-      "Votre demande a bien été transmise. Un conseiller NL Prestige vous contactera pour construire une offre personnalisée.",
+      `Votre demande a bien été transmise. Un conseiller ${siteConfig.name} vous contactera pour construire une offre personnalisée.`,
   };
 }

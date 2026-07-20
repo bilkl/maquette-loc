@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { VehiclesPageContent } from "@/components/vehicles/VehiclesPageContent";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Nos véhicules",
-  description:
-    "Parcourez la sélection de véhicules de prestige NL Prestige disponibles en location courte et longue durée en Suisse.",
+  description: `Parcourez la sélection de véhicules de prestige ${siteConfig.name} disponibles en location courte et longue durée en Suisse.`,
   alternates: { canonical: "/vehicules" },
 };
 

@@ -8,8 +8,7 @@ import { InstagramIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description:
-    "Contactez NL Prestige par formulaire, e-mail ou WhatsApp pour toute question sur la location de véhicules de prestige en Suisse.",
+  description: `Contactez ${siteConfig.name} par formulaire, e-mail ou WhatsApp pour toute question sur la location de véhicules de prestige en Suisse.`,
   alternates: { canonical: "/contact" },
 };
 
@@ -26,12 +25,12 @@ export default function ContactPage() {
         <div className="lg:col-span-2">
           <div className="space-y-6 rounded-2xl border border-brand-line/60 bg-brand-charcoal/40 p-6 sm:p-8">
             <div className="flex items-start gap-3">
-              <Mail className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" aria-hidden="true" />
+              <Mail className="mt-0.5 h-5 w-5 shrink-0 text-brand-accent" aria-hidden="true" />
               <div>
                 <p className="text-base font-medium text-brand-ivory">E-mail</p>
                 <a
                   href={`mailto:${siteConfig.contact.email}`}
-                  className="text-base text-brand-silver hover:text-brand-red"
+                  className="text-base text-brand-silver hover:text-brand-accent"
                 >
                   {siteConfig.contact.email}
                 </a>
@@ -39,12 +38,12 @@ export default function ContactPage() {
             </div>
 
             <div className="flex items-start gap-3">
-              <Phone className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" aria-hidden="true" />
+              <Phone className="mt-0.5 h-5 w-5 shrink-0 text-brand-accent" aria-hidden="true" />
               <div>
                 <p className="text-base font-medium text-brand-ivory">Téléphone</p>
                 <a
                   href={`tel:${siteConfig.contact.phone.replace(/\s/g, "")}`}
-                  className="text-base text-brand-silver hover:text-brand-red"
+                  className="text-base text-brand-silver hover:text-brand-accent"
                 >
                   {siteConfig.contact.phone}
                 </a>
@@ -52,22 +51,22 @@ export default function ContactPage() {
             </div>
 
             <div className="flex items-start gap-3">
-              <MessageCircle className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" aria-hidden="true" />
+              <MessageCircle className="mt-0.5 h-5 w-5 shrink-0 text-brand-accent" aria-hidden="true" />
               <div>
                 <p className="text-base font-medium text-brand-ivory">WhatsApp</p>
                 <a
                   href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-base text-brand-silver hover:text-brand-red"
+                  className="text-base text-brand-silver hover:text-brand-accent"
                 >
-                  Discuter avec NL Prestige
+                  Discuter avec {siteConfig.name}
                 </a>
               </div>
             </div>
 
             <div className="flex items-start gap-3">
-              <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" aria-hidden="true" />
+              <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-brand-accent" aria-hidden="true" />
               <div>
                 <p className="text-base font-medium text-brand-ivory">Adresse</p>
                 <p className="text-base text-brand-silver">
@@ -78,13 +77,13 @@ export default function ContactPage() {
                   {siteConfig.address.country}
                 </p>
                 <p className="mt-1 text-xs text-brand-silver/60">
-                  Emplacement générique — à remplacer par l&apos;adresse officielle de NL Prestige.
+                  Emplacement générique — à remplacer par l&apos;adresse officielle de {siteConfig.name}.
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-3">
-              <Clock className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" aria-hidden="true" />
+              <Clock className="mt-0.5 h-5 w-5 shrink-0 text-brand-accent" aria-hidden="true" />
               <div>
                 <p className="text-base font-medium text-brand-ivory">Horaires</p>
                 <ul className="mt-1 space-y-1 text-base text-brand-silver">
@@ -99,14 +98,14 @@ export default function ContactPage() {
             </div>
 
             <div className="flex items-start gap-3">
-              <InstagramIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" aria-hidden="true" />
+              <InstagramIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-accent" aria-hidden="true" />
               <div>
                 <p className="text-base font-medium text-brand-ivory">Instagram</p>
                 <a
                   href={siteConfig.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-base text-brand-silver hover:text-brand-red"
+                  className="text-base text-brand-silver hover:text-brand-accent"
                 >
                   @nl.prestige
                 </a>

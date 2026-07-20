@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { siteConfig } from "@/config/site";
 import { CheckCircle2 } from "lucide-react";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { LinkButton } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
   title: "À propos",
-  description:
-    "NL Prestige est un service suisse spécialisé dans la location de véhicules de prestige en courte et longue durée.",
+  description: `${siteConfig.name} est un service suisse spécialisé dans la location de véhicules de prestige en courte et longue durée.`,
   alternates: { canonical: "/a-propos" },
 };
 
@@ -24,9 +24,9 @@ export default function AboutPage() {
       <section className="border-b border-brand-line/60 bg-brand-charcoal py-24">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <SectionTitle
-            eyebrow="À propos de NL Prestige"
+            eyebrow={`À propos de ${siteConfig.name}`}
             title="Un service suisse dédié à la location de véhicules de prestige"
-            description="NL Prestige accompagne une clientèle exigeante à la recherche d'un véhicule d'exception, pour une occasion particulière ou pour une solution automobile flexible sur la durée."
+            description={`${siteConfig.name} accompagne une clientèle exigeante à la recherche d'un véhicule d'exception, pour une occasion particulière ou pour une solution automobile flexible sur la durée.`}
           />
         </div>
       </section>
@@ -35,8 +35,8 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-brand-line/60">
             <Image
-              src="/images/misc/placeholder-wide.svg"
-              alt="Illustration de démonstration NL Prestige"
+              src={siteConfig.images.about}
+              alt={`Illustration de démonstration ${siteConfig.name}`}
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover"
@@ -48,10 +48,10 @@ export default function AboutPage() {
               Notre positionnement
             </h2>
             <p className="mt-5 text-base leading-relaxed text-brand-silver">
-              NL Prestige propose un service de location de véhicules de prestige pensé pour la
+              {siteConfig.name} propose un service de location de véhicules de prestige pensé pour la
               Suisse, avec une approche directe, transparente et personnalisée. Cette page présente
               le positionnement général de l&apos;entreprise ; les informations précises (historique,
-              structure juridique, zone de couverture) seront complétées par NL Prestige avant
+              structure juridique, zone de couverture) seront complétées par {siteConfig.name} avant
               publication officielle.
             </p>
             <p className="mt-4 text-base leading-relaxed text-brand-silver">
@@ -63,7 +63,7 @@ export default function AboutPage() {
             <ul className="mt-8 space-y-3">
               {commitments.map((commitment) => (
                 <li key={commitment} className="flex items-start gap-2 text-base text-brand-silver">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" aria-hidden="true" />
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden="true" />
                   {commitment}
                 </li>
               ))}

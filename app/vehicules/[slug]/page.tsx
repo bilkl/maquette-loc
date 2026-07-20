@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CalendarCheck, CheckCircle2, Fuel, Gauge, MessageCircle, Users } from "lucide-react";
 import { getVehicleBySlug, vehicles } from "@/data/vehicles";
+import { siteConfig } from "@/config/site";
 import { formatChf } from "@/lib/utils";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 import { VehicleGallery } from "@/components/vehicles/VehicleGallery";
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: VehiclePageProps): Promise<Me
   }
 
   const title = `${vehicle.brand} ${vehicle.model}`;
-  const description = `Louez la ${vehicle.brand} ${vehicle.model} en Suisse avec NL Prestige, à partir de ${formatChf(vehicle.pricePerDay)} par jour.`;
+  const description = `Louez la ${vehicle.brand} ${vehicle.model} en Suisse avec ${siteConfig.name}, à partir de ${formatChf(vehicle.pricePerDay)} par jour.`;
 
   return {
     title,
@@ -54,7 +55,7 @@ export default async function VehiclePage({ params }: VehiclePageProps) {
         </div>
 
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-brand-red">
+          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-brand-accent">
             {vehicle.category}
           </p>
           <h1 className="font-display mt-4 text-4xl font-semibold leading-tight tracking-tight text-brand-ivory sm:text-5xl">
@@ -62,7 +63,7 @@ export default async function VehiclePage({ params }: VehiclePageProps) {
           </h1>
 
           <div className="mt-7 flex flex-wrap items-baseline gap-3">
-            <span className="text-3xl font-semibold text-brand-red">
+            <span className="text-3xl font-semibold text-brand-accent">
               {formatChf(vehicle.pricePerDay)}
             </span>
             <span className="text-base text-brand-silver">/ jour</span>
@@ -73,15 +74,15 @@ export default async function VehiclePage({ params }: VehiclePageProps) {
 
           <ul className="mt-8 grid grid-cols-2 gap-4 text-base text-brand-silver sm:grid-cols-3">
             <li className="flex items-center gap-2">
-              <Users className="h-4 w-4 text-brand-red" aria-hidden="true" />
+              <Users className="h-4 w-4 text-brand-accent" aria-hidden="true" />
               {vehicle.seats} places
             </li>
             <li className="flex items-center gap-2">
-              <Gauge className="h-4 w-4 text-brand-red" aria-hidden="true" />
+              <Gauge className="h-4 w-4 text-brand-accent" aria-hidden="true" />
               {vehicle.transmission}
             </li>
             <li className="flex items-center gap-2">
-              <Fuel className="h-4 w-4 text-brand-red" aria-hidden="true" />
+              <Fuel className="h-4 w-4 text-brand-accent" aria-hidden="true" />
               {vehicle.fuel}
             </li>
           </ul>
@@ -95,7 +96,7 @@ export default async function VehiclePage({ params }: VehiclePageProps) {
             <ul className="mt-4 space-y-2.5">
               {vehicle.highlights.map((highlight) => (
                 <li key={highlight} className="flex items-start gap-2 text-base text-brand-silver">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" aria-hidden="true" />
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden="true" />
                   {highlight}
                 </li>
               ))}
@@ -120,7 +121,7 @@ export default async function VehiclePage({ params }: VehiclePageProps) {
 
           <div className="mt-10 rounded-2xl border border-brand-line/60 bg-brand-charcoal/40 p-6">
             <h2 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-brand-ivory">
-              <CalendarCheck className="h-4 w-4 text-brand-red" aria-hidden="true" />
+              <CalendarCheck className="h-4 w-4 text-brand-accent" aria-hidden="true" />
               Conditions essentielles
             </h2>
             <ul className="mt-4 space-y-2.5">
@@ -138,11 +139,11 @@ export default async function VehiclePage({ params }: VehiclePageProps) {
 
           <a
             href={getWhatsAppUrl(
-              `Bonjour NL Prestige, je souhaiterais obtenir des informations concernant la location de la ${vehicle.brand} ${vehicle.model}.`,
+              `Bonjour ${siteConfig.name}, je souhaiterais obtenir des informations concernant la location de la ${vehicle.brand} ${vehicle.model}.`,
             )}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center gap-2 rounded-none border border-[#25D366] bg-[#25D366] px-8 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-black hover:shadow-lg hover:shadow-black/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red"
+            className="mt-8 inline-flex items-center gap-2 rounded-none border border-[#25D366] bg-[#25D366] px-8 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-black hover:shadow-lg hover:shadow-black/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
           >
             <MessageCircle className="h-4 w-4" aria-hidden="true" />
             Discuter sur WhatsApp

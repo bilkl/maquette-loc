@@ -33,8 +33,8 @@ export function VehicleGallery({ images, alt }: VehicleGalleryProps) {
               onClick={() => setActiveIndex(index)}
               aria-label={`Afficher la photo ${index + 1} de ${alt}`}
               aria-pressed={activeIndex === index}
-              className={`relative aspect-[16/10] overflow-hidden rounded-xl border transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red ${
-                activeIndex === index ? "border-brand-red" : "border-brand-line/60"
+              className={`relative aspect-[16/10] overflow-hidden rounded-xl border transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-accent ${
+                activeIndex === index ? "border-brand-accent" : "border-brand-line/60"
               }`}
             >
               <Image

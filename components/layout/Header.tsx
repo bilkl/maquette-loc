@@ -19,9 +19,9 @@ export function Header() {
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="font-display text-xl font-semibold tracking-[0.18em] text-brand-ivory focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red"
+          className="font-display text-xl font-semibold tracking-[0.18em] text-brand-ivory focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
         >
-          NL <span className="text-brand-red">PRESTIGE</span>
+          {siteConfig.logo.primaryText} <span className="text-brand-accent">{siteConfig.logo.accentText}</span>
         </Link>
 
         <nav
@@ -42,7 +42,7 @@ export function Header() {
                 href={link.href}
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "group relative px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red",
+                  "group relative px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent",
                   isActive
                     ? "text-brand-ivory"
                     : "text-brand-silver hover:text-brand-ivory",
@@ -52,7 +52,7 @@ export function Header() {
                 <span
                   aria-hidden="true"
                   className={cn(
-                    "pointer-events-none absolute inset-x-4 -bottom-1 h-px origin-center scale-x-0 bg-gradient-to-r from-brand-red/0 via-brand-red to-brand-red/0 transition-transform duration-300 ease-out group-hover:scale-x-100",
+                    "pointer-events-none absolute inset-x-4 -bottom-1 h-px origin-center scale-x-0 bg-gradient-to-r from-brand-accent/0 via-brand-accent to-brand-accent/0 transition-transform duration-300 ease-out group-hover:scale-x-100",
                     isActive && "scale-x-100",
                   )}
                 />
@@ -66,8 +66,8 @@ export function Header() {
             href={siteConfig.social.instagram}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Suivre NL Prestige sur Instagram"
-            className="text-brand-silver transition-colors hover:text-brand-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red"
+            aria-label={`Suivre ${siteConfig.name} sur Instagram`}
+            className="text-brand-silver transition-colors hover:text-brand-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
           >
             <InstagramIcon className="h-5 w-5" aria-hidden="true" />
           </a>
@@ -79,7 +79,7 @@ export function Header() {
         <button
           type="button"
           onClick={() => setIsMenuOpen(true)}
-          className="inline-flex items-center justify-center rounded-full border border-brand-line p-2 text-brand-ivory focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red lg:hidden"
+          className="inline-flex items-center justify-center rounded-full border border-brand-line p-2 text-brand-ivory focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent lg:hidden"
           aria-label="Ouvrir le menu"
           aria-expanded={isMenuOpen}
         >

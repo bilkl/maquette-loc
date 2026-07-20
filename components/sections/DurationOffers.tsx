@@ -8,8 +8,8 @@ export function DurationOffers() {
         <SectionTitle eyebrow="Formules" title="Courte ou longue durée" />
 
         <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <div className="rounded-2xl border border-brand-line/60 bg-brand-black/50 p-10 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/40 hover:shadow-xl hover:shadow-black/30">
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-brand-red">
+          <div className="rounded-2xl border border-brand-line/60 bg-brand-black/50 p-10 transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/40 hover:shadow-xl hover:shadow-black/30">
+            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-brand-accent">
               Courte durée
             </p>
             <h3 className="font-display mt-4 text-3xl font-semibold leading-tight text-brand-ivory">
@@ -25,8 +25,8 @@ export function DurationOffers() {
             </LinkButton>
           </div>
 
-          <div className="rounded-2xl border border-brand-line/60 bg-brand-black/50 p-10 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/40 hover:shadow-xl hover:shadow-black/30">
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-brand-red">
+          <div className="rounded-2xl border border-brand-line/60 bg-brand-black/50 p-10 transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/40 hover:shadow-xl hover:shadow-black/30">
+            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-brand-accent">
               Longue durée
             </p>
             <h3 className="font-display mt-4 text-3xl font-semibold leading-tight text-brand-ivory">

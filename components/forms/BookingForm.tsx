@@ -72,7 +72,7 @@ export function BookingForm({ defaultVehicleSlug }: BookingFormProps) {
         <p
           id={`${formId}-success`}
           role="status"
-          className="rounded-xl border border-brand-red/40 bg-brand-red/10 px-4 py-3 text-sm text-brand-red-soft"
+          className="rounded-xl border border-brand-accent/40 bg-brand-accent/10 px-4 py-3 text-sm text-brand-accent-soft"
         >
           {successMessage}
         </p>
@@ -226,12 +226,12 @@ export function BookingForm({ defaultVehicleSlug }: BookingFormProps) {
             checked={values.consent}
             onChange={(e) => updateField("consent", e.target.checked)}
             aria-invalid={!!errors.consent}
-            className="mt-1 h-4 w-4 shrink-0 rounded border-brand-line bg-brand-black text-brand-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red"
+            className="mt-1 h-4 w-4 shrink-0 rounded border-brand-line bg-brand-black text-brand-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-accent"
           />
           <span>
             J&apos;accepte que mes informations soient utilisées pour traiter ma demande,
             conformément à la{" "}
-            <a href="/confidentialite" className="text-brand-red hover:underline">
+            <a href="/confidentialite" className="text-brand-accent hover:underline">
               politique de confidentialité
             </a>
             .
@@ -259,7 +259,7 @@ export function BookingForm({ defaultVehicleSlug }: BookingFormProps) {
 function inputClass(hasError: boolean): string {
   return [
     "w-full rounded-lg border bg-brand-black px-3 py-2.5 text-sm text-brand-ivory placeholder:text-brand-silver/60",
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red",
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-accent",
     hasError ? "border-red-400" : "border-brand-line",
   ].join(" ");
 }
@@ -277,7 +277,7 @@ function Field({ id, label, error, required, children }: FieldProps) {
     <div>
       <label htmlFor={id} className="text-xs font-medium uppercase tracking-wide text-brand-silver">
         {label}
-        {required ? <span className="text-brand-red"> *</span> : null}
+        {required ? <span className="text-brand-accent"> *</span> : null}
       </label>
       <div className="mt-2">{children}</div>
       {error ? (

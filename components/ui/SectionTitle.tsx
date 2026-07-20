@@ -26,11 +26,11 @@ export function SectionTitle({
       {eyebrow ? (
         <p
           className={cn(
-            "mb-4 flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.3em] text-brand-red",
+            "mb-4 flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.3em] text-brand-accent",
             align === "center" ? "justify-center" : "justify-start",
           )}
         >
-          <span className="h-px w-8 bg-brand-red/60" aria-hidden="true" />
+          <span className="h-px w-8 bg-brand-accent/60" aria-hidden="true" />
           {eyebrow}
         </p>
       ) : null}

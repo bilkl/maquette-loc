@@ -10,17 +10,17 @@ interface ButtonBaseProps {
 }
 
 const baseClasses =
-  "group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-none border px-8 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-brand-ivory transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red disabled:pointer-events-none disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-none";
+  "group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-none border px-8 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-brand-ivory transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent disabled:pointer-events-none disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-none";
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: "border-brand-red bg-brand-red",
-  secondary: "border-brand-line hover:border-brand-red",
-  ghost: "border-transparent hover:text-brand-red",
+  primary: "border-brand-accent bg-brand-accent",
+  secondary: "border-brand-line hover:border-brand-accent",
+  ghost: "border-transparent hover:text-brand-accent",
 };
 
 const sweepClasses: Record<ButtonVariant, string> = {
   primary: "bg-brand-black",
-  secondary: "bg-brand-red",
+  secondary: "bg-brand-accent",
   ghost: "",
 };
 

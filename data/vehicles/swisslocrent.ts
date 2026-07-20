@@ -2,9 +2,10 @@ import { Vehicle } from "@/types/vehicle";
 
 /**
  * Données de démonstration.
- * Ces véhicules sont fictifs et illustrent uniquement le fonctionnement de la maquette.
- * Ils ne représentent pas la flotte réelle de NL Prestige.
- * Remplacez ou complétez cette liste avec les véhicules réels, leurs photos et leurs tarifs.
+ * Reprend la même flotte de démonstration que NL Prestige (photos de stock
+ * génériques, non liées à l'identité de marque). Modifiez librement cette
+ * liste pour donner à SwissLoc Rent sa propre flotte, indépendamment des
+ * autres agences.
  */
 export const vehicles: Vehicle[] = [
   {
@@ -200,14 +201,3 @@ export const vehicles: Vehicle[] = [
     ],
   },
 ];
-
-export function getVehicleBySlug(slug: string): Vehicle | undefined {
-  return vehicles.find((vehicle) => vehicle.slug === slug);
-}
-
-export function getFeaturedVehicles(count = 6): Vehicle[] {
-  return vehicles.slice(0, count);
-}
-
-export const vehicleBrands = Array.from(new Set(vehicles.map((v) => v.brand))).sort();
-export const vehicleCategories = Array.from(new Set(vehicles.map((v) => v.category))).sort();

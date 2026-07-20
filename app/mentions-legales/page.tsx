@@ -4,7 +4,7 @@ import { LegalDisclaimer } from "@/components/legal/LegalDisclaimer";
 
 export const metadata: Metadata = {
   title: "Mentions légales",
-  description: "Mentions légales de NL Prestige.",
+  description: `Mentions légales de ${siteConfig.name}.`,
   alternates: { canonical: "/mentions-legales" },
   robots: { index: false, follow: true },
 };
@@ -32,16 +32,16 @@ export default function LegalNoticePage() {
             Téléphone : {siteConfig.contact.phone}
           </p>
           <p className="mt-2 text-xs text-brand-silver/70">
-            {/* TODO: remplacer par l'information officielle de NL Prestige */}
+            {/* TODO: remplacer par l'information officielle de l'agence */}
             Numéro d&apos;identification des entreprises (IDE), forme juridique et lieu
-            d&apos;immatriculation à compléter par NL Prestige.
+            d&apos;immatriculation à compléter par {siteConfig.name}.
           </p>
         </section>
 
         <section>
           <h2 className="text-lg font-semibold text-brand-ivory">Hébergement</h2>
           <p className="mt-2 text-xs text-brand-silver/70">
-            {/* TODO: remplacer par l'information officielle de NL Prestige */}
+            {/* TODO: remplacer par l'information officielle de l'agence */}
             Nom, adresse et contact de l&apos;hébergeur à compléter avant publication.
           </p>
         </section>
@@ -58,7 +58,7 @@ export default function LegalNoticePage() {
         <section>
           <h2 className="text-lg font-semibold text-brand-ivory">Responsabilité</h2>
           <p className="mt-2">
-            NL Prestige s&apos;efforce d&apos;assurer l&apos;exactitude des informations diffusées sur ce
+            {siteConfig.name} s&apos;efforce d&apos;assurer l&apos;exactitude des informations diffusées sur ce
             site, sans pouvoir garantir l&apos;absence d&apos;erreurs ou d&apos;omissions.
           </p>
         </section>

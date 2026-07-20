@@ -49,13 +49,13 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             onClick={onClose}
             className="font-display text-xl font-semibold tracking-[0.18em] text-brand-ivory"
           >
-            NL <span className="text-brand-red">PRESTIGE</span>
+            {siteConfig.logo.primaryText} <span className="text-brand-accent">{siteConfig.logo.accentText}</span>
           </Link>
           <button
             type="button"
             onClick={onClose}
             aria-label="Fermer le menu"
-            className="inline-flex items-center justify-center rounded-full border border-brand-line p-2 text-brand-ivory focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red"
+            className="inline-flex items-center justify-center rounded-full border border-brand-line p-2 text-brand-ivory focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
           >
             <X className="h-5 w-5" aria-hidden="true" />
           </button>
@@ -70,7 +70,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               key={link.href}
               href={link.href}
               onClick={onClose}
-              className="font-display border-b border-brand-line/60 py-4 text-3xl font-medium text-brand-ivory transition-colors hover:text-brand-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red"
+              className="font-display border-b border-brand-line/60 py-4 text-3xl font-medium text-brand-ivory transition-colors hover:text-brand-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
             >
               {link.label}
             </Link>
@@ -83,10 +83,10 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             target="_blank"
             rel="noopener noreferrer"
             onClick={onClose}
-            className="inline-flex items-center gap-2 text-sm text-brand-silver hover:text-brand-red"
+            className="inline-flex items-center gap-2 text-sm text-brand-silver hover:text-brand-accent"
           >
             <InstagramIcon className="h-5 w-5" aria-hidden="true" />
-            Suivre NL Prestige sur Instagram
+            Suivre {siteConfig.name} sur Instagram
           </a>
           <LinkButton href="/contact" variant="primary" className="w-full">
             Réserver

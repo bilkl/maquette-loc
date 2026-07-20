@@ -58,7 +58,7 @@ export function LongTermForm() {
       {successMessage ? (
         <p
           role="status"
-          className="rounded-xl border border-brand-red/40 bg-brand-red/10 px-4 py-3 text-sm text-brand-red-soft"
+          className="rounded-xl border border-brand-accent/40 bg-brand-accent/10 px-4 py-3 text-sm text-brand-accent-soft"
         >
           {successMessage}
         </p>
@@ -67,7 +67,7 @@ export function LongTermForm() {
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor={`${formId}-firstName`} className="text-xs font-medium uppercase tracking-wide text-brand-silver">
-            Prénom <span className="text-brand-red">*</span>
+            Prénom <span className="text-brand-accent">*</span>
           </label>
           <input
             id={`${formId}-firstName`}
@@ -83,7 +83,7 @@ export function LongTermForm() {
 
         <div>
           <label htmlFor={`${formId}-lastName`} className="text-xs font-medium uppercase tracking-wide text-brand-silver">
-            Nom <span className="text-brand-red">*</span>
+            Nom <span className="text-brand-accent">*</span>
           </label>
           <input
             id={`${formId}-lastName`}
@@ -99,7 +99,7 @@ export function LongTermForm() {
 
         <div>
           <label htmlFor={`${formId}-email`} className="text-xs font-medium uppercase tracking-wide text-brand-silver">
-            E-mail <span className="text-brand-red">*</span>
+            E-mail <span className="text-brand-accent">*</span>
           </label>
           <input
             id={`${formId}-email`}
@@ -115,7 +115,7 @@ export function LongTermForm() {
 
         <div>
           <label htmlFor={`${formId}-phone`} className="text-xs font-medium uppercase tracking-wide text-brand-silver">
-            Téléphone <span className="text-brand-red">*</span>
+            Téléphone <span className="text-brand-accent">*</span>
           </label>
           <input
             id={`${formId}-phone`}
@@ -131,7 +131,7 @@ export function LongTermForm() {
 
         <div>
           <label htmlFor={`${formId}-profile`} className="text-xs font-medium uppercase tracking-wide text-brand-silver">
-            Votre profil <span className="text-brand-red">*</span>
+            Votre profil <span className="text-brand-accent">*</span>
           </label>
           <input
             id={`${formId}-profile`}
@@ -147,7 +147,7 @@ export function LongTermForm() {
 
         <div>
           <label htmlFor={`${formId}-duration`} className="text-xs font-medium uppercase tracking-wide text-brand-silver">
-            Durée souhaitée <span className="text-brand-red">*</span>
+            Durée souhaitée <span className="text-brand-accent">*</span>
           </label>
           <input
             id={`${formId}-duration`}
@@ -201,12 +201,12 @@ export function LongTermForm() {
             checked={values.consent}
             onChange={(e) => updateField("consent", e.target.checked)}
             aria-invalid={!!errors.consent}
-            className="mt-1 h-4 w-4 shrink-0 rounded border-brand-line bg-brand-black text-brand-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red"
+            className="mt-1 h-4 w-4 shrink-0 rounded border-brand-line bg-brand-black text-brand-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-accent"
           />
           <span>
             J&apos;accepte que mes informations soient utilisées pour traiter ma demande,
             conformément à la{" "}
-            <a href="/confidentialite" className="text-brand-red hover:underline">
+            <a href="/confidentialite" className="text-brand-accent hover:underline">
               politique de confidentialité
             </a>
             .
@@ -232,7 +232,7 @@ export function LongTermForm() {
 function inputClass(hasError: boolean): string {
   return [
     "w-full rounded-lg border bg-brand-black px-3 py-2.5 text-sm text-brand-ivory placeholder:text-brand-silver/60",
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red",
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-accent",
     hasError ? "border-red-400" : "border-brand-line",
   ].join(" ");
 }
