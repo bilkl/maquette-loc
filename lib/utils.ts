@@ -2,12 +2,22 @@ export function cn(...classes: Array<string | false | null | undefined>): string
   return classes.filter(Boolean).join(" ");
 }
 
+/**
+ * Formate un montant en CHF (ex. 1890 → "1 890 CHF").
+ *
+ * N'utilise volontairement pas `Intl.NumberFormat("fr-CH", ...)` : le
+ * séparateur de milliers qu'il produit dépend de la version d'ICU du moteur
+ * JS (apostrophe sur certains runtimes serveur, espace fine insécable dans
+ * les navigateurs récents). Rendu depuis le serveur (build statique) puis
+ * réhydraté côté client, cet écart provoquait un mismatch d'hydratation
+ * React. Le regroupement manuel ci-dessous produit un résultat identique
+ * dans n'importe quel environnement.
+ */
 export function formatChf(amount: number): string {
-  return new Intl.NumberFormat("fr-CH", {
-    style: "currency",
-    currency: "CHF",
-    maximumFractionDigits: 0,
-  }).format(amount);
+  const grouped = Math.round(amount)
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  return `${grouped} CHF`;
 }
 
 /** Date du jour au format `YYYY-MM-DD`, attendu par les champs `<input type="date">`. */
