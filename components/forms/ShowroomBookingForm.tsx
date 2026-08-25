@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { FormEvent, useId, useMemo, useState } from "react";
+import { FormEvent, useEffect, useId, useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Check, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { vehicles } from "@/data/vehicles";
@@ -77,6 +77,21 @@ export function ShowroomBookingForm({ defaultVehicleSlug }: ShowroomBookingFormP
   const [isCustomDelivery, setIsCustomDelivery] = useState(false);
   const formId = useId();
   const shouldReduceMotion = useReducedMotion();
+
+  // Cette page est prérendue statiquement : calculer "aujourd'hui" pendant le
+  // rendu (build/SSR) figerait cette date dans le HTML jusqu'au prochain
+  // déploiement, provoquant un mismatch d'hydratation dès le lendemain. On ne
+  // calcule donc `min` qu'après le montage, côté client.
+  const [minStartDate, setMinStartDate] = useState<string | undefined>(undefined);
+  useEffect(() => {
+    // Exception volontaire à react-hooks/set-state-in-effect : la règle
+    // suppose un effet qui synchronise du state dérivé, alors qu'ici le seul
+    // but est d'éviter le mismatch d'hydratation ci-dessus (rendre la même
+    // chose — `undefined` — sur le serveur et au premier rendu client, puis
+    // ne calculer "aujourd'hui" qu'une fois monté).
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMinStartDate(todayIso());
+  }, []);
 
   const selectedVehicle = useMemo(
     () => vehicles.find((vehicle) => vehicle.slug === values.vehicle),
@@ -329,7 +344,7 @@ export function ShowroomBookingForm({ defaultVehicleSlug }: ShowroomBookingFormP
                   <input
                     id={`${formId}-startDate`}
                     type="date"
-                    min={todayIso()}
+                    min={minStartDate}
                     value={values.startDate}
                     onChange={(event) => updateField("startDate", event.target.value)}
                     aria-invalid={!!errors.startDate}
@@ -341,7 +356,7 @@ export function ShowroomBookingForm({ defaultVehicleSlug }: ShowroomBookingFormP
                   <input
                     id={`${formId}-endDate`}
                     type="date"
-                    min={values.startDate || todayIso()}
+                    min={values.startDate || minStartDate}
                     value={values.endDate}
                     onChange={(event) => updateField("endDate", event.target.value)}
                     aria-invalid={!!errors.endDate}
