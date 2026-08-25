@@ -1,10 +1,24 @@
+import { bullrent } from "./bullrent";
+import { eagledrive } from "./eagledrive";
+import { elegancyrent } from "./elegancyrent";
+import { luxurcars } from "./luxurcars";
+import { luxurydrive } from "./luxurydrive";
 import { nlprestige } from "./nlprestige";
+import { slgrent } from "./slgrent";
+import { swisselite } from "./swisselite";
 import { swisslocrent } from "./swisslocrent";
 import type { BrandConfig } from "./types";
 
 export const brands: Record<string, BrandConfig> = {
   nlprestige,
   swisslocrent,
+  swisselite,
+  bullrent,
+  eagledrive,
+  elegancyrent,
+  slgrent,
+  luxurydrive,
+  luxurcars,
 };
 
 export const DEFAULT_BRAND_ID = "nlprestige";

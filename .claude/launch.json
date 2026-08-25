@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "luxurcars",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-lc", "NEXT_PUBLIC_BRAND=luxurcars npm run dev -- --port 3010"],
+      "port": 3010
+    }
+  ]
+}

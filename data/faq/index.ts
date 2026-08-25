@@ -1,11 +1,25 @@
 import { getActiveBrand } from "@/config/brands";
+import { faqItems as bullrent } from "./bullrent";
+import { faqItems as eagledrive } from "./eagledrive";
+import { faqItems as elegancyrent } from "./elegancyrent";
+import { faqItems as luxurcars } from "./luxurcars";
+import { faqItems as luxurydrive } from "./luxurydrive";
 import { faqItems as nlprestige } from "./nlprestige";
+import { faqItems as slgrent } from "./slgrent";
+import { faqItems as swisselite } from "./swisselite";
 import { faqItems as swisslocrent } from "./swisslocrent";
 import type { FaqItem } from "./types";
 
 const faqByBrand: Record<string, FaqItem[]> = {
   nlprestige,
   swisslocrent,
+  swisselite,
+  bullrent,
+  eagledrive,
+  elegancyrent,
+  slgrent,
+  luxurydrive,
+  luxurcars,
 };
 
 export const faqItems: FaqItem[] = faqByBrand[getActiveBrand().id] ?? nlprestige;

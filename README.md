@@ -11,6 +11,7 @@ Framer Motion et Lucide React.
 ## Sommaire
 
 - [Installation](#installation)
+- [Gabarits : « classic » et « showroom »](#gabarits--classic-et-showroom)
 - [Lancer le projet](#lancer-le-projet)
 - [Architecture du projet](#architecture-du-projet)
 - [Modifier les coordonnées](#modifier-les-coordonnées)
@@ -28,6 +29,86 @@ Prérequis : Node.js 20 ou supérieur.
 ```bash
 npm install
 ```
+
+## Gabarits : « classic » et « showroom »
+
+Le dépôt sert plusieurs agences (`NEXT_PUBLIC_BRAND`, voir
+[`config/brands/index.ts`](config/brands/index.ts)) et, depuis LuxurCars, **deux directions
+artistiques distinctes**. Chaque agence choisit la sienne dans `config/brands/<id>.ts` :
+
+```ts
+template: "showroom",   // "classic" par défaut
+theme: "showroom",      // palette : "dark" | "light" | "showroom"
+```
+
+| | `classic` | `showroom` |
+| --- | --- | --- |
+| Intention | Location pratique : flotte, filtres, réservation | Collection premium : récit de marque, modèles racontés |
+| Palette | Anthracite + accent agence | Noir profond `#050506` + or `#c8a24a` |
+| Typographie | Fraunces (titres) + Geist | Playfair Display (titres) + Geist |
+| Page d'accueil | Hero + flotte + avantages + FAQ | Hero plein écran + manifeste + chapitres de collection + expérience + réservation |
+| Formulaire | `BookingForm` (un écran) | `ShowroomBookingForm` (3 étapes, estimation en direct) |
+| Composants | `components/sections/`, `components/vehicles/` | `components/showroom/` |
+| Contenu éditorial | `config/brands/<id>.ts` | `config/brands/<id>.ts` **+** `data/showroom/<id>.ts` |
+
+Les deux gabarits partagent la même base : routes, données véhicules, FAQ, envoi des formulaires,
+liens WhatsApp, pages légales. Seules les pages `/`, `/vehicules` et `/vehicules/[slug]` changent de
+rendu selon `template` ; les autres pages (à propos, contact, mentions légales) sont communes et
+reprennent automatiquement la palette de l'agence.
+
+### Le gabarit showroom en détail
+
+```
+components/showroom/
+  ShowroomHeader.tsx / ShowroomMobileMenu.tsx / ShowroomFooter.tsx
+  ShowroomHero.tsx            Hero plein écran, parallaxe légère
+  ManifestoSection.tsx        Prise de parole de l'agence
+  CollectionSection.tsx       Chapitres par marque + modèles rattachés
+  ExperienceSection.tsx       Les étapes, racontées
+  ReservationSection.tsx      Formulaire + réassurance + coordonnées
+  ShowroomFAQSection.tsx      FAQ en filets fins
+  ShowroomCollectionPage.tsx  Page /vehicules
+  ShowroomVehicleDetail.tsx   Page /vehicules/[slug]
+  Reveal.tsx / primitives.tsx Apparitions au scroll et briques typographiques
+components/forms/ShowroomBookingForm.tsx
+data/showroom/<id>.ts         Tout le texte du gabarit (aucune phrase en dur dans les composants)
+```
+
+Le formulaire de réservation s'adapte au visiteur : choix visuel du modèle (ou « conseillez-moi »),
+date de retour corrigée automatiquement, durée et estimation recalculées en direct, âge minimum
+exigé variable selon le modèle (`minDriverAge` dans `data/vehicles/<id>.ts`), validation étape par
+étape et reprise de la demande sur WhatsApp avec récapitulatif pré-rempli.
+
+Les animations utilisent Framer Motion et respectent `prefers-reduced-motion`.
+
+### Créer une maquette showroom pour un nouveau prospect
+
+1. `config/brands/<id>.ts` — identité, couleurs, coordonnées, navigation, avec
+   `template: "showroom"` et `theme: "showroom"`, puis enregistrer l'agence dans
+   [`config/brands/index.ts`](config/brands/index.ts).
+2. `data/showroom/<id>.ts` — le récit : hero, manifeste, chapitres par marque, expérience, textes de
+   réservation et de FAQ. Enregistrer le fichier dans [`data/showroom/index.ts`](data/showroom/index.ts).
+3. `data/vehicles/<id>.ts` — la collection, avec les champs narratifs `story`, `signature`, `power`,
+   `acceleration`, `topSpeed` et `minDriverAge`.
+4. `data/faq/<id>.ts` — les questions fréquentes, puis enregistrement dans `data/faq/index.ts`.
+5. `public/brands/<id>/` — visuels : `hero.svg`, `about.svg`, `collection/<marque>.svg`,
+   `vehicles/<slug>-1..3.svg` (ou de vraies photographies, mêmes chemins).
+6. Créer un projet Vercel pointant sur ce dépôt avec `NEXT_PUBLIC_BRAND=<id>`.
+
+Aucun composant n'est à dupliquer : les chapitres, les modèles et les textes viennent tous des
+fichiers de données.
+
+### Coordonnées : espaces réservés explicites
+
+Sur une maquette non encore personnalisée, les coordonnées sont écrites entre crochets —
+`[TÉLÉPHONE]`, `[E-MAIL]`, `[ADRESSE]`, `[NUMÉRO WHATSAPP]`, `[LIEN INSTAGRAM]`… — plutôt qu'avec de
+faux numéros suisses plausibles, pour qu'aucune donnée fictive ne puisse être prise pour une donnée
+réelle. [`lib/placeholders.ts`](lib/placeholders.ts) les détecte : ces valeurs s'affichent en clair
+mais ne produisent jamais de lien `tel:`, `mailto:` ou externe cassé, et sont exclues du JSON-LD.
+Dès que la valeur réelle est saisie dans `config/brands/<id>.ts`, les liens redeviennent actifs.
+
+Le lien WhatsApp reste utilisable même sans numéro : il ouvre WhatsApp avec le message pré-rempli et
+laisse choisir le destinataire, jusqu'à ce que `contact.whatsappNumber` soit renseigné.
 
 ## Lancer le projet
 

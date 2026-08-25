@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { InstagramIcon } from "@/components/ui/icons";
+import { externalHref, mailtoHref, telHref } from "@/lib/placeholders";
 
 export function Footer() {
   return (
@@ -15,15 +16,17 @@ export function Footer() {
             <p className="mt-4 max-w-xs text-base leading-relaxed text-brand-silver">
               {siteConfig.tagline}
             </p>
-            <a
-              href={siteConfig.social.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 text-sm text-brand-silver transition-colors hover:text-brand-accent"
-            >
-              <InstagramIcon className="h-4 w-4" aria-hidden="true" />
-              Instagram
-            </a>
+            {externalHref(siteConfig.social.instagram) ? (
+              <a
+                href={externalHref(siteConfig.social.instagram) ?? undefined}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center gap-2 text-sm text-brand-silver transition-colors hover:text-brand-accent"
+              >
+                <InstagramIcon className="h-4 w-4" aria-hidden="true" />
+                Instagram
+              </a>
+            ) : null}
           </div>
 
           <div>
@@ -69,18 +72,29 @@ export function Footer() {
             <ul className="mt-4 space-y-3 text-sm text-brand-silver">
               <li className="flex items-start gap-2">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden="true" />
-                <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-brand-accent">
-                  {siteConfig.contact.email}
-                </a>
+                {mailtoHref(siteConfig.contact.email) ? (
+                  <a
+                    href={mailtoHref(siteConfig.contact.email) ?? undefined}
+                    className="hover:text-brand-accent"
+                  >
+                    {siteConfig.contact.email}
+                  </a>
+                ) : (
+                  <span>{siteConfig.contact.email}</span>
+                )}
               </li>
               <li className="flex items-start gap-2">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden="true" />
-                <a
-                  href={`tel:${siteConfig.contact.phone.replace(/\s/g, "")}`}
-                  className="hover:text-brand-accent"
-                >
-                  {siteConfig.contact.phone}
-                </a>
+                {telHref(siteConfig.contact.phone) ? (
+                  <a
+                    href={telHref(siteConfig.contact.phone) ?? undefined}
+                    className="hover:text-brand-accent"
+                  >
+                    {siteConfig.contact.phone}
+                  </a>
+                ) : (
+                  <span>{siteConfig.contact.phone}</span>
+                )}
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden="true" />

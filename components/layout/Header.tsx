@@ -9,6 +9,7 @@ import { LinkButton } from "@/components/ui/Button";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { InstagramIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
+import { externalHref } from "@/lib/placeholders";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -62,15 +63,17 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-5 lg:flex">
-          <a
-            href={siteConfig.social.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Suivre ${siteConfig.name} sur Instagram`}
-            className="text-brand-silver transition-colors hover:text-brand-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
-          >
-            <InstagramIcon className="h-5 w-5" aria-hidden="true" />
-          </a>
+          {externalHref(siteConfig.social.instagram) ? (
+            <a
+              href={externalHref(siteConfig.social.instagram) ?? undefined}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Suivre ${siteConfig.name} sur Instagram`}
+              className="text-brand-silver transition-colors hover:text-brand-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
+            >
+              <InstagramIcon className="h-5 w-5" aria-hidden="true" />
+            </a>
+          ) : null}
           <LinkButton href="/contact" variant="primary">
             Réserver
           </LinkButton>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { externalHref, instagramLabel, mailtoHref, telHref } from "@/lib/placeholders";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { InstagramIcon } from "@/components/ui/icons";
@@ -28,12 +29,16 @@ export default function ContactPage() {
               <Mail className="mt-0.5 h-5 w-5 shrink-0 text-brand-accent" aria-hidden="true" />
               <div>
                 <p className="text-base font-medium text-brand-ivory">E-mail</p>
-                <a
-                  href={`mailto:${siteConfig.contact.email}`}
-                  className="text-base text-brand-silver hover:text-brand-accent"
-                >
-                  {siteConfig.contact.email}
-                </a>
+                {mailtoHref(siteConfig.contact.email) ? (
+                  <a
+                    href={mailtoHref(siteConfig.contact.email) ?? undefined}
+                    className="text-base text-brand-silver hover:text-brand-accent"
+                  >
+                    {siteConfig.contact.email}
+                  </a>
+                ) : (
+                  <span className="text-base text-brand-silver/80">{siteConfig.contact.email}</span>
+                )}
               </div>
             </div>
 
@@ -41,12 +46,16 @@ export default function ContactPage() {
               <Phone className="mt-0.5 h-5 w-5 shrink-0 text-brand-accent" aria-hidden="true" />
               <div>
                 <p className="text-base font-medium text-brand-ivory">Téléphone</p>
-                <a
-                  href={`tel:${siteConfig.contact.phone.replace(/\s/g, "")}`}
-                  className="text-base text-brand-silver hover:text-brand-accent"
-                >
-                  {siteConfig.contact.phone}
-                </a>
+                {telHref(siteConfig.contact.phone) ? (
+                  <a
+                    href={telHref(siteConfig.contact.phone) ?? undefined}
+                    className="text-base text-brand-silver hover:text-brand-accent"
+                  >
+                    {siteConfig.contact.phone}
+                  </a>
+                ) : (
+                  <span className="text-base text-brand-silver/80">{siteConfig.contact.phone}</span>
+                )}
               </div>
             </div>
 
@@ -101,14 +110,20 @@ export default function ContactPage() {
               <InstagramIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-accent" aria-hidden="true" />
               <div>
                 <p className="text-base font-medium text-brand-ivory">Instagram</p>
-                <a
-                  href={siteConfig.social.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-base text-brand-silver hover:text-brand-accent"
-                >
-                  @nl.prestige
-                </a>
+                {externalHref(siteConfig.social.instagram) ? (
+                  <a
+                    href={externalHref(siteConfig.social.instagram) ?? undefined}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-base text-brand-silver hover:text-brand-accent"
+                  >
+                    {instagramLabel(siteConfig.social.instagram)}
+                  </a>
+                ) : (
+                  <span className="text-base text-brand-silver/80">
+                    {instagramLabel(siteConfig.social.instagram)}
+                  </span>
+                )}
               </div>
             </div>
           </div>

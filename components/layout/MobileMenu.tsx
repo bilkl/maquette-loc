@@ -7,6 +7,7 @@ import { X } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { LinkButton } from "@/components/ui/Button";
 import { InstagramIcon } from "@/components/ui/icons";
+import { externalHref } from "@/lib/placeholders";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -78,16 +79,18 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         </nav>
 
         <div className="flex flex-col gap-4 pb-6">
-          <a
-            href={siteConfig.social.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={onClose}
-            className="inline-flex items-center gap-2 text-sm text-brand-silver hover:text-brand-accent"
-          >
-            <InstagramIcon className="h-5 w-5" aria-hidden="true" />
-            Suivre {siteConfig.name} sur Instagram
-          </a>
+          {externalHref(siteConfig.social.instagram) ? (
+            <a
+              href={externalHref(siteConfig.social.instagram) ?? undefined}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={onClose}
+              className="inline-flex items-center gap-2 text-sm text-brand-silver hover:text-brand-accent"
+            >
+              <InstagramIcon className="h-5 w-5" aria-hidden="true" />
+              Suivre {siteConfig.name} sur Instagram
+            </a>
+          ) : null}
           <LinkButton href="/contact" variant="primary" className="w-full">
             Réserver
           </LinkButton>

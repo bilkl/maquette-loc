@@ -26,9 +26,32 @@ export interface BrandConfig {
     accentSoft: string;
   };
 
+  /**
+   * Gabarit de pages utilisé par cette agence.
+   * - "classic" (défaut) : maquette location "pratique" (hero + flotte + réservation).
+   * - "showroom" : maquette éditoriale "collection premium" (voir components/showroom/).
+   *   Une agence en "showroom" doit fournir son contenu narratif dans data/showroom/<id>.ts.
+   */
+  template?: "classic" | "showroom";
+
+  /**
+   * Palette globale du site pour cette agence.
+   * - "dark" (défaut) = fond sombre premium existant.
+   * - "light" = variante fond clair.
+   * - "showroom" = noir profond / anthracite chaud, pensé pour le gabarit "showroom".
+   */
+  theme?: "dark" | "light" | "showroom";
+
   images: {
     /** Image de fond de la section hero, doublée comme image OG/Twitter */
     hero: string;
+    /**
+     * Vidéo de fond optionnelle pour le hero (gabarit "showroom" uniquement).
+     * Lue en boucle, muette, sans contrôles ; `images.hero` sert de poster et
+     * reste seule utilisée pour l'OG/Twitter et comme repli si la vidéo ne
+     * charge pas.
+     */
+    heroVideo?: string;
     /** Illustration utilisée sur la page "À propos" */
     about: string;
   };
@@ -63,5 +86,10 @@ export interface BrandConfig {
 
   seo: {
     keywords: string[];
+    /**
+     * Complément de titre utilisé dans la balise <title> de la page d'accueil.
+     * Défaut : "Location de véhicules de prestige en Suisse".
+     */
+    pageTitleSuffix?: string;
   };
 }

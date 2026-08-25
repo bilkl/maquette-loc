@@ -7,6 +7,7 @@ import { formatChf } from "@/lib/utils";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 import { VehicleGallery } from "@/components/vehicles/VehicleGallery";
 import { BookingForm } from "@/components/forms/BookingForm";
+import { ShowroomVehicleDetail } from "@/components/showroom/ShowroomVehicleDetail";
 
 interface VehiclePageProps {
   params: Promise<{ slug: string }>;
@@ -25,7 +26,10 @@ export async function generateMetadata({ params }: VehiclePageProps): Promise<Me
   }
 
   const title = `${vehicle.brand} ${vehicle.model}`;
-  const description = `Louez la ${vehicle.brand} ${vehicle.model} en Suisse avec ${siteConfig.name}, à partir de ${formatChf(vehicle.pricePerDay)} par jour.`;
+  const description =
+    siteConfig.template === "showroom"
+      ? `${vehicle.brand} ${vehicle.model} — ${vehicle.description} Location et remise en main propre avec ${siteConfig.name}.`
+      : `Louez la ${vehicle.brand} ${vehicle.model} en Suisse avec ${siteConfig.name}, à partir de ${formatChf(vehicle.pricePerDay)} par jour.`;
 
   return {
     title,
@@ -45,6 +49,11 @@ export default async function VehiclePage({ params }: VehiclePageProps) {
 
   if (!vehicle) {
     notFound();
+  }
+
+  // Le gabarit est choisi par agence dans config/brands/<id>.ts.
+  if (siteConfig.template === "showroom") {
+    return <ShowroomVehicleDetail vehicle={vehicle} />;
   }
 
   return (

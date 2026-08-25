@@ -2,7 +2,10 @@ export type VehicleCategory =
   | "Berline sportive"
   | "Compacte sportive"
   | "SUV de luxe"
-  | "Sportive";
+  | "Sportive"
+  | "Supercar"
+  | "Grand Tourisme"
+  | "SUV supersport";
 
 export type FuelType = "Essence" | "Diesel" | "Hybride" | "Électrique";
 export type Transmission = "Automatique" | "Manuelle";
@@ -31,4 +34,22 @@ export interface Vehicle {
   /** Options additionnelles proposées à la réservation */
   options: string[];
   essentialConditions: string[];
+
+  // ---------------------------------------------------------------------------
+  // Champs optionnels consommés par le gabarit "showroom" (config/brands/types.ts).
+  // Ils restent facultatifs pour ne rien changer aux agences en gabarit "classic".
+  // ---------------------------------------------------------------------------
+
+  /** Récit court du modèle, utilisé à la place d'une fiche technique sèche */
+  story?: string;
+  /** Phrase-signature affichée en exergue sur la fiche showroom */
+  signature?: string;
+  /** Puissance annoncée, ex. "830 ch" */
+  power?: string;
+  /** Accélération annoncée, ex. "0–100 km/h en 2.9 s" */
+  acceleration?: string;
+  /** Vitesse maximale annoncée, ex. "330 km/h" */
+  topSpeed?: string;
+  /** Âge minimum du conducteur pour ce modèle (validation du formulaire showroom) */
+  minDriverAge?: number;
 }

@@ -1,4 +1,5 @@
 import { BookingFormErrors, BookingFormValues, ContactFormErrors, ContactFormValues, LongTermFormErrors, LongTermFormValues } from "@/types/booking";
+import { todayIso } from "@/lib/utils";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -64,4 +65,41 @@ export function validateLongTermForm(values: LongTermFormValues): LongTermFormEr
   if (!values.consent) errors.consent = "Le consentement est requis pour envoyer la demande.";
 
   return errors;
+}
+
+/**
+ * Validation du formulaire de réservation du gabarit "showroom".
+ * Reprend les règles communes de `validateBookingForm` et y ajoute les
+ * contraintes propres à une collection de supercars :
+ * - âge minimum variable selon le modèle choisi ;
+ * - date de départ jamais dans le passé.
+ */
+export function validateShowroomRequest(
+  values: BookingFormValues,
+  minDriverAge = 21,
+): BookingFormErrors {
+  const errors = validateBookingForm(values);
+
+  const age = Number(values.driverAge);
+  if (values.driverAge.trim() && Number.isFinite(age) && age < minDriverAge) {
+    errors.driverAge = `Ce modèle est confié aux conducteurs de ${minDriverAge} ans et plus.`;
+  }
+
+  if (values.startDate && values.startDate < todayIso()) {
+    errors.startDate = "La date de départ ne peut pas être dans le passé.";
+  }
+
+  return errors;
+}
+
+/** Restreint un ensemble d'erreurs aux seuls champs d'une étape du formulaire. */
+export function pickErrors(
+  errors: BookingFormErrors,
+  fields: Array<keyof BookingFormValues>,
+): BookingFormErrors {
+  const picked: BookingFormErrors = {};
+  for (const field of fields) {
+    if (errors[field]) picked[field] = errors[field];
+  }
+  return picked;
 }
