@@ -12,6 +12,12 @@
       "runtimeExecutable": "bash",
       "runtimeArgs": ["-lc", "NEXT_PUBLIC_BRAND=garagecarlos npm run dev -- --port 3020"],
       "port": 3020
+    },
+    {
+      "name": "topcarsoccasions",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-lc", "NEXT_PUBLIC_BRAND=topcarsoccasions npm run dev -- --port 3030"],
+      "port": 3030
     }
   ]
 }

@@ -61,3 +61,21 @@ export interface AppointmentFormValues {
 }
 
 export type AppointmentFormErrors = Partial<Record<keyof AppointmentFormValues, string>>;
+
+export type VehicleConditionInput = "excellent" | "tres-bon" | "bon" | "a-revoir";
+
+export interface SellVehicleFormValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  vehicleBrand: string;
+  vehicleModel: string;
+  year: string;
+  mileage: string;
+  condition: VehicleConditionInput;
+  message: string;
+  consent: boolean;
+}
+
+export type SellVehicleFormErrors = Partial<Record<keyof SellVehicleFormValues, string>>;

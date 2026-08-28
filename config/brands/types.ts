@@ -34,17 +34,22 @@ export interface BrandConfig {
    * - "garage" : atelier / garage automobile (voir components/garage/). Ton rassurant,
    *   sans-serif, prise de rendez-vous plutôt que réservation de véhicule. Une agence en
    *   "garage" doit fournir son contenu métier dans data/garage/<id>.ts.
+   * - "dealer" : négoce automobile d'occasion (voir components/dealer/). Catalogue avec
+   *   filtres, double parcours acheter/vendre, estimation de reprise. Une agence en
+   *   "dealer" doit fournir son contenu métier dans data/dealer/<id>.ts et son catalogue
+   *   dans data/occasion-vehicles/<id>.ts.
    */
-  template?: "classic" | "showroom" | "garage";
+  template?: "classic" | "showroom" | "garage" | "dealer";
 
   /**
    * Palette globale du site pour cette agence.
    * - "dark" (défaut) = fond sombre premium existant.
    * - "light" = variante fond clair.
    * - "showroom" = noir profond / anthracite chaud, pensé pour le gabarit "showroom".
-   * - "garage" = blanc / gris neutre, texte quasi noir, pensé pour le gabarit "garage".
+   * - "garage" = blanc / gris neutre chaud, texte quasi noir, pensé pour le gabarit "garage".
+   * - "dealer" = blanc / gris neutre froid, pensé pour le gabarit "dealer".
    */
-  theme?: "dark" | "light" | "showroom" | "garage";
+  theme?: "dark" | "light" | "showroom" | "garage" | "dealer";
 
   images: {
     /** Image de fond de la section hero, doublée comme image OG/Twitter */

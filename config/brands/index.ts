@@ -8,6 +8,7 @@ import { nlprestige } from "./nlprestige";
 import { slgrent } from "./slgrent";
 import { swisselite } from "./swisselite";
 import { swisslocrent } from "./swisslocrent";
+import { topcarsoccasions } from "./topcarsoccasions";
 import type { BrandConfig } from "./types";
 
 export const brands: Record<string, BrandConfig> = {
@@ -21,6 +22,7 @@ export const brands: Record<string, BrandConfig> = {
   luxurydrive,
   luxurcars,
   garagecarlos,
+  topcarsoccasions,
 };
 
 export const DEFAULT_BRAND_ID = "nlprestige";

@@ -2,26 +2,52 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CalendarCheck, CheckCircle2, Fuel, Gauge, MessageCircle, Users } from "lucide-react";
 import { getVehicleBySlug, vehicles } from "@/data/vehicles";
+import { getOccasionVehicleBySlug, vehicles as occasionVehicles } from "@/data/occasion-vehicles";
 import { siteConfig } from "@/config/site";
-import { formatChf } from "@/lib/utils";
+import { formatChf, formatKm } from "@/lib/utils";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 import { VehicleGallery } from "@/components/vehicles/VehicleGallery";
 import { BookingForm } from "@/components/forms/BookingForm";
 import { ShowroomVehicleDetail } from "@/components/showroom/ShowroomVehicleDetail";
+import { DealerVehicleDetail } from "@/components/dealer/DealerVehicleDetail";
 
 interface VehiclePageProps {
   params: Promise<{ slug: string }>;
 }
 
+const isGarage = siteConfig.template === "garage";
+const isDealer = siteConfig.template === "dealer";
+const isShowroom = siteConfig.template === "showroom";
+
 export function generateStaticParams() {
-  // Route sans objet pour le gabarit "garage" (pas de flotte à louer) : pas
-  // de page à générer statiquement.
-  if (siteConfig.template === "garage") return [];
+  // Route sans objet pour le gabarit "garage" (pas de flotte à louer ou vendre).
+  if (isGarage) return [];
+  // "dealer" a son propre catalogue (data/occasion-vehicles), distinct de la
+  // flotte de location (data/vehicles) utilisée par "classic"/"showroom".
+  if (isDealer) return occasionVehicles.map((vehicle) => ({ slug: vehicle.slug }));
   return vehicles.map((vehicle) => ({ slug: vehicle.slug }));
 }
 
 export async function generateMetadata({ params }: VehiclePageProps): Promise<Metadata> {
   const { slug } = await params;
+
+  if (isDealer) {
+    const vehicle = getOccasionVehicleBySlug(slug);
+    if (!vehicle) return { title: "Véhicule introuvable" };
+
+    const title = `${vehicle.brand} ${vehicle.model}`;
+    return {
+      title,
+      description: `${vehicle.brand} ${vehicle.model} (${vehicle.year}) — ${formatChf(vehicle.price)}, ${formatKm(vehicle.mileage)}, chez ${siteConfig.name}.`,
+      alternates: { canonical: `/vehicules/${vehicle.slug}` },
+      openGraph: {
+        title,
+        description: vehicle.description,
+        images: [{ url: vehicle.coverImage }],
+      },
+    };
+  }
+
   const vehicle = getVehicleBySlug(slug);
 
   if (!vehicle) {
@@ -29,10 +55,9 @@ export async function generateMetadata({ params }: VehiclePageProps): Promise<Me
   }
 
   const title = `${vehicle.brand} ${vehicle.model}`;
-  const description =
-    siteConfig.template === "showroom"
-      ? `${vehicle.brand} ${vehicle.model} — ${vehicle.description} Location et remise en main propre avec ${siteConfig.name}.`
-      : `Louez la ${vehicle.brand} ${vehicle.model} en Suisse avec ${siteConfig.name}, à partir de ${formatChf(vehicle.pricePerDay)} par jour.`;
+  const description = isShowroom
+    ? `${vehicle.brand} ${vehicle.model} — ${vehicle.description} Location et remise en main propre avec ${siteConfig.name}.`
+    : `Louez la ${vehicle.brand} ${vehicle.model} en Suisse avec ${siteConfig.name}, à partir de ${formatChf(vehicle.pricePerDay)} par jour.`;
 
   return {
     title,
@@ -47,11 +72,18 @@ export async function generateMetadata({ params }: VehiclePageProps): Promise<Me
 }
 
 export default async function VehiclePage({ params }: VehiclePageProps) {
-  if (siteConfig.template === "garage") {
+  if (isGarage) {
     notFound();
   }
 
   const { slug } = await params;
+
+  if (isDealer) {
+    const vehicle = getOccasionVehicleBySlug(slug);
+    if (!vehicle) notFound();
+    return <DealerVehicleDetail vehicle={vehicle} />;
+  }
+
   const vehicle = getVehicleBySlug(slug);
 
   if (!vehicle) {
@@ -59,7 +91,7 @@ export default async function VehiclePage({ params }: VehiclePageProps) {
   }
 
   // Le gabarit est choisi par agence dans config/brands/<id>.ts.
-  if (siteConfig.template === "showroom") {
+  if (isShowroom) {
     return <ShowroomVehicleDetail vehicle={vehicle} />;
   }
 

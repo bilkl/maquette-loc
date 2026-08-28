@@ -9,6 +9,7 @@ import { faqItems as nlprestige } from "./nlprestige";
 import { faqItems as slgrent } from "./slgrent";
 import { faqItems as swisselite } from "./swisselite";
 import { faqItems as swisslocrent } from "./swisslocrent";
+import { faqItems as topcarsoccasions } from "./topcarsoccasions";
 import type { FaqItem } from "./types";
 
 const faqByBrand: Record<string, FaqItem[]> = {
@@ -22,6 +23,7 @@ const faqByBrand: Record<string, FaqItem[]> = {
   luxurydrive,
   luxurcars,
   garagecarlos,
+  topcarsoccasions,
 };
 
 export const faqItems: FaqItem[] = faqByBrand[getActiveBrand().id] ?? nlprestige;

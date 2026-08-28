@@ -3,27 +3,35 @@ import { notFound } from "next/navigation";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { VehiclesPageContent } from "@/components/vehicles/VehiclesPageContent";
 import { ShowroomCollectionPage } from "@/components/showroom/ShowroomCollectionPage";
+import { DealerCatalogPage } from "@/components/dealer/DealerCatalogPage";
 import { siteConfig } from "@/config/site";
 
 const isShowroom = siteConfig.template === "showroom";
 const isGarage = siteConfig.template === "garage";
+const isDealer = siteConfig.template === "dealer";
 
 export const metadata: Metadata = {
   title: isShowroom ? "La collection" : "Nos véhicules",
   description: isShowroom
     ? `Découvrez la collection ${siteConfig.name} : chaque modèle présenté avec son caractère, son usage et ses conditions de location.`
-    : `Parcourez la sélection de véhicules de prestige ${siteConfig.name} disponibles en location courte et longue durée en Suisse.`,
+    : isDealer
+      ? `Parcourez le catalogue de véhicules d'occasion ${siteConfig.name} : filtrez par marque, prix, kilométrage ou carburant.`
+      : `Parcourez la sélection de véhicules de prestige ${siteConfig.name} disponibles en location courte et longue durée en Suisse.`,
   alternates: { canonical: "/vehicules" },
 };
 
 export default function VehiculesPage() {
-  // Route sans objet pour le gabarit "garage" (pas de flotte à louer).
+  // Route sans objet pour le gabarit "garage" (pas de flotte à louer ou vendre).
   if (isGarage) {
     notFound();
   }
 
   if (isShowroom) {
     return <ShowroomCollectionPage />;
+  }
+
+  if (isDealer) {
+    return <DealerCatalogPage />;
   }
 
   return (

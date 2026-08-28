@@ -78,3 +78,22 @@ export async function submitAppointmentRequest(
       "Votre demande de rendez-vous a bien été envoyée. Nous vous confirmons le créneau par téléphone ou WhatsApp dans les plus brefs délais.",
   };
 }
+
+/**
+ * Demande "vendre ou reprendre mon véhicule" du gabarit "dealer".
+ * L'estimation sous 24h annoncée au client est traitée manuellement par
+ * l'équipe une fois cette demande reçue ; brancher ici un service réel
+ * (CRM, e-mail transactionnel) déclencherait la notification correspondante.
+ */
+export async function submitSellVehicleRequest(
+  values: unknown,
+): Promise<SubmissionResult> {
+  await simulateNetworkDelay();
+  console.log(`[${siteConfig.name}] Nouvelle demande d'estimation véhicule :`, values);
+
+  return {
+    success: true,
+    message:
+      "Votre demande a bien été envoyée. Nous vous transmettons une première estimation sous 24 heures.",
+  };
+}

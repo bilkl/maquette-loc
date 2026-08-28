@@ -3,18 +3,84 @@ import { LegalDisclaimer } from "@/components/legal/LegalDisclaimer";
 import { siteConfig } from "@/config/site";
 
 const isGarage = siteConfig.template === "garage";
-const pageTitle = isGarage ? "Conditions générales de service" : "Conditions générales de location";
+const isDealer = siteConfig.template === "dealer";
+const pageTitle = isGarage
+  ? "Conditions générales de service"
+  : isDealer
+    ? "Conditions générales de vente"
+    : "Conditions générales de location";
 
 export const metadata: Metadata = {
   title: pageTitle,
   description: isGarage
     ? `Conditions générales applicables aux prestations d'entretien et de réparation de ${siteConfig.name}.`
-    : `Conditions générales de location applicables aux véhicules ${siteConfig.name}.`,
+    : isDealer
+      ? `Conditions générales applicables à l'achat, la vente et la reprise de véhicules d'occasion chez ${siteConfig.name}.`
+      : `Conditions générales de location applicables aux véhicules ${siteConfig.name}.`,
   alternates: { canonical: "/conditions-generales" },
   robots: { index: false, follow: true },
 };
 
 export default function TermsPage() {
+  if (isDealer) {
+    return (
+      <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6 lg:px-8">
+        <h1 className="text-3xl font-bold tracking-tight text-brand-ivory">{pageTitle}</h1>
+
+        <div className="mt-8">
+          <LegalDisclaimer />
+        </div>
+
+        <div className="space-y-8 text-sm leading-relaxed text-brand-silver">
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">1. Objet</h2>
+            <p className="mt-2">
+              Les présentes conditions générales encadrent la vente de véhicules d&apos;occasion et la
+              reprise de véhicules par {siteConfig.name}. Elles s&apos;appliquent à toute transaction
+              conclue à la suite d&apos;une offre publiée sur ce site.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">2. État du véhicule et garantie</h2>
+            <p className="mt-2 text-xs text-brand-silver/70">
+              {/* TODO: remplacer par l'information officielle de l'agence */}
+              Portée exacte des contrôles effectués avant la vente et durée/étendue de la garantie
+              incluse à préciser par {siteConfig.name} pour chaque véhicule.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">3. Paiement et livraison</h2>
+            <p className="mt-2 text-xs text-brand-silver/70">
+              {/* TODO: remplacer par l'information officielle de l'agence */}
+              Modalités de paiement, d&apos;acompte et de livraison dans toute la Suisse (délais, frais
+              éventuels) à confirmer par {siteConfig.name}.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">4. Reprise d&apos;un véhicule</h2>
+            <p className="mt-2 text-xs text-brand-silver/70">
+              {/* TODO: remplacer par l'information officielle de l'agence */}
+              Modalités d&apos;estimation, de contrôle et de déduction de la valeur de reprise sur le
+              prix d&apos;achat à préciser par {siteConfig.name}.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">5. Financement et leasing</h2>
+            <p className="mt-2 text-xs text-brand-silver/70">
+              {/* TODO: remplacer par l'information officielle de l'agence */}
+              Conditions d&apos;octroi, partenaires financiers et taux applicables aux offres de crédit
+              ou de leasing à définir par {siteConfig.name} avant publication.
+            </p>
+          </section>
+        </div>
+      </div>
+    );
+  }
+
   if (isGarage) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6 lg:px-8">

@@ -9,6 +9,7 @@ import { CTASection } from "@/components/sections/CTASection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { ShowroomHome } from "@/components/showroom/ShowroomHome";
 import { GarageHome } from "@/components/garage/GarageHome";
+import { DealerHome } from "@/components/dealer/DealerHome";
 
 export default function Home() {
   // Le gabarit est choisi par agence dans config/brands/<id>.ts.
@@ -17,6 +18,9 @@ export default function Home() {
   }
   if (siteConfig.template === "garage") {
     return <GarageHome />;
+  }
+  if (siteConfig.template === "dealer") {
+    return <DealerHome />;
   }
 
   return (

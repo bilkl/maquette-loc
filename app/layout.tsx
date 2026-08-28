@@ -10,6 +10,8 @@ import { ShowroomHeader } from "@/components/showroom/ShowroomHeader";
 import { ShowroomFooter } from "@/components/showroom/ShowroomFooter";
 import { GarageHeader } from "@/components/garage/GarageHeader";
 import { GarageFooter } from "@/components/garage/GarageFooter";
+import { DealerHeader } from "@/components/dealer/DealerHeader";
+import { DealerFooter } from "@/components/dealer/DealerFooter";
 import { definedValues } from "@/lib/placeholders";
 
 const geistSans = Geist({
@@ -47,6 +49,7 @@ const playfair = Playfair_Display({
 const template = siteConfig.template ?? "classic";
 const isShowroom = template === "showroom";
 const isGarage = template === "garage";
+const isDealer = template === "dealer";
 
 const pageTitle = `${siteConfig.name} | ${
   siteConfig.seo.pageTitleSuffix ?? "Location de véhicules de prestige en Suisse"
@@ -58,8 +61,9 @@ const pageTitle = `${siteConfig.name} | ${
  * et un texte noir, en gardant la même hiérarchie sémantique de surfaces.
  * "showroom" pousse le contraste plus loin — noir profond et gris chauds — pour
  * le gabarit éditorial de components/showroom/. "garage" est un blanc/gris
- * neutre et un texte quasi noir, pensé pour la lisibilité et le sérieux du
- * gabarit components/garage/ plutôt que pour une ambiance premium.
+ * neutre chaud et un texte quasi noir, pensé pour la lisibilité et le sérieux
+ * du gabarit components/garage/. "dealer" est la même idée avec un gris
+ * légèrement plus froid, pensé pour components/dealer/.
  */
 const themeTokens = {
   dark: {
@@ -93,6 +97,14 @@ const themeTokens = {
     line: "#e0e3e8",
     ivory: "#15181c",
     silver: "#5b6270",
+  },
+  dealer: {
+    black: "#ffffff",
+    charcoal: "#f5f7f9",
+    anthracite: "#eef2f6",
+    line: "#dde3ea",
+    ivory: "#12181f",
+    silver: "#57616e",
   },
 } as const;
 
@@ -141,7 +153,7 @@ export const metadata: Metadata = {
 // omises du JSON-LD plutôt que publiées telles quelles (voir lib/placeholders.ts).
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
-  "@type": isGarage ? "AutoRepair" : "AutoRental",
+  "@type": isGarage ? "AutoRepair" : isDealer ? "AutoDealer" : "AutoRental",
   name: siteConfig.name,
   description: siteConfig.description,
   ...(definedValues(siteConfig.contact.email).length > 0
@@ -182,7 +194,7 @@ export default function RootLayout({
           "--color-brand-accent-soft": siteConfig.colors.accentSoft,
           "--font-display": isShowroom
             ? "var(--font-display-showroom)"
-            : isGarage
+            : isGarage || isDealer
               ? "var(--font-sans)"
               : "var(--font-display-classic)",
           "--background": activeTheme.black,
@@ -201,11 +213,27 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
-        {isShowroom ? <ShowroomHeader /> : isGarage ? <GarageHeader /> : <Header />}
+        {isShowroom ? (
+          <ShowroomHeader />
+        ) : isGarage ? (
+          <GarageHeader />
+        ) : isDealer ? (
+          <DealerHeader />
+        ) : (
+          <Header />
+        )}
         {/* Réserve la hauteur de l'en-tête fixe. Le hero du gabarit showroom
             annule ce décalage (-mt-20) pour passer sous l'en-tête transparent. */}
         <main className="flex-1 pt-20">{children}</main>
-        {isShowroom ? <ShowroomFooter /> : isGarage ? <GarageFooter /> : <Footer />}
+        {isShowroom ? (
+          <ShowroomFooter />
+        ) : isGarage ? (
+          <GarageFooter />
+        ) : isDealer ? (
+          <DealerFooter />
+        ) : (
+          <Footer />
+        )}
         {isShowroom ? <ShowroomWhatsAppButton /> : <WhatsAppButton />}
       </body>
     </html>

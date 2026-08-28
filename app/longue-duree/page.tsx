@@ -49,8 +49,8 @@ const includedServices = [
 ];
 
 export default function LongTermPage() {
-  // Route sans objet pour le gabarit "garage" (pas de location de véhicules).
-  if (siteConfig.template === "garage") {
+  // Route sans objet pour les gabarits "garage" et "dealer" (pas de location de véhicules).
+  if (siteConfig.template === "garage" || siteConfig.template === "dealer") {
     notFound();
   }
 

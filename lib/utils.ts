@@ -3,21 +3,30 @@ export function cn(...classes: Array<string | false | null | undefined>): string
 }
 
 /**
- * Formate un montant en CHF (ex. 1890 → "1 890 CHF").
+ * Regroupe un nombre entier par milliers (ex. 1890 → "1 890").
  *
- * N'utilise volontairement pas `Intl.NumberFormat("fr-CH", ...)` : le
- * séparateur de milliers qu'il produit dépend de la version d'ICU du moteur
- * JS (apostrophe sur certains runtimes serveur, espace fine insécable dans
- * les navigateurs récents). Rendu depuis le serveur (build statique) puis
- * réhydraté côté client, cet écart provoquait un mismatch d'hydratation
- * React. Le regroupement manuel ci-dessous produit un résultat identique
- * dans n'importe quel environnement.
+ * N'utilise volontairement pas `Intl.NumberFormat`/`toLocaleString` : le
+ * séparateur de milliers qu'ils produisent dépend de la version d'ICU du
+ * moteur JS (apostrophe sur certains runtimes serveur, espace fine
+ * insécable dans les navigateurs récents). Rendu depuis le serveur (build
+ * statique) puis réhydraté côté client, cet écart provoque un mismatch
+ * d'hydratation React. Ce regroupement manuel produit un résultat
+ * identique dans n'importe quel environnement.
  */
-export function formatChf(amount: number): string {
-  const grouped = Math.round(amount)
+export function groupThousands(amount: number): string {
+  return Math.round(amount)
     .toString()
-    .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-  return `${grouped} CHF`;
+    .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
+
+/** Formate un montant en CHF (ex. 1890 -> "1 890 CHF"). */
+export function formatChf(amount: number): string {
+  return `${groupThousands(amount)} CHF`;
+}
+
+/** Formate un kilometrage (ex. 42000 -> "42 000 km"). */
+export function formatKm(amount: number): string {
+  return `${groupThousands(amount)} km`;
 }
 
 /** Date du jour au format `YYYY-MM-DD`, attendu par les champs `<input type="date">`. */

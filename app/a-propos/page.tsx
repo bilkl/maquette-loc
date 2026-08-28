@@ -5,14 +5,18 @@ import { CheckCircle2 } from "lucide-react";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { LinkButton } from "@/components/ui/Button";
 import { GarageAboutPage } from "@/components/garage/GarageAboutPage";
+import { DealerAboutPage } from "@/components/dealer/DealerAboutPage";
 
 const isGarage = siteConfig.template === "garage";
+const isDealer = siteConfig.template === "dealer";
 
 export const metadata: Metadata = {
   title: "À propos",
   description: isGarage
     ? `${siteConfig.name} est un garage automobile multimarques à ${siteConfig.address.city}, actif depuis 2008.`
-    : `${siteConfig.name} est un service suisse spécialisé dans la location de véhicules de prestige en courte et longue durée.`,
+    : isDealer
+      ? `${siteConfig.name} est un négociant automobile toutes marques entre Lausanne et Genève, spécialisé dans l'achat, la vente et la reprise de véhicules d'occasion.`
+      : `${siteConfig.name} est un service suisse spécialisé dans la location de véhicules de prestige en courte et longue durée.`,
   alternates: { canonical: "/a-propos" },
 };
 
@@ -26,6 +30,9 @@ const commitments = [
 export default function AboutPage() {
   if (isGarage) {
     return <GarageAboutPage />;
+  }
+  if (isDealer) {
+    return <DealerAboutPage />;
   }
 
   return (

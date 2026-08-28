@@ -69,21 +69,29 @@ export function GarageHeader() {
             </a>
           ) : null}
 
-          <GarageLinkButton href="/#rendez-vous" variant="primary" className="hidden sm:inline-flex">
-            Prendre RDV
-          </GarageLinkButton>
+          {/* `hidden`/`sm:block` sur un wrapper plutôt que sur GarageLinkButton
+              directement : ses classes de base imposent déjà `inline-flex`
+              inconditionnellement, ce qui entrerait en conflit de spécificité
+              avec une surcharge de display au même niveau (voir GarageButton.tsx). */}
+          <div className="hidden sm:block">
+            <GarageLinkButton href="/#rendez-vous" variant="primary">
+              Prendre RDV
+            </GarageLinkButton>
+          </div>
 
           {/* Version compacte du bouton RDV sur mobile : un accès direct à la
               prise de rendez-vous sans passer par le menu, pour une clientèle
               qui consulte souvent ce site dans l'urgence. */}
-          <GarageLinkButton
-            href="/#rendez-vous"
-            variant="primary"
-            aria-label="Prendre rendez-vous"
-            className="inline-flex h-10 w-10 shrink-0 px-0 sm:hidden"
-          >
-            <CalendarClock className="h-5 w-5" aria-hidden="true" />
-          </GarageLinkButton>
+          <div className="sm:hidden">
+            <GarageLinkButton
+              href="/#rendez-vous"
+              variant="primary"
+              aria-label="Prendre rendez-vous"
+              className="h-10 w-10 shrink-0 px-0"
+            >
+              <CalendarClock className="h-5 w-5" aria-hidden="true" />
+            </GarageLinkButton>
+          </div>
 
           <button
             type="button"

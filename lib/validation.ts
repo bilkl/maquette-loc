@@ -1,4 +1,4 @@
-import { AppointmentFormErrors, AppointmentFormValues, BookingFormErrors, BookingFormValues, ContactFormErrors, ContactFormValues, LongTermFormErrors, LongTermFormValues } from "@/types/booking";
+import { AppointmentFormErrors, AppointmentFormValues, BookingFormErrors, BookingFormValues, ContactFormErrors, ContactFormValues, LongTermFormErrors, LongTermFormValues, SellVehicleFormErrors, SellVehicleFormValues } from "@/types/booking";
 import { todayIso } from "@/lib/utils";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -120,6 +120,46 @@ export function validateAppointmentForm(values: AppointmentFormValues): Appointm
   } else if (values.preferredDate < todayIso()) {
     errors.preferredDate = "La date souhaitée ne peut pas être dans le passé.";
   }
+  if (!values.firstName.trim()) errors.firstName = "Le prénom est requis.";
+  if (!values.lastName.trim()) errors.lastName = "Le nom est requis.";
+  if (!values.email.trim()) {
+    errors.email = "L'e-mail est requis.";
+  } else if (!EMAIL_REGEX.test(values.email)) {
+    errors.email = "Le format de l'e-mail est invalide.";
+  }
+  if (!values.phone.trim()) errors.phone = "Le téléphone est requis.";
+  if (!values.consent) errors.consent = "Le consentement est requis pour envoyer la demande.";
+
+  return errors;
+}
+
+const CURRENT_YEAR = new Date().getFullYear();
+
+/**
+ * Validation du formulaire "vendre ou reprendre mon véhicule" du gabarit
+ * "dealer" : année plausible et kilométrage numérique, en plus des règles
+ * communes de coordonnées.
+ */
+export function validateSellVehicleForm(values: SellVehicleFormValues): SellVehicleFormErrors {
+  const errors: SellVehicleFormErrors = {};
+
+  if (!values.vehicleBrand.trim()) errors.vehicleBrand = "La marque du véhicule est requise.";
+  if (!values.vehicleModel.trim()) errors.vehicleModel = "Le modèle du véhicule est requis.";
+
+  const year = Number(values.year);
+  if (!values.year.trim()) {
+    errors.year = "L'année du véhicule est requise.";
+  } else if (!Number.isInteger(year) || year < 1980 || year > CURRENT_YEAR + 1) {
+    errors.year = "Veuillez indiquer une année valide.";
+  }
+
+  const mileage = Number(values.mileage);
+  if (!values.mileage.trim()) {
+    errors.mileage = "Le kilométrage est requis.";
+  } else if (!Number.isFinite(mileage) || mileage < 0) {
+    errors.mileage = "Veuillez indiquer un kilométrage valide.";
+  }
+
   if (!values.firstName.trim()) errors.firstName = "Le prénom est requis.";
   if (!values.lastName.trim()) errors.lastName = "Le nom est requis.";
   if (!values.email.trim()) {

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="1400" viewBox="0 0 2000 1400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#eef2f6"/>
+    </linearGradient>
+    <linearGradient id="rule" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1d6fa5" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#1d6fa5" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#1d6fa5" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="2000" height="1400" fill="url(#bg)"/>
+  <g opacity="0.07" stroke="#57616e" stroke-width="1">
+    <line x1="0" y1="0" x2="2000" y2="0"/>
+    <line x1="0" y1="140" x2="2000" y2="140"/>
+    <line x1="0" y1="280" x2="2000" y2="280"/>
+    <line x1="0" y1="420" x2="2000" y2="420"/>
+    <line x1="0" y1="560" x2="2000" y2="560"/>
+    <line x1="0" y1="700" x2="2000" y2="700"/>
+    <line x1="0" y1="840" x2="2000" y2="840"/>
+    <line x1="0" y1="980" x2="2000" y2="980"/>
+    <line x1="0" y1="1120" x2="2000" y2="1120"/>
+    <line x1="0" y1="1260" x2="2000" y2="1260"/>
+    <line x1="0" y1="1400" x2="2000" y2="1400"/>
+  </g>
+  <rect x="0" y="952" width="2000" height="3" fill="url(#rule)"/>
+  <g transform="translate(1000, 728) scale(1.9)" fill="none" stroke="#12181f" stroke-width="4" opacity="0.9" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M -170 24 L -150 -4 L -80 -24 L 10 -24 L 80 -6 L 155 22 L 155 40 L -170 40 Z"/>
+    <path d="M -66 -16 L -30 -30 L 4 -30 L 44 -16" opacity="0.6"/>
+    <circle cx="-96" cy="42" r="26" fill="#eef2f6" stroke="#1d6fa5" stroke-width="5"/>
+    <circle cx="100" cy="42" r="26" fill="#eef2f6" stroke="#1d6fa5" stroke-width="5"/>
+  </g>
+  <text x="50%" y="1204" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="60" fill="#12181f" letter-spacing="2">TOPCARS OCCASIONS — LAUSANNE / GENÈVE</text>
+  <text x="50%" y="1265" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="32" fill="#57616e" letter-spacing="5">IMAGE DE DÉMONSTRATION — À REMPLACER</text>
+</svg>
