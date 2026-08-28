@@ -20,13 +20,10 @@
   <rect width="1600" height="1000" fill="url(#glow)"/>
   <rect x="0" y="700" width="1600" height="2" fill="url(#rule)"/>
   <g transform="translate(800, 440) scale(1.35)" fill="none" stroke="#dce9f5" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round" opacity="0.92">
-    <path d="M -175 18 C -170 -6 -150 -18 -120 -22 L -80 -34 C -55 -42 20 -42 46 -34 L 92 -20 C 118 -12 150 -4 172 14 L 176 30 L -178 30 Z"/>
-    <path d="M -96 -22 L -70 -36 C -50 -42 10 -42 32 -36 L 62 -22" opacity="0.65"/>
-    <line x1="-176" y1="30" x2="176" y2="30" opacity="0.5"/>
-    <circle cx="-104" cy="34" r="27"/>
-    <circle cx="104" cy="34" r="27"/>
-    <circle cx="-104" cy="34" r="10" opacity="0.5"/>
-    <circle cx="104" cy="34" r="10" opacity="0.5"/>
+    <path d="M -150 20 C -145 -1 -127 -13 -98 -17 L -62 -29 C -38 -37 34 -37 56 -29 L 98 -14 C 119 -6 139 4 151 18 L 151 30 L -152 30 Z"/>
+    <path d="M -78 -19 L -46 -31 C -26 -37 24 -37 44 -31 L 70 -19" opacity="0.65"/>
+    <circle cx="-88" cy="24" r="27"/><circle cx="-88" cy="24" r="10" opacity="0.5"/><circle cx="88" cy="24" r="27"/><circle cx="88" cy="24" r="10" opacity="0.5"/>
+    
   </g>
   <text x="50%" y="860" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="42" fill="#f2f6fa" letter-spacing="1">VOLKSWAGEN GOLF VIII — VUE 3/4 AVANT</text>
   <text x="50%" y="904" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#4c93c4" letter-spacing="3">IMAGE GÉNÉRIQUE — À REMPLACER</text>

@@ -20,13 +20,10 @@
   <rect width="1600" height="1000" fill="url(#glow)"/>
   <rect x="0" y="700" width="1600" height="2" fill="url(#rule)"/>
   <g transform="translate(800, 440) scale(1.55)" fill="none" stroke="#dce9f5" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round" opacity="0.92">
-    <path d="M -175 18 C -170 -6 -150 -18 -120 -22 L -80 -34 C -55 -42 20 -42 46 -34 L 92 -20 C 118 -12 150 -4 172 14 L 176 30 L -178 30 Z"/>
-    <path d="M -96 -22 L -70 -36 C -50 -42 10 -42 32 -36 L 62 -22" opacity="0.65"/>
-    <line x1="-176" y1="30" x2="176" y2="30" opacity="0.5"/>
-    <circle cx="-104" cy="34" r="27"/>
-    <circle cx="104" cy="34" r="27"/>
-    <circle cx="-104" cy="34" r="10" opacity="0.5"/>
-    <circle cx="104" cy="34" r="10" opacity="0.5"/>
+    <path d="M -186 20 C -179 -2 -159 -16 -129 -20 L -86 -34 C -62 -42 58 -42 92 -34 L 148 -20 C 167 -14 179 -4 184 10 L 184 26 L -188 26 Z"/>
+    <path d="M -108 -21 L -78 -35 C -56 -43 56 -43 90 -35 L 146 -21" opacity="0.65"/>
+    <circle cx="-118" cy="24" r="27"/><circle cx="-118" cy="24" r="10" opacity="0.5"/><circle cx="126" cy="24" r="27"/><circle cx="126" cy="24" r="10" opacity="0.5"/>
+    
   </g>
   <text x="50%" y="860" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="42" fill="#f2f6fa" letter-spacing="1">MERCEDES CLASSE C BREAK — VUE DE PROFIL</text>
   <text x="50%" y="904" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#4c93c4" letter-spacing="3">IMAGE GÉNÉRIQUE — À REMPLACER</text>

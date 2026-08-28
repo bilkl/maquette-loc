@@ -20,13 +20,10 @@
   <rect width="1600" height="1200" fill="url(#glow)"/>
   <rect x="0" y="840" width="1600" height="2" fill="url(#rule)"/>
   <g transform="translate(800, 528) scale(1.55)" fill="none" stroke="#dce9f5" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round" opacity="0.92">
-    <path d="M -175 18 C -170 -6 -150 -18 -120 -22 L -80 -34 C -55 -42 20 -42 46 -34 L 92 -20 C 118 -12 150 -4 172 14 L 176 30 L -178 30 Z"/>
-    <path d="M -96 -22 L -70 -36 C -50 -42 10 -42 32 -36 L 62 -22" opacity="0.65"/>
-    <line x1="-176" y1="30" x2="176" y2="30" opacity="0.5"/>
-    <circle cx="-104" cy="34" r="27"/>
-    <circle cx="104" cy="34" r="27"/>
-    <circle cx="-104" cy="34" r="10" opacity="0.5"/>
-    <circle cx="104" cy="34" r="10" opacity="0.5"/>
+    <path d="M -186 22 C -179 2 -160 -10 -130 -14 L -84 -28 C -60 -36 8 -36 33 -28 L 88 -12 C 128 -9 154 -3 172 8 C 178 13 178 18 174 24 L -188 26 Z"/>
+    <path d="M -108 -15 L -76 -29 C -54 -37 18 -37 40 -29 L 78 -14" opacity="0.65"/>
+    <circle cx="-118" cy="26" r="27"/><circle cx="-118" cy="26" r="10" opacity="0.5"/><circle cx="128" cy="26" r="27"/><circle cx="128" cy="26" r="10" opacity="0.5"/>
+    
   </g>
   <text x="50%" y="1032" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="42" fill="#f2f6fa" letter-spacing="1">TOPCARS OCCASIONS — AU BORD DU LÉMAN</text>
   <text x="50%" y="1076" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#4c93c4" letter-spacing="3">IMAGE GÉNÉRIQUE — À REMPLACER</text>
