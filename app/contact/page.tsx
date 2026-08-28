@@ -7,9 +7,13 @@ import { SectionTitle } from "@/components/ui/SectionTitle";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { InstagramIcon } from "@/components/ui/icons";
 
+const isGarage = siteConfig.template === "garage";
+
 export const metadata: Metadata = {
   title: "Contact",
-  description: `Contactez ${siteConfig.name} par formulaire, e-mail ou WhatsApp pour toute question sur la location de véhicules de prestige en Suisse.`,
+  description: isGarage
+    ? `Contactez ${siteConfig.name} par formulaire, e-mail ou WhatsApp pour toute question sur l'entretien ou la réparation de votre véhicule.`
+    : `Contactez ${siteConfig.name} par formulaire, e-mail ou WhatsApp pour toute question sur la location de véhicules de prestige en Suisse.`,
   alternates: { canonical: "/contact" },
 };
 
@@ -18,7 +22,7 @@ export default function ContactPage() {
     <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
       <SectionTitle
         eyebrow="Contact"
-        title="Parlons de votre projet de location"
+        title={isGarage ? "Une question sur votre véhicule ?" : "Parlons de votre projet de location"}
         description="Une question, une demande spécifique ? Notre équipe vous répond rapidement."
       />
 

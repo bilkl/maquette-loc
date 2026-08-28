@@ -8,11 +8,15 @@ import { TrustSection } from "@/components/sections/TrustSection";
 import { CTASection } from "@/components/sections/CTASection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { ShowroomHome } from "@/components/showroom/ShowroomHome";
+import { GarageHome } from "@/components/garage/GarageHome";
 
 export default function Home() {
   // Le gabarit est choisi par agence dans config/brands/<id>.ts.
   if (siteConfig.template === "showroom") {
     return <ShowroomHome />;
+  }
+  if (siteConfig.template === "garage") {
+    return <GarageHome />;
   }
 
   return (

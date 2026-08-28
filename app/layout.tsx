@@ -8,6 +8,8 @@ import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { ShowroomWhatsAppButton } from "@/components/showroom/ShowroomWhatsAppButton";
 import { ShowroomHeader } from "@/components/showroom/ShowroomHeader";
 import { ShowroomFooter } from "@/components/showroom/ShowroomFooter";
+import { GarageHeader } from "@/components/garage/GarageHeader";
+import { GarageFooter } from "@/components/garage/GarageFooter";
 import { definedValues } from "@/lib/placeholders";
 
 const geistSans = Geist({
@@ -42,7 +44,9 @@ const playfair = Playfair_Display({
   preload: false,
 });
 
-const isShowroom = siteConfig.template === "showroom";
+const template = siteConfig.template ?? "classic";
+const isShowroom = template === "showroom";
+const isGarage = template === "garage";
 
 const pageTitle = `${siteConfig.name} | ${
   siteConfig.seo.pageTitleSuffix ?? "Location de véhicules de prestige en Suisse"
@@ -53,7 +57,9 @@ const pageTitle = `${siteConfig.name} | ${
  * (fond sombre premium, texte ivoire). "light" les inverse pour un fond clair
  * et un texte noir, en gardant la même hiérarchie sémantique de surfaces.
  * "showroom" pousse le contraste plus loin — noir profond et gris chauds — pour
- * le gabarit éditorial de components/showroom/.
+ * le gabarit éditorial de components/showroom/. "garage" est un blanc/gris
+ * neutre et un texte quasi noir, pensé pour la lisibilité et le sérieux du
+ * gabarit components/garage/ plutôt que pour une ambiance premium.
  */
 const themeTokens = {
   dark: {
@@ -79,6 +85,14 @@ const themeTokens = {
     line: "#2a2a2f",
     ivory: "#f2ece1",
     silver: "#8e8a83",
+  },
+  garage: {
+    black: "#ffffff",
+    charcoal: "#f6f7f8",
+    anthracite: "#edeff2",
+    line: "#e0e3e8",
+    ivory: "#15181c",
+    silver: "#5b6270",
   },
 } as const;
 
@@ -127,7 +141,7 @@ export const metadata: Metadata = {
 // omises du JSON-LD plutôt que publiées telles quelles (voir lib/placeholders.ts).
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
-  "@type": "AutoRental",
+  "@type": isGarage ? "AutoRepair" : "AutoRental",
   name: siteConfig.name,
   description: siteConfig.description,
   ...(definedValues(siteConfig.contact.email).length > 0
@@ -160,7 +174,7 @@ export default function RootLayout({
     <html
       lang="fr"
       data-scroll-behavior="smooth"
-      data-template={siteConfig.template ?? "classic"}
+      data-template={template}
       className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} ${playfair.variable} h-full antialiased`}
       style={
         {
@@ -168,7 +182,9 @@ export default function RootLayout({
           "--color-brand-accent-soft": siteConfig.colors.accentSoft,
           "--font-display": isShowroom
             ? "var(--font-display-showroom)"
-            : "var(--font-display-classic)",
+            : isGarage
+              ? "var(--font-sans)"
+              : "var(--font-display-classic)",
           "--background": activeTheme.black,
           "--foreground": activeTheme.ivory,
           "--color-brand-black": activeTheme.black,
@@ -185,11 +201,11 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
-        {isShowroom ? <ShowroomHeader /> : <Header />}
+        {isShowroom ? <ShowroomHeader /> : isGarage ? <GarageHeader /> : <Header />}
         {/* Réserve la hauteur de l'en-tête fixe. Le hero du gabarit showroom
             annule ce décalage (-mt-20) pour passer sous l'en-tête transparent. */}
         <main className="flex-1 pt-20">{children}</main>
-        {isShowroom ? <ShowroomFooter /> : <Footer />}
+        {isShowroom ? <ShowroomFooter /> : isGarage ? <GarageFooter /> : <Footer />}
         {isShowroom ? <ShowroomWhatsAppButton /> : <WhatsAppButton />}
       </body>
     </html>

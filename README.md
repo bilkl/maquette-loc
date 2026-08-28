@@ -11,7 +11,7 @@ Framer Motion et Lucide React.
 ## Sommaire
 
 - [Installation](#installation)
-- [Gabarits : « classic » et « showroom »](#gabarits--classic-et-showroom)
+- [Gabarits : « classic », « showroom » et « garage »](#gabarits--classic-showroom-et-garage)
 - [Lancer le projet](#lancer-le-projet)
 - [Architecture du projet](#architecture-du-projet)
 - [Modifier les coordonnées](#modifier-les-coordonnées)
@@ -30,31 +30,32 @@ Prérequis : Node.js 20 ou supérieur.
 npm install
 ```
 
-## Gabarits : « classic » et « showroom »
+## Gabarits : « classic », « showroom » et « garage »
 
 Le dépôt sert plusieurs agences (`NEXT_PUBLIC_BRAND`, voir
-[`config/brands/index.ts`](config/brands/index.ts)) et, depuis LuxurCars, **deux directions
-artistiques distinctes**. Chaque agence choisit la sienne dans `config/brands/<id>.ts` :
+[`config/brands/index.ts`](config/brands/index.ts)) et plusieurs **directions artistiques et
+métiers distincts**. Chaque agence choisit la sienne dans `config/brands/<id>.ts` :
 
 ```ts
-template: "showroom",   // "classic" par défaut
-theme: "showroom",      // palette : "dark" | "light" | "showroom"
+template: "garage",   // "classic" (défaut) | "showroom" | "garage"
+theme: "garage",      // palette : "dark" | "light" | "showroom" | "garage"
 ```
 
-| | `classic` | `showroom` |
-| --- | --- | --- |
-| Intention | Location pratique : flotte, filtres, réservation | Collection premium : récit de marque, modèles racontés |
-| Palette | Anthracite + accent agence | Noir profond `#050506` + or `#c8a24a` |
-| Typographie | Fraunces (titres) + Geist | Playfair Display (titres) + Geist |
-| Page d'accueil | Hero + flotte + avantages + FAQ | Hero plein écran + manifeste + chapitres de collection + expérience + réservation |
-| Formulaire | `BookingForm` (un écran) | `ShowroomBookingForm` (3 étapes, estimation en direct) |
-| Composants | `components/sections/`, `components/vehicles/` | `components/showroom/` |
-| Contenu éditorial | `config/brands/<id>.ts` | `config/brands/<id>.ts` **+** `data/showroom/<id>.ts` |
+| | `classic` | `showroom` | `garage` |
+| --- | --- | --- | --- |
+| Intention | Location pratique : flotte, filtres, réservation | Collection premium : récit de marque, modèles racontés | Atelier automobile : confiance, prise de RDV rapide |
+| Palette | Anthracite + accent agence | Noir profond `#050506` + or `#c8a24a` | Blanc/gris neutre `#ffffff` + accent agence (rouge par défaut) |
+| Typographie | Fraunces (titres) + Geist | Playfair Display (titres) + Geist | Geist (titres et texte, sans-serif uniquement) |
+| Page d'accueil | Hero + flotte + avantages + FAQ | Hero plein écran + manifeste + chapitres de collection + expérience + réservation | Hero direct + services + confiance/réseau + avis + rendez-vous + FAQ |
+| Formulaire | `BookingForm` (un écran) | `ShowroomBookingForm` (3 étapes, estimation en direct) | `GarageAppointmentForm` (un écran, service issu du catalogue) |
+| Composants | `components/sections/`, `components/vehicles/` | `components/showroom/` | `components/garage/` |
+| Contenu métier | `config/brands/<id>.ts` | `config/brands/<id>.ts` **+** `data/showroom/<id>.ts` | `config/brands/<id>.ts` **+** `data/garage/<id>.ts` |
 
-Les deux gabarits partagent la même base : routes, données véhicules, FAQ, envoi des formulaires,
-liens WhatsApp, pages légales. Seules les pages `/`, `/vehicules` et `/vehicules/[slug]` changent de
-rendu selon `template` ; les autres pages (à propos, contact, mentions légales) sont communes et
-reprennent automatiquement la palette de l'agence.
+Les trois gabarits partagent la même base : FAQ, envoi des formulaires, liens WhatsApp, pages
+légales. Seules les pages `/`, `/a-propos` et `/contact` changent de rendu selon `template` (avec, en
+plus pour showroom, `/vehicules` et `/vehicules/[slug]`, et pour garage, `/prestations`) ; les routes
+propres à un autre gabarit répondent 404 plutôt que d'afficher un contenu hors sujet (ex. `/vehicules`
+sur une agence "garage", qui ne loue pas de véhicules).
 
 ### Le gabarit showroom en détail
 
@@ -109,6 +110,46 @@ Dès que la valeur réelle est saisie dans `config/brands/<id>.ts`, les liens re
 
 Le lien WhatsApp reste utilisable même sans numéro : il ouvre WhatsApp avec le message pré-rempli et
 laisse choisir le destinataire, jusqu'à ce que `contact.whatsappNumber` soit renseigné.
+
+### Le gabarit garage en détail
+
+```
+components/garage/
+  GarageHeader.tsx / GarageMobileMenu.tsx / GarageFooter.tsx   Numéro d'appel toujours visible
+  GarageButton.tsx            Bouton coins arrondis / casse normale (distinct de components/ui/Button.tsx)
+  GarageHero.tsx               Message direct, sans vidéo ni parallaxe
+  ServicesGrid.tsx             Grille des prestations (page d'accueil, avec lien vers /prestations)
+  TrustSection.tsx             Années d'expérience, chiffres clés, réseau (ex. Autofit)
+  TestimonialsSection.tsx      Avis clients notés
+  AppointmentSection.tsx       Formulaire de rendez-vous + réassurance + coordonnées
+  GarageFAQSection.tsx         FAQ (réutilise components/sections/FAQAccordion.tsx)
+  GaragePrestationsPage.tsx    Page /prestations : détail de chaque service
+  GarageAboutPage.tsx          Page /a-propos dédiée
+  icons.ts                     Association GarageServiceIcon → icône Lucide
+components/forms/GarageAppointmentForm.tsx
+data/garage/<id>.ts            Tout le texte et les prestations du gabarit (aucune phrase en dur)
+```
+
+Le formulaire de rendez-vous est « intelligent » au sens où la prestation vient directement du
+catalogue de l'agence (`data/garage/<id>.ts`, pas de texte libre à deviner), la date minimale est
+calculée après montage pour éviter tout mismatch d'hydratation, et un récapitulatif WhatsApp
+pré-rempli est proposé en alternative — utile pour une demande urgente (pneu crevé, panne). Le
+rappel automatique par WhatsApp annoncé au client est une politique de l'atelier ; la déclencher
+réellement suppose de brancher une API WhatsApp Business côté serveur dans
+[`lib/booking-actions.ts`](lib/booking-actions.ts) (voir le commentaire sur `submitAppointmentRequest`).
+
+### Créer une maquette garage pour un nouveau prospect
+
+1. `config/brands/<id>.ts` — identité, couleurs, coordonnées, navigation, avec `template: "garage"`
+   et `theme: "garage"`, puis enregistrer l'agence dans
+   [`config/brands/index.ts`](config/brands/index.ts).
+2. `data/garage/<id>.ts` — hero, prestations (avec icône, description, tarif indicatif et détails),
+   confiance (chiffres clés, réseau), avis clients, textes de rendez-vous, à propos et page
+   prestations. Enregistrer le fichier dans [`data/garage/index.ts`](data/garage/index.ts).
+3. `data/faq/<id>.ts` — les questions fréquentes, puis enregistrement dans `data/faq/index.ts`.
+4. `public/brands/<id>/` — visuels : `hero.svg`, `about.svg` (ou de vraies photographies, mêmes
+   chemins).
+5. Créer un projet Vercel pointant sur ce dépôt avec `NEXT_PUBLIC_BRAND=<id>`.
 
 ## Lancer le projet
 

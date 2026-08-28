@@ -4,10 +4,15 @@ import { siteConfig } from "@/config/site";
 import { CheckCircle2 } from "lucide-react";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { LinkButton } from "@/components/ui/Button";
+import { GarageAboutPage } from "@/components/garage/GarageAboutPage";
+
+const isGarage = siteConfig.template === "garage";
 
 export const metadata: Metadata = {
   title: "À propos",
-  description: `${siteConfig.name} est un service suisse spécialisé dans la location de véhicules de prestige en courte et longue durée.`,
+  description: isGarage
+    ? `${siteConfig.name} est un garage automobile multimarques à ${siteConfig.address.city}, actif depuis 2008.`
+    : `${siteConfig.name} est un service suisse spécialisé dans la location de véhicules de prestige en courte et longue durée.`,
   alternates: { canonical: "/a-propos" },
 };
 
@@ -19,6 +24,10 @@ const commitments = [
 ];
 
 export default function AboutPage() {
+  if (isGarage) {
+    return <GarageAboutPage />;
+  }
+
   return (
     <div>
       <section className="border-b border-brand-line/60 bg-brand-charcoal py-24">

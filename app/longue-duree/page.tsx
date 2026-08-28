@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Briefcase, Handshake, ShieldCheck, Wallet } from "lucide-react";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { LongTermForm } from "@/components/forms/LongTermForm";
@@ -48,6 +49,11 @@ const includedServices = [
 ];
 
 export default function LongTermPage() {
+  // Route sans objet pour le gabarit "garage" (pas de location de véhicules).
+  if (siteConfig.template === "garage") {
+    notFound();
+  }
+
   return (
     <div>
       <section className="border-b border-brand-line/60 bg-brand-charcoal py-24">

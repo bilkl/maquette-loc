@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { VehiclesPageContent } from "@/components/vehicles/VehiclesPageContent";
 import { ShowroomCollectionPage } from "@/components/showroom/ShowroomCollectionPage";
 import { siteConfig } from "@/config/site";
 
 const isShowroom = siteConfig.template === "showroom";
+const isGarage = siteConfig.template === "garage";
 
 export const metadata: Metadata = {
   title: isShowroom ? "La collection" : "Nos véhicules",
@@ -15,6 +17,11 @@ export const metadata: Metadata = {
 };
 
 export default function VehiculesPage() {
+  // Route sans objet pour le gabarit "garage" (pas de flotte à louer).
+  if (isGarage) {
+    notFound();
+  }
+
   if (isShowroom) {
     return <ShowroomCollectionPage />;
   }

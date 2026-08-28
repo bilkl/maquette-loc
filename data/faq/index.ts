@@ -2,6 +2,7 @@ import { getActiveBrand } from "@/config/brands";
 import { faqItems as bullrent } from "./bullrent";
 import { faqItems as eagledrive } from "./eagledrive";
 import { faqItems as elegancyrent } from "./elegancyrent";
+import { faqItems as garagecarlos } from "./garagecarlos";
 import { faqItems as luxurcars } from "./luxurcars";
 import { faqItems as luxurydrive } from "./luxurydrive";
 import { faqItems as nlprestige } from "./nlprestige";
@@ -20,6 +21,7 @@ const faqByBrand: Record<string, FaqItem[]> = {
   slgrent,
   luxurydrive,
   luxurcars,
+  garagecarlos,
 };
 
 export const faqItems: FaqItem[] = faqByBrand[getActiveBrand().id] ?? nlprestige;

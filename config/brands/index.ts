@@ -1,6 +1,7 @@
 import { bullrent } from "./bullrent";
 import { eagledrive } from "./eagledrive";
 import { elegancyrent } from "./elegancyrent";
+import { garagecarlos } from "./garagecarlos";
 import { luxurcars } from "./luxurcars";
 import { luxurydrive } from "./luxurydrive";
 import { nlprestige } from "./nlprestige";
@@ -19,6 +20,7 @@ export const brands: Record<string, BrandConfig> = {
   slgrent,
   luxurydrive,
   luxurcars,
+  garagecarlos,
 };
 
 export const DEFAULT_BRAND_ID = "nlprestige";

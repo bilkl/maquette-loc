@@ -31,16 +31,20 @@ export interface BrandConfig {
    * - "classic" (défaut) : maquette location "pratique" (hero + flotte + réservation).
    * - "showroom" : maquette éditoriale "collection premium" (voir components/showroom/).
    *   Une agence en "showroom" doit fournir son contenu narratif dans data/showroom/<id>.ts.
+   * - "garage" : atelier / garage automobile (voir components/garage/). Ton rassurant,
+   *   sans-serif, prise de rendez-vous plutôt que réservation de véhicule. Une agence en
+   *   "garage" doit fournir son contenu métier dans data/garage/<id>.ts.
    */
-  template?: "classic" | "showroom";
+  template?: "classic" | "showroom" | "garage";
 
   /**
    * Palette globale du site pour cette agence.
    * - "dark" (défaut) = fond sombre premium existant.
    * - "light" = variante fond clair.
    * - "showroom" = noir profond / anthracite chaud, pensé pour le gabarit "showroom".
+   * - "garage" = blanc / gris neutre, texte quasi noir, pensé pour le gabarit "garage".
    */
-  theme?: "dark" | "light" | "showroom";
+  theme?: "dark" | "light" | "showroom" | "garage";
 
   images: {
     /** Image de fond de la section hero, doublée comme image OG/Twitter */

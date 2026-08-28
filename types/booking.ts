@@ -42,3 +42,22 @@ export interface LongTermFormValues {
 }
 
 export type LongTermFormErrors = Partial<Record<keyof LongTermFormValues, string>>;
+
+export type AppointmentTimeSlot = "matin" | "apres-midi" | "peu-importe";
+
+export interface AppointmentFormValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  /** Slug de la prestation souhaitée (voir data/garage/<id>.ts), ou "autre" */
+  service: string;
+  vehicleBrand: string;
+  vehicleModel: string;
+  preferredDate: string;
+  preferredTime: AppointmentTimeSlot;
+  message: string;
+  consent: boolean;
+}
+
+export type AppointmentFormErrors = Partial<Record<keyof AppointmentFormValues, string>>;

@@ -56,9 +56,13 @@ export function LinkButton({
   variant = "primary",
   className,
   children,
-}: ButtonBaseProps & { href: string }) {
+  ...props
+}: ButtonBaseProps &
+  Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "className" | "children" | "href"> & {
+    href: string;
+  }) {
   return (
-    <Link href={href} className={cn(baseClasses, variantClasses[variant], className)}>
+    <Link href={href} className={cn(baseClasses, variantClasses[variant], className)} {...props}>
       <ButtonSweep variant={variant} />
       <span className="relative z-10 inline-flex items-center gap-2">{children}</span>
     </Link>

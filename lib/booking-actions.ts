@@ -56,3 +56,25 @@ export async function submitLongTermRequest(
       `Votre demande a bien été transmise. Un conseiller ${siteConfig.name} vous contactera pour construire une offre personnalisée.`,
   };
 }
+
+/**
+ * Demande de rendez-vous du gabarit "garage".
+ *
+ * Le rappel automatique par WhatsApp annoncé au client est une politique de
+ * l'atelier, pas une action déclenchée par le navigateur : elle suppose un
+ * envoi côté serveur (API WhatsApp Business, ou automatisation type n8n/Twilio)
+ * déclenché à réception de cette demande. C'est ici que cet appel prendrait
+ * place une fois un service réel branché.
+ */
+export async function submitAppointmentRequest(
+  values: unknown,
+): Promise<SubmissionResult> {
+  await simulateNetworkDelay();
+  console.log(`[${siteConfig.name}] Nouvelle demande de rendez-vous :`, values);
+
+  return {
+    success: true,
+    message:
+      "Votre demande de rendez-vous a bien été envoyée. Nous vous confirmons le créneau par téléphone ou WhatsApp dans les plus brefs délais.",
+  };
+}

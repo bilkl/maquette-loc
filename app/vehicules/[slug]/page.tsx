@@ -14,6 +14,9 @@ interface VehiclePageProps {
 }
 
 export function generateStaticParams() {
+  // Route sans objet pour le gabarit "garage" (pas de flotte à louer) : pas
+  // de page à générer statiquement.
+  if (siteConfig.template === "garage") return [];
   return vehicles.map((vehicle) => ({ slug: vehicle.slug }));
 }
 
@@ -44,6 +47,10 @@ export async function generateMetadata({ params }: VehiclePageProps): Promise<Me
 }
 
 export default async function VehiclePage({ params }: VehiclePageProps) {
+  if (siteConfig.template === "garage") {
+    notFound();
+  }
+
   const { slug } = await params;
   const vehicle = getVehicleBySlug(slug);
 
