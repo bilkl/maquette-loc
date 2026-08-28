@@ -1,6 +1,7 @@
 import { Star } from "lucide-react";
 import type { DealerContent, DealerTestimonial } from "@/data/dealer";
 import { SectionTitle } from "@/components/ui/SectionTitle";
+import { Reveal } from "@/components/showroom/Reveal";
 
 interface TestimonialsSectionProps {
   content: DealerContent["testimonials"];
@@ -10,11 +11,15 @@ export function TestimonialsSection({ content }: TestimonialsSectionProps) {
   return (
     <section id="avis" className="scroll-mt-20 border-b border-brand-line bg-brand-black py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionTitle eyebrow={content.eyebrow} title={content.title} description={content.intro} align="left" />
+        <Reveal>
+          <SectionTitle eyebrow={content.eyebrow} title={content.title} description={content.intro} align="left" />
+        </Reveal>
 
         <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
-          {content.items.map((testimonial) => (
-            <TestimonialCard key={testimonial.author} testimonial={testimonial} />
+          {content.items.map((testimonial, index) => (
+            <Reveal key={testimonial.author} delay={Math.min(index * 0.06, 0.24)}>
+              <TestimonialCard testimonial={testimonial} />
+            </Reveal>
           ))}
         </div>
       </div>
@@ -24,7 +29,7 @@ export function TestimonialsSection({ content }: TestimonialsSectionProps) {
 
 function TestimonialCard({ testimonial }: { testimonial: DealerTestimonial }) {
   return (
-    <figure className="flex h-full flex-col rounded-xl border border-brand-line bg-brand-charcoal p-6">
+    <figure className="flex h-full flex-col rounded-xl border border-brand-line bg-brand-charcoal p-6 shadow-sm">
       <div className="flex items-center gap-0.5" aria-hidden="true">
         {Array.from({ length: 5 }).map((_, index) => (
           <Star

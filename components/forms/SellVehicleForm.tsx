@@ -99,7 +99,7 @@ export function SellVehicleForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="rounded-xl border border-brand-line bg-brand-black p-6 sm:p-8">
+    <form onSubmit={handleSubmit} noValidate className="rounded-xl border border-brand-line bg-brand-black p-6 shadow-sm sm:p-8">
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <Field id={`${formId}-brand`} label="Marque" error={errors.vehicleBrand} required>
           <input

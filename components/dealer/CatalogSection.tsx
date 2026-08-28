@@ -3,6 +3,7 @@ import { getFeaturedOccasionVehicles } from "@/data/occasion-vehicles";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { DealerVehicleCard } from "@/components/dealer/DealerVehicleCard";
 import { DealerLinkButton } from "@/components/dealer/DealerButton";
+import { Reveal } from "@/components/showroom/Reveal";
 
 interface CatalogSectionProps {
   content: DealerContent["catalog"];
@@ -15,16 +16,18 @@ export function CatalogSection({ content }: CatalogSectionProps) {
   return (
     <section className="border-b border-brand-line bg-brand-black py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <Reveal className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <SectionTitle eyebrow={content.eyebrow} title={content.title} description={content.intro} align="left" />
           <DealerLinkButton href="/vehicules" variant="secondary" className="shrink-0">
             Voir tout le catalogue
           </DealerLinkButton>
-        </div>
+        </Reveal>
 
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((vehicle, index) => (
-            <DealerVehicleCard key={vehicle.slug} vehicle={vehicle} priority={index === 0} />
+            <Reveal key={vehicle.slug} delay={Math.min(index * 0.06, 0.3)}>
+              <DealerVehicleCard vehicle={vehicle} priority={index === 0} />
+            </Reveal>
           ))}
         </div>
       </div>

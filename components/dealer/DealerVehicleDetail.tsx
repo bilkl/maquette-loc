@@ -42,19 +42,21 @@ export function DealerVehicleDetail({ vehicle }: DealerVehicleDetailProps) {
             {vehicle.brand} {vehicle.model}
           </h1>
 
-          <p className="mt-5 text-3xl font-extrabold text-brand-accent">{formatChf(vehicle.price)}</p>
+          <p className="mt-5 text-3xl font-extrabold tabular-nums text-brand-accent">
+            {formatChf(vehicle.price)}
+          </p>
           {!vehicle.available ? (
             <p className="mt-2 text-sm font-semibold text-brand-silver">Ce véhicule a été vendu.</p>
           ) : null}
 
           <dl className="mt-7 grid grid-cols-2 gap-4 sm:grid-cols-3">
             {specs.map((spec) => (
-              <div key={spec.label} className="rounded-lg border border-brand-line p-3.5">
+              <div key={spec.label} className="rounded-lg border border-brand-line bg-brand-charcoal/40 p-3.5">
                 <dt className="flex items-center gap-1.5 text-xs font-medium text-brand-silver">
                   <spec.icon className="h-3.5 w-3.5 text-brand-accent" aria-hidden="true" />
                   {spec.label}
                 </dt>
-                <dd className="mt-1 text-sm font-bold text-brand-ivory">{spec.value}</dd>
+                <dd className="mt-1 text-sm font-bold tabular-nums text-brand-ivory">{spec.value}</dd>
               </div>
             ))}
           </dl>
@@ -92,7 +94,7 @@ export function DealerVehicleDetail({ vehicle }: DealerVehicleDetailProps) {
               )}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-accent px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-accent-soft"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-accent px-6 py-3.5 text-sm font-semibold text-white shadow-md shadow-brand-accent/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-accent-soft hover:shadow-lg hover:shadow-brand-accent/30"
             >
               <WhatsAppIcon className="h-4 w-4" aria-hidden="true" />
               Poser une question sur WhatsApp

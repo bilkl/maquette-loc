@@ -11,7 +11,7 @@ interface DealerVehicleCardProps {
 
 export function DealerVehicleCard({ vehicle, priority = false }: DealerVehicleCardProps) {
   return (
-    <article className="flex flex-col overflow-hidden rounded-xl border border-brand-line bg-brand-black transition-colors hover:border-brand-accent">
+    <article className="group flex flex-col overflow-hidden rounded-xl border border-brand-line bg-brand-black shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/50 hover:shadow-xl hover:shadow-black/[0.06]">
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-brand-charcoal">
         <Image
           src={vehicle.coverImage}
@@ -19,7 +19,7 @@ export function DealerVehicleCard({ vehicle, priority = false }: DealerVehicleCa
           fill
           priority={priority}
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover"
+          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
         />
         <span className="absolute left-3 top-3 rounded-full bg-brand-black/85 px-3 py-1 text-xs font-semibold text-brand-ivory backdrop-blur">
           {vehicle.year}
@@ -36,7 +36,9 @@ export function DealerVehicleCard({ vehicle, priority = false }: DealerVehicleCa
           <h3 className="text-lg font-bold text-brand-ivory">
             {vehicle.brand} {vehicle.model}
           </h3>
-          <p className="mt-1.5 text-xl font-extrabold text-brand-accent">{formatChf(vehicle.price)}</p>
+          <p className="mt-1.5 text-xl font-extrabold tabular-nums text-brand-accent">
+            {formatChf(vehicle.price)}
+          </p>
         </div>
 
         <ul className="flex flex-wrap gap-x-4 gap-y-1.5 text-sm text-brand-silver">

@@ -5,6 +5,7 @@ import { SectionTitle } from "@/components/ui/SectionTitle";
 import { ContactValue } from "@/components/showroom/ContactValue";
 import { SellVehicleForm } from "@/components/forms/SellVehicleForm";
 import { WhatsAppIcon } from "@/components/ui/icons";
+import { Reveal } from "@/components/showroom/Reveal";
 import { externalHref, mailtoHref, telHref } from "@/lib/placeholders";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 
@@ -19,7 +20,7 @@ export function SellSection({ content }: SellSectionProps) {
     <section id="vendre" className="scroll-mt-20 bg-brand-charcoal py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
-          <div>
+          <Reveal>
             <SectionTitle eyebrow={content.eyebrow} title={content.title} align="left" />
             <p className="mt-5 text-base leading-relaxed text-brand-silver">{content.intro}</p>
 
@@ -41,7 +42,7 @@ export function SellSection({ content }: SellSectionProps) {
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 rounded-lg border border-brand-line bg-brand-black px-4 py-3 text-sm font-semibold text-brand-ivory transition-colors hover:border-brand-accent hover:text-brand-accent"
+                className="inline-flex items-center gap-2.5 rounded-lg border border-brand-line bg-brand-black px-4 py-3 text-sm font-semibold text-brand-ivory shadow-sm transition-colors hover:border-brand-accent hover:text-brand-accent"
               >
                 <WhatsAppIcon className="h-4 w-4 text-[#25D366]" aria-hidden="true" />
                 {content.whatsappLabel}
@@ -66,9 +67,11 @@ export function SellSection({ content }: SellSectionProps) {
                 </li>
               </ul>
             </div>
-          </div>
+          </Reveal>
 
-          <SellVehicleForm />
+          <Reveal delay={0.1}>
+            <SellVehicleForm />
+          </Reveal>
         </div>
       </div>
     </section>

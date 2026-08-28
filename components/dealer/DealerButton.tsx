@@ -12,11 +12,11 @@ import { cn } from "@/lib/utils";
 type DealerButtonVariant = "primary" | "secondary";
 
 const baseClasses =
-  "inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3.5 text-sm font-semibold transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3.5 text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent disabled:pointer-events-none disabled:opacity-50 disabled:hover:translate-y-0";
 
 const variantClasses: Record<DealerButtonVariant, string> = {
-  primary: "bg-brand-accent text-white hover:bg-brand-accent-soft",
-  secondary: "border border-brand-line bg-brand-black text-brand-ivory hover:border-brand-accent hover:text-brand-accent",
+  primary: "bg-brand-accent text-white shadow-md shadow-brand-accent/25 hover:bg-brand-accent-soft hover:shadow-lg hover:shadow-brand-accent/30",
+  secondary: "border border-brand-line bg-brand-black text-brand-ivory hover:border-brand-accent hover:text-brand-accent hover:shadow-md hover:shadow-black/5",
 };
 
 interface DealerButtonProps {
