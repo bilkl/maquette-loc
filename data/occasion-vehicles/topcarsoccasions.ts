@@ -3,8 +3,8 @@ import { OccasionVehicle } from "@/types/occasionVehicle";
 /**
  * Catalogue de démonstration.
  * Véhicules, kilométrages, prix et disponibilités fictifs, à remplacer par le
- * stock réel de l'agence. Visuels : illustrations SVG « image de
- * démonstration — à remplacer ».
+ * stock réel de l'agence. Visuels : photos génériques libres de droits
+ * (licence Unsplash), à remplacer par les photos réelles du stock.
  */
 export const vehicles: OccasionVehicle[] = [
   {
@@ -20,11 +20,11 @@ export const vehicles: OccasionVehicle[] = [
     price: 21900,
     condition: "Excellent état",
     available: true,
-    coverImage: "/brands/topcarsoccasions/vehicles/vw-golf-viii-1.svg",
+    coverImage: "/brands/topcarsoccasions/vehicles/vw-golf-viii-1.jpg",
     gallery: [
-      "/brands/topcarsoccasions/vehicles/vw-golf-viii-1.svg",
-      "/brands/topcarsoccasions/vehicles/vw-golf-viii-2.svg",
-      "/brands/topcarsoccasions/vehicles/vw-golf-viii-3.svg",
+      "/brands/topcarsoccasions/vehicles/vw-golf-viii-1.jpg",
+      "/brands/topcarsoccasions/vehicles/vw-golf-viii-2.jpg",
+      "/brands/topcarsoccasions/vehicles/vw-golf-viii-3.jpg",
     ],
     description:
       "Golf VIII compacte et polyvalente, entretien suivi en concession, carnet complet. Idéale pour un usage quotidien entre Lausanne et Genève.",
@@ -53,11 +53,11 @@ export const vehicles: OccasionVehicle[] = [
     price: 28900,
     condition: "Très bon état",
     available: true,
-    coverImage: "/brands/topcarsoccasions/vehicles/audi-a4-avant-1.svg",
+    coverImage: "/brands/topcarsoccasions/vehicles/audi-a4-avant-1.jpg",
     gallery: [
-      "/brands/topcarsoccasions/vehicles/audi-a4-avant-1.svg",
-      "/brands/topcarsoccasions/vehicles/audi-a4-avant-2.svg",
-      "/brands/topcarsoccasions/vehicles/audi-a4-avant-3.svg",
+      "/brands/topcarsoccasions/vehicles/audi-a4-avant-1.jpg",
+      "/brands/topcarsoccasions/vehicles/audi-a4-avant-2.jpg",
+      "/brands/topcarsoccasions/vehicles/audi-a4-avant-3.jpg",
     ],
     description:
       "Break familial confortable et sobre en consommation, boîte automatique S tronic, grand volume de coffre pour les trajets au long cours.",
@@ -86,11 +86,11 @@ export const vehicles: OccasionVehicle[] = [
     price: 24500,
     condition: "Très bon état",
     available: true,
-    coverImage: "/brands/topcarsoccasions/vehicles/bmw-serie-3-1.svg",
+    coverImage: "/brands/topcarsoccasions/vehicles/bmw-serie-3-1.jpg",
     gallery: [
-      "/brands/topcarsoccasions/vehicles/bmw-serie-3-1.svg",
-      "/brands/topcarsoccasions/vehicles/bmw-serie-3-2.svg",
-      "/brands/topcarsoccasions/vehicles/bmw-serie-3-3.svg",
+      "/brands/topcarsoccasions/vehicles/bmw-serie-3-1.jpg",
+      "/brands/topcarsoccasions/vehicles/bmw-serie-3-2.jpg",
+      "/brands/topcarsoccasions/vehicles/bmw-serie-3-3.jpg",
     ],
     description:
       "Berline sportive et confortable, motorisation diesel efficiente, parfaite pour les trajets professionnels réguliers.",
@@ -119,11 +119,11 @@ export const vehicles: OccasionVehicle[] = [
     price: 15900,
     condition: "Excellent état",
     available: true,
-    coverImage: "/brands/topcarsoccasions/vehicles/renault-clio-v-1.svg",
+    coverImage: "/brands/topcarsoccasions/vehicles/renault-clio-v-1.jpg",
     gallery: [
-      "/brands/topcarsoccasions/vehicles/renault-clio-v-1.svg",
-      "/brands/topcarsoccasions/vehicles/renault-clio-v-2.svg",
-      "/brands/topcarsoccasions/vehicles/renault-clio-v-3.svg",
+      "/brands/topcarsoccasions/vehicles/renault-clio-v-1.jpg",
+      "/brands/topcarsoccasions/vehicles/renault-clio-v-2.jpg",
+      "/brands/topcarsoccasions/vehicles/renault-clio-v-3.jpg",
     ],
     description:
       "Citadine récente et économique, faible kilométrage, idéale comme première voiture ou second véhicule du foyer.",
@@ -152,11 +152,11 @@ export const vehicles: OccasionVehicle[] = [
     price: 32900,
     condition: "Très bon état",
     available: true,
-    coverImage: "/brands/topcarsoccasions/vehicles/skoda-kodiaq-1.svg",
+    coverImage: "/brands/topcarsoccasions/vehicles/skoda-kodiaq-1.jpg",
     gallery: [
-      "/brands/topcarsoccasions/vehicles/skoda-kodiaq-1.svg",
-      "/brands/topcarsoccasions/vehicles/skoda-kodiaq-2.svg",
-      "/brands/topcarsoccasions/vehicles/skoda-kodiaq-3.svg",
+      "/brands/topcarsoccasions/vehicles/skoda-kodiaq-1.jpg",
+      "/brands/topcarsoccasions/vehicles/skoda-kodiaq-2.jpg",
+      "/brands/topcarsoccasions/vehicles/skoda-kodiaq-3.jpg",
     ],
     description:
       "SUV familial 7 places, transmission intégrale, idéal pour les trajets en montagne comme au quotidien.",
@@ -185,11 +185,11 @@ export const vehicles: OccasionVehicle[] = [
     price: 16900,
     condition: "Excellent état",
     available: true,
-    coverImage: "/brands/topcarsoccasions/vehicles/peugeot-208-1.svg",
+    coverImage: "/brands/topcarsoccasions/vehicles/peugeot-208-1.jpg",
     gallery: [
-      "/brands/topcarsoccasions/vehicles/peugeot-208-1.svg",
-      "/brands/topcarsoccasions/vehicles/peugeot-208-2.svg",
-      "/brands/topcarsoccasions/vehicles/peugeot-208-3.svg",
+      "/brands/topcarsoccasions/vehicles/peugeot-208-1.jpg",
+      "/brands/topcarsoccasions/vehicles/peugeot-208-2.jpg",
+      "/brands/topcarsoccasions/vehicles/peugeot-208-3.jpg",
     ],
     description:
       "Citadine dynamique au design soigné, faible consommation, parfaite pour un usage urbain entre Lausanne et Genève.",
@@ -218,11 +218,11 @@ export const vehicles: OccasionVehicle[] = [
     price: 27500,
     condition: "Très bon état",
     available: true,
-    coverImage: "/brands/topcarsoccasions/vehicles/mercedes-classe-c-break-1.svg",
+    coverImage: "/brands/topcarsoccasions/vehicles/mercedes-classe-c-break-1.jpg",
     gallery: [
-      "/brands/topcarsoccasions/vehicles/mercedes-classe-c-break-1.svg",
-      "/brands/topcarsoccasions/vehicles/mercedes-classe-c-break-2.svg",
-      "/brands/topcarsoccasions/vehicles/mercedes-classe-c-break-3.svg",
+      "/brands/topcarsoccasions/vehicles/mercedes-classe-c-break-1.jpg",
+      "/brands/topcarsoccasions/vehicles/mercedes-classe-c-break-2.jpg",
+      "/brands/topcarsoccasions/vehicles/mercedes-classe-c-break-3.jpg",
     ],
     description:
       "Break élégant et confortable, finition soignée, idéal pour les longs trajets professionnels ou familiaux.",
@@ -251,11 +251,11 @@ export const vehicles: OccasionVehicle[] = [
     price: 29900,
     condition: "Excellent état",
     available: true,
-    coverImage: "/brands/topcarsoccasions/vehicles/tesla-model-3-1.svg",
+    coverImage: "/brands/topcarsoccasions/vehicles/tesla-model-3-1.jpg",
     gallery: [
-      "/brands/topcarsoccasions/vehicles/tesla-model-3-1.svg",
-      "/brands/topcarsoccasions/vehicles/tesla-model-3-2.svg",
-      "/brands/topcarsoccasions/vehicles/tesla-model-3-3.svg",
+      "/brands/topcarsoccasions/vehicles/tesla-model-3-1.jpg",
+      "/brands/topcarsoccasions/vehicles/tesla-model-3-2.jpg",
+      "/brands/topcarsoccasions/vehicles/tesla-model-3-3.jpg",
     ],
     description:
       "Berline 100% électrique, autonomie confortable pour les trajets quotidiens, accès gratuit ou à tarif réduit à de nombreux parkings.",
@@ -284,11 +284,11 @@ export const vehicles: OccasionVehicle[] = [
     price: 15400,
     condition: "Bon état",
     available: true,
-    coverImage: "/brands/topcarsoccasions/vehicles/dacia-duster-1.svg",
+    coverImage: "/brands/topcarsoccasions/vehicles/dacia-duster-1.jpg",
     gallery: [
-      "/brands/topcarsoccasions/vehicles/dacia-duster-1.svg",
-      "/brands/topcarsoccasions/vehicles/dacia-duster-2.svg",
-      "/brands/topcarsoccasions/vehicles/dacia-duster-3.svg",
+      "/brands/topcarsoccasions/vehicles/dacia-duster-1.jpg",
+      "/brands/topcarsoccasions/vehicles/dacia-duster-2.jpg",
+      "/brands/topcarsoccasions/vehicles/dacia-duster-3.jpg",
     ],
     description:
       "SUV robuste et accessible, garde au sol généreuse, idéal pour un budget maîtrisé sans renoncer à l'espace.",
