@@ -1,36 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#eef2f6"/>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0b1a2b"/>
+      <stop offset="38%" stop-color="#12283f"/>
+      <stop offset="62%" stop-color="#1d3b57"/>
+      <stop offset="100%" stop-color="#2a5273"/>
     </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="42%" r="55%">
+      <stop offset="0%" stop-color="#8cb9e1" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#8cb9e1" stop-opacity="0"/>
+    </radialGradient>
     <linearGradient id="rule" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#1d6fa5" stop-opacity="0"/>
-      <stop offset="50%" stop-color="#1d6fa5" stop-opacity="0.7"/>
-      <stop offset="100%" stop-color="#1d6fa5" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#4c93c4" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#4c93c4" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#4c93c4" stop-opacity="0"/>
     </linearGradient>
   </defs>
   <rect width="1600" height="1000" fill="url(#bg)"/>
-  <g opacity="0.07" stroke="#57616e" stroke-width="1">
-    <line x1="0" y1="0" x2="1600" y2="0"/>
-    <line x1="0" y1="100" x2="1600" y2="100"/>
-    <line x1="0" y1="200" x2="1600" y2="200"/>
-    <line x1="0" y1="300" x2="1600" y2="300"/>
-    <line x1="0" y1="400" x2="1600" y2="400"/>
-    <line x1="0" y1="500" x2="1600" y2="500"/>
-    <line x1="0" y1="600" x2="1600" y2="600"/>
-    <line x1="0" y1="700" x2="1600" y2="700"/>
-    <line x1="0" y1="800" x2="1600" y2="800"/>
-    <line x1="0" y1="900" x2="1600" y2="900"/>
-    <line x1="0" y1="1000" x2="1600" y2="1000"/>
+  <rect width="1600" height="1000" fill="url(#glow)"/>
+  <rect x="0" y="700" width="1600" height="2" fill="url(#rule)"/>
+  <g transform="translate(800, 440) scale(1.35)" fill="none" stroke="#dce9f5" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round" opacity="0.92">
+    <path d="M -175 18 C -170 -6 -150 -18 -120 -22 L -80 -34 C -55 -42 20 -42 46 -34 L 92 -20 C 118 -12 150 -4 172 14 L 176 30 L -178 30 Z"/>
+    <path d="M -96 -22 L -70 -36 C -50 -42 10 -42 32 -36 L 62 -22" opacity="0.65"/>
+    <line x1="-176" y1="30" x2="176" y2="30" opacity="0.5"/>
+    <circle cx="-104" cy="34" r="27"/>
+    <circle cx="104" cy="34" r="27"/>
+    <circle cx="-104" cy="34" r="10" opacity="0.5"/>
+    <circle cx="104" cy="34" r="10" opacity="0.5"/>
   </g>
-  <rect x="0" y="680" width="1600" height="3" fill="url(#rule)"/>
-  <g transform="translate(800, 520) scale(1.35)" fill="none" stroke="#12181f" stroke-width="4" opacity="0.9" stroke-linejoin="round" stroke-linecap="round">
-    <path d="M -170 24 L -150 -4 L -80 -24 L 10 -24 L 80 -6 L 155 22 L 155 40 L -170 40 Z"/>
-    <path d="M -66 -16 L -30 -30 L 4 -30 L 44 -16" opacity="0.6"/>
-    <circle cx="-96" cy="42" r="26" fill="#eef2f6" stroke="#1d6fa5" stroke-width="5"/>
-    <circle cx="100" cy="42" r="26" fill="#eef2f6" stroke="#1d6fa5" stroke-width="5"/>
-  </g>
-  <text x="50%" y="860" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="48" fill="#12181f" letter-spacing="1">BMW SÉRIE 3 — VUE 3/4 AVANT</text>
-  <text x="50%" y="909" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#57616e" letter-spacing="4">IMAGE DE DÉMONSTRATION — À REMPLACER</text>
+  <text x="50%" y="860" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="42" fill="#f2f6fa" letter-spacing="1">BMW SÉRIE 3 — VUE 3/4 AVANT</text>
+  <text x="50%" y="904" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#4c93c4" letter-spacing="3">IMAGE GÉNÉRIQUE — À REMPLACER</text>
 </svg>

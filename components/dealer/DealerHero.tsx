@@ -106,27 +106,41 @@ function HeroPathCard({
   return (
     <Link
       href={href}
-      className={`group flex flex-col gap-3 rounded-xl border p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent-soft ${
+      className={`group relative flex flex-col gap-3 overflow-hidden rounded-xl border p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent-soft ${
         emphasis
-          ? "border-brand-accent bg-brand-accent shadow-xl shadow-brand-accent/20 hover:shadow-2xl hover:shadow-brand-accent/30"
+          ? "border-brand-accent shadow-xl shadow-brand-accent/20 hover:shadow-2xl hover:shadow-brand-accent/35"
           : "border-white/15 bg-white/[0.06] hover:border-white/30 hover:bg-white/[0.09]"
       }`}
+      style={
+        emphasis
+          ? {
+              backgroundImage:
+                "linear-gradient(135deg, var(--color-brand-accent) 0%, var(--color-brand-accent-soft) 100%)",
+            }
+          : undefined
+      }
     >
+      {emphasis ? (
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -translate-x-full bg-[linear-gradient(115deg,transparent_35%,rgba(255,255,255,0.3)_50%,transparent_65%)] transition-transform duration-700 ease-out group-hover:translate-x-full motion-reduce:hidden"
+        />
+      ) : null}
       <span
-        className={`inline-flex h-11 w-11 items-center justify-center rounded-lg ${
+        className={`relative z-10 inline-flex h-11 w-11 items-center justify-center rounded-lg ${
           emphasis ? "bg-white/15 text-white" : "bg-white/10 text-brand-accent-soft"
         }`}
       >
         <Icon className="h-5 w-5" aria-hidden="true" />
       </span>
-      <span className={`flex items-center gap-2 text-lg font-bold ${emphasis ? "text-white" : "text-white"}`}>
+      <span className="relative z-10 flex items-center gap-2 text-lg font-bold text-white">
         {label}
         <ArrowUpRight
           className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
           aria-hidden="true"
         />
       </span>
-      <span className={`text-sm leading-relaxed ${emphasis ? "text-white/85" : "text-white/65"}`}>
+      <span className={`relative z-10 text-sm leading-relaxed ${emphasis ? "text-white/85" : "text-white/65"}`}>
         {description}
       </span>
     </Link>

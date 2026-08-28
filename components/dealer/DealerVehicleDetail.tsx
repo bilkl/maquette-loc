@@ -94,10 +94,20 @@ export function DealerVehicleDetail({ vehicle }: DealerVehicleDetailProps) {
               )}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-accent px-6 py-3.5 text-sm font-semibold text-white shadow-md shadow-brand-accent/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-accent-soft hover:shadow-lg hover:shadow-brand-accent/30"
+              className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-lg px-6 py-3.5 text-sm font-semibold text-white shadow-md shadow-brand-accent/25 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand-accent/35"
+              style={{
+                backgroundImage:
+                  "linear-gradient(135deg, var(--color-brand-accent) 0%, var(--color-brand-accent-soft) 100%)",
+              }}
             >
-              <WhatsAppIcon className="h-4 w-4" aria-hidden="true" />
-              Poser une question sur WhatsApp
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 -translate-x-full bg-[linear-gradient(115deg,transparent_35%,rgba(255,255,255,0.3)_50%,transparent_65%)] transition-transform duration-700 ease-out group-hover:translate-x-full motion-reduce:hidden"
+              />
+              <span className="relative z-10 inline-flex items-center gap-2">
+                <WhatsAppIcon className="h-4 w-4" aria-hidden="true" />
+                Poser une question sur WhatsApp
+              </span>
             </a>
             <DealerLinkButton href="/contact" variant="secondary">
               Nous contacter
