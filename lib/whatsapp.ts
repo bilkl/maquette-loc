@@ -13,6 +13,16 @@ export function hasWhatsAppNumber(): boolean {
 }
 
 /**
+ * `false` uniquement quand l'agence a explicitement désactivé WhatsApp
+ * (`contact.whatsappEnabled: false`, ex. une entreprise qui ne communique que
+ * par téléphone/e-mail) — à ne pas confondre avec `hasWhatsAppNumber()`, qui
+ * ne fait que vérifier si un numéro a déjà été renseigné.
+ */
+export function isWhatsAppEnabled(): boolean {
+  return siteConfig.contact.whatsappEnabled !== false;
+}
+
+/**
  * Construit une URL wa.me avec un message pré-rempli.
  * Le numéro et le message par défaut sont centralisés dans config/site.ts.
  *

@@ -8,7 +8,7 @@ import { AppointmentFormErrors, AppointmentFormValues } from "@/types/booking";
 import { validateAppointmentForm } from "@/lib/validation";
 import { submitAppointmentRequest } from "@/lib/booking-actions";
 import { todayIso } from "@/lib/utils";
-import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { getWhatsAppUrl, isWhatsAppEnabled } from "@/lib/whatsapp";
 import { WhatsAppIcon } from "@/components/ui/icons";
 import { GarageButton } from "@/components/garage/GarageButton";
 import { cn } from "@/lib/utils";
@@ -294,15 +294,17 @@ export function GarageAppointmentForm({ services, defaultServiceSlug }: GarageAp
           )}
         </GarageButton>
 
-        <a
-          href={getWhatsAppUrl(recapMessage)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-brand-silver transition-colors hover:text-brand-accent"
-        >
-          <WhatsAppIcon className="h-4 w-4 text-[#25D366]" aria-hidden="true" />
-          Ou écrire directement sur WhatsApp
-        </a>
+        {isWhatsAppEnabled() ? (
+          <a
+            href={getWhatsAppUrl(recapMessage)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-brand-silver transition-colors hover:text-brand-accent"
+          >
+            <WhatsAppIcon className="h-4 w-4 text-[#25D366]" aria-hidden="true" />
+            Ou écrire directement sur WhatsApp
+          </a>
+        ) : null}
       </div>
     </form>
   );

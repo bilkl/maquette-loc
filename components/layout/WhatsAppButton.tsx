@@ -1,10 +1,12 @@
 "use client";
 
 import { MessageCircle } from "lucide-react";
-import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { getWhatsAppUrl, isWhatsAppEnabled } from "@/lib/whatsapp";
 import { siteConfig } from "@/config/site";
 
 export function WhatsAppButton() {
+  if (!isWhatsAppEnabled()) return null;
+
   return (
     <a
       href={getWhatsAppUrl()}

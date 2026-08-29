@@ -15,7 +15,7 @@ export function GarageAboutPage() {
           <SectionTitle
             eyebrow={content.about.eyebrow}
             title={content.about.title}
-            description={`${siteConfig.name} — garage automobile multimarques à ${siteConfig.address.city}.`}
+            description={content.about.description}
           />
         </div>
       </section>

@@ -16,7 +16,10 @@ export type GarageServiceIcon =
   | "diagnostic"
   | "clipboard-check"
   | "snowflake"
-  | "car";
+  | "car"
+  | "hammer"
+  | "paint"
+  | "windshield";
 
 export interface GarageService {
   /** Identifiant unique, utilisé comme ancre (#service-<slug>) */
@@ -42,6 +45,34 @@ export interface GarageTestimonial {
 export interface GarageStat {
   value: string;
   label: string;
+}
+
+export interface GarageBeforeAfterExample {
+  /** Type de dommage réparé, ex. "Choc latéral — portière et aile avant" */
+  damageType: string;
+  description: string;
+}
+
+export interface GarageBeforeAfterContent {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  /** Rappel que les visuels sont des exemples génériques, pas de vraies photos client */
+  note: string;
+  items: GarageBeforeAfterExample[];
+}
+
+export interface GarageAdviceTip {
+  title: string;
+  description: string;
+}
+
+export interface GarageAdviceContent {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  tips: GarageAdviceTip[];
+  cta?: { label: string; href: string };
 }
 
 export interface GarageContent {
@@ -88,12 +119,15 @@ export interface GarageContent {
     title: string;
     intro: string;
     reassurances: string[];
-    whatsappLabel: string;
+    /** Absent ou ignoré si `contact.whatsappEnabled` vaut `false` pour cette agence */
+    whatsappLabel?: string;
   };
 
   about: {
     eyebrow: string;
     title: string;
+    /** Résumé court en une phrase, ex. pour les balises meta description */
+    description: string;
     paragraphs: string[];
     commitments: string[];
   };
@@ -103,4 +137,10 @@ export interface GarageContent {
     title: string;
     intro: string;
   };
+
+  /** Section "avant/après" (facultative — pertinente pour un carrossier-peintre) */
+  beforeAfter?: GarageBeforeAfterContent;
+
+  /** Section conseils post-accident (facultative) */
+  postAccidentAdvice?: GarageAdviceContent;
 }

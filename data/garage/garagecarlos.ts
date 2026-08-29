@@ -178,6 +178,7 @@ export const garageContent: GarageContent = {
   about: {
     eyebrow: "À propos",
     title: "Un garage indépendant, actif à Satigny depuis 2008.",
+    description: "Garage Carlos Atelier est un garage automobile multimarques à Satigny, actif depuis 2008.",
     paragraphs: [
       "Garage Carlos Atelier entretient et répare des véhicules de toutes marques depuis 2008, avec une équipe stable qui connaît ses clients et leurs véhicules.",
       "Notre approche est simple : un diagnostic honnête, un devis clair avant toute intervention, et un travail fait dans les règles de l'art — que ce soit pour un entretien courant, une panne, ou une préparation à l'expertise.",

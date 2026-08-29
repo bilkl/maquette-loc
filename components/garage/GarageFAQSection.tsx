@@ -1,6 +1,7 @@
 import { faqItems } from "@/data/faq";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
+import { isWhatsAppEnabled } from "@/lib/whatsapp";
 
 export function GarageFAQSection() {
   return (
@@ -9,7 +10,11 @@ export function GarageFAQSection() {
         <SectionTitle
           eyebrow="Questions fréquentes"
           title="Ce que l'on nous demande le plus souvent"
-          description="Une autre question ? Contactez-nous directement par téléphone ou WhatsApp."
+          description={
+            isWhatsAppEnabled()
+              ? "Une autre question ? Contactez-nous directement par téléphone ou WhatsApp."
+              : "Une autre question ? Contactez-nous directement par téléphone ou e-mail."
+          }
         />
 
         <div className="mt-10">

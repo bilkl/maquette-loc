@@ -2,6 +2,7 @@ import { bullrent } from "./bullrent";
 import { eagledrive } from "./eagledrive";
 import { elegancyrent } from "./elegancyrent";
 import { garagecarlos } from "./garagecarlos";
+import { lamarbrerie } from "./lamarbrerie";
 import { luxurcars } from "./luxurcars";
 import { luxurydrive } from "./luxurydrive";
 import { nlprestige } from "./nlprestige";
@@ -22,6 +23,7 @@ export const brands: Record<string, BrandConfig> = {
   luxurydrive,
   luxurcars,
   garagecarlos,
+  lamarbrerie,
   topcarsoccasions,
 };
 

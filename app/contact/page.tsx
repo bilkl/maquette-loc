@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { siteConfig } from "@/config/site";
-import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { getWhatsAppUrl, isWhatsAppEnabled } from "@/lib/whatsapp";
 import { externalHref, instagramLabel, mailtoHref, telHref } from "@/lib/placeholders";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { ContactForm } from "@/components/forms/ContactForm";
@@ -9,14 +9,15 @@ import { InstagramIcon } from "@/components/ui/icons";
 
 const isGarage = siteConfig.template === "garage";
 const isDealer = siteConfig.template === "dealer";
+const contactChannels = isWhatsAppEnabled() ? "formulaire, e-mail ou WhatsApp" : "formulaire, e-mail ou téléphone";
 
 export const metadata: Metadata = {
   title: "Contact",
   description: isGarage
-    ? `Contactez ${siteConfig.name} par formulaire, e-mail ou WhatsApp pour toute question sur l'entretien ou la réparation de votre véhicule.`
+    ? `Contactez ${siteConfig.name} par ${contactChannels} pour toute question sur l'entretien ou la réparation de votre véhicule.`
     : isDealer
-      ? `Contactez ${siteConfig.name} par formulaire, e-mail ou WhatsApp pour toute question sur l'achat, la vente ou la reprise d'un véhicule.`
-      : `Contactez ${siteConfig.name} par formulaire, e-mail ou WhatsApp pour toute question sur la location de véhicules de prestige en Suisse.`,
+      ? `Contactez ${siteConfig.name} par ${contactChannels} pour toute question sur l'achat, la vente ou la reprise d'un véhicule.`
+      : `Contactez ${siteConfig.name} par ${contactChannels} pour toute question sur la location de véhicules de prestige en Suisse.`,
   alternates: { canonical: "/contact" },
 };
 
@@ -72,20 +73,22 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="flex items-start gap-3">
-              <MessageCircle className="mt-0.5 h-5 w-5 shrink-0 text-brand-accent" aria-hidden="true" />
-              <div>
-                <p className="text-base font-medium text-brand-ivory">WhatsApp</p>
-                <a
-                  href={getWhatsAppUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-base text-brand-silver hover:text-brand-accent"
-                >
-                  Discuter avec {siteConfig.name}
-                </a>
+            {isWhatsAppEnabled() ? (
+              <div className="flex items-start gap-3">
+                <MessageCircle className="mt-0.5 h-5 w-5 shrink-0 text-brand-accent" aria-hidden="true" />
+                <div>
+                  <p className="text-base font-medium text-brand-ivory">WhatsApp</p>
+                  <a
+                    href={getWhatsAppUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-base text-brand-silver hover:text-brand-accent"
+                  >
+                    Discuter avec {siteConfig.name}
+                  </a>
+                </div>
               </div>
-            </div>
+            ) : null}
 
             <div className="flex items-start gap-3">
               <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-brand-accent" aria-hidden="true" />

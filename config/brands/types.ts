@@ -51,6 +51,14 @@ export interface BrandConfig {
    */
   theme?: "dark" | "light" | "showroom" | "garage" | "dealer";
 
+  /**
+   * Active un traitement visuel plus premium pour les composants du gabarit
+   * "garage" (CTA en dégradé avec balayage lumineux, photo de fond dans le
+   * hero) sans changer le style des autres agences sur ce même gabarit —
+   * ex. Garage Carlos Atelier reste volontairement sobre. Par défaut (absent) : `false`.
+   */
+  premium?: boolean;
+
   images: {
     /** Image de fond de la section hero, doublée comme image OG/Twitter */
     hero: string;
@@ -70,6 +78,13 @@ export interface BrandConfig {
     phone: string;
     whatsappNumber: string;
     whatsappDefaultMessage: string;
+    /**
+     * `false` quand l'entreprise ne propose délibérément pas WhatsApp comme
+     * canal (à distinguer d'un numéro pas encore renseigné) : masque tous les
+     * CTA WhatsApp du site plutôt que de les afficher avec un lien dégradé.
+     * Par défaut (absent) : `true`, pour ne rien changer aux agences existantes.
+     */
+    whatsappEnabled?: boolean;
   };
 
   social: {

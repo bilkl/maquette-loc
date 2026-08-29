@@ -22,7 +22,7 @@ export function TrustSection({ content }: TrustSectionProps) {
             <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-brand-line pt-8">
               {content.stats.map((stat) => (
                 <div key={stat.label}>
-                  <dd className="text-3xl font-extrabold text-brand-accent sm:text-4xl">
+                  <dd className="text-3xl font-extrabold tabular-nums text-brand-accent sm:text-4xl">
                     {stat.value}
                   </dd>
                   <dt className="mt-1 text-xs font-medium text-brand-silver sm:text-sm">

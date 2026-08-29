@@ -1,5 +1,6 @@
 import { getActiveBrand } from "@/config/brands";
 import { garageContent as garagecarlos } from "./garagecarlos";
+import { garageContent as lamarbrerie } from "./lamarbrerie";
 import type { GarageContent } from "./types";
 
 /**
@@ -9,6 +10,7 @@ import type { GarageContent } from "./types";
  */
 const garageByBrand: Record<string, GarageContent> = {
   garagecarlos,
+  lamarbrerie,
 };
 
 const DEFAULT_GARAGE_ID = "garagecarlos";
@@ -33,4 +35,8 @@ export type {
   GarageServiceIcon,
   GarageStat,
   GarageTestimonial,
+  GarageBeforeAfterContent,
+  GarageBeforeAfterExample,
+  GarageAdviceContent,
+  GarageAdviceTip,
 } from "./types";

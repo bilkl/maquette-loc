@@ -2,9 +2,11 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
+import { siteConfig } from "@/config/site";
 import type { GarageContent, GarageService } from "@/data/garage";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { serviceIcons } from "@/components/garage/icons";
+import { cn } from "@/lib/utils";
 
 interface ServicesGridProps {
   content: GarageContent["services"];
@@ -48,7 +50,12 @@ function ServiceCard({
   const Icon = serviceIcons[service.icon];
 
   const card = (
-    <div className="group flex h-full flex-col rounded-xl border border-brand-line bg-brand-charcoal p-6 transition-colors hover:border-brand-accent">
+    <div
+      className={cn(
+        "group flex h-full flex-col rounded-xl border border-brand-line bg-brand-charcoal p-6 transition-all hover:border-brand-accent",
+        siteConfig.premium && "hover:-translate-y-1 hover:shadow-lg hover:shadow-black/20",
+      )}
+    >
       <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-brand-accent/10 text-brand-accent">
         <Icon className="h-6 w-6" aria-hidden="true" />
       </span>

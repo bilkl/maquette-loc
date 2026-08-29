@@ -6,7 +6,7 @@ import { ContactValue } from "@/components/showroom/ContactValue";
 import { GarageAppointmentForm } from "@/components/forms/GarageAppointmentForm";
 import { WhatsAppIcon } from "@/components/ui/icons";
 import { externalHref, mailtoHref, telHref } from "@/lib/placeholders";
-import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { getWhatsAppUrl, isWhatsAppEnabled } from "@/lib/whatsapp";
 
 interface AppointmentSectionProps {
   content: GarageContent["appointment"];
@@ -38,15 +38,17 @@ export function AppointmentSection({ content, services, defaultServiceSlug }: Ap
             </ul>
 
             <div className="mt-8 border-t border-brand-line pt-6">
-              <a
-                href={getWhatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 rounded-lg border border-brand-line bg-brand-black px-4 py-3 text-sm font-semibold text-brand-ivory transition-colors hover:border-brand-accent hover:text-brand-accent"
-              >
-                <WhatsAppIcon className="h-4 w-4 text-[#25D366]" aria-hidden="true" />
-                {content.whatsappLabel}
-              </a>
+              {isWhatsAppEnabled() && content.whatsappLabel ? (
+                <a
+                  href={getWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 rounded-lg border border-brand-line bg-brand-black px-4 py-3 text-sm font-semibold text-brand-ivory transition-colors hover:border-brand-accent hover:text-brand-accent"
+                >
+                  <WhatsAppIcon className="h-4 w-4 text-[#25D366]" aria-hidden="true" />
+                  {content.whatsappLabel}
+                </a>
+              ) : null}
 
               <ul className="mt-7 space-y-2.5 text-sm">
                 <li className="flex items-start gap-2">
