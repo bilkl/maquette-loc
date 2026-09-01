@@ -3,11 +3,14 @@ import { notFound } from "next/navigation";
 import { siteConfig } from "@/config/site";
 import { getGarageContent } from "@/data/garage";
 import { getElectricienContent } from "@/data/electricien";
+import { getPlombierContent } from "@/data/plombier";
 import { GaragePrestationsPage } from "@/components/garage/GaragePrestationsPage";
 import { ElectricienPrestationsPage } from "@/components/electricien/ElectricienPrestationsPage";
+import { PlombierPrestationsPage } from "@/components/plombier/PlombierPrestationsPage";
 
 const isGarage = siteConfig.template === "garage";
 const isElectricien = siteConfig.template === "electricien";
+const isPlombier = siteConfig.template === "plombier";
 
 export const metadata: Metadata = isGarage
   ? {
@@ -25,15 +28,26 @@ export const metadata: Metadata = isGarage
           .join(", ")}.`,
         alternates: { canonical: "/prestations" },
       }
-    : {};
+    : isPlombier
+      ? {
+          title: "Nos prestations",
+          description: `Découvrez les prestations de ${siteConfig.name} : ${getPlombierContent()
+            .services.items.map((service) => service.name.toLowerCase())
+            .join(", ")}.`,
+          alternates: { canonical: "/prestations" },
+        }
+      : {};
 
 export default function PrestationsPage() {
-  // Route propre aux gabarits "garage" et "electricien" : sans objet pour les autres agences.
+  // Route propre aux gabarits "garage", "electricien" et "plombier" : sans objet pour les autres agences.
   if (isGarage) {
     return <GaragePrestationsPage />;
   }
   if (isElectricien) {
     return <ElectricienPrestationsPage />;
+  }
+  if (isPlombier) {
+    return <PlombierPrestationsPage />;
   }
 
   notFound();

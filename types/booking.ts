@@ -79,6 +79,23 @@ export interface ElectricienQuoteFormValues {
 
 export type ElectricienQuoteFormErrors = Partial<Record<keyof ElectricienQuoteFormValues, string>>;
 
+export interface PlombierQuoteFormValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  /** Slug du type de problème (voir data/plombier/<id>.ts), ou "autre" */
+  problemType: string;
+  /** true pour une urgence immédiate (fuite d'eau) : priorise la demande, sans imposer de date/créneau */
+  isUrgent: boolean;
+  preferredDate: string;
+  preferredTime: AppointmentTimeSlot;
+  message: string;
+  consent: boolean;
+}
+
+export type PlombierQuoteFormErrors = Partial<Record<keyof PlombierQuoteFormValues, string>>;
+
 export type VehicleConditionInput = "excellent" | "tres-bon" | "bon" | "a-revoir";
 
 export interface SellVehicleFormValues {

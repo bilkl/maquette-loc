@@ -30,6 +30,12 @@
       "runtimeExecutable": "bash",
       "runtimeArgs": ["-lc", "NEXT_PUBLIC_BRAND=distefano npm run dev -- --port 3050"],
       "port": 3050
+    },
+    {
+      "name": "leplombier",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-lc", "NEXT_PUBLIC_BRAND=leplombier npm run dev -- --port 3060"],
+      "port": 3060
     }
   ]
 }

@@ -42,8 +42,12 @@ export interface BrandConfig {
    *   Ton confiance/technique, prise de rendez-vous/devis en ligne et accès direct en
    *   cas d'urgence. Une agence en "electricien" doit fournir son contenu métier dans
    *   data/electricien/<id>.ts. Réutilisable pour un futur artisan proche.
+   * - "plombier" : artisan plombier indépendant (voir components/plombier/). Ton
+   *   confiance/urgence, palette claire et rassurante, accès d'urgence permanent
+   *   (fuite d'eau). Une agence en "plombier" doit fournir son contenu métier dans
+   *   data/plombier/<id>.ts.
    */
-  template?: "classic" | "showroom" | "garage" | "dealer" | "electricien";
+  template?: "classic" | "showroom" | "garage" | "dealer" | "electricien" | "plombier";
 
   /**
    * Palette globale du site pour cette agence.
@@ -53,8 +57,9 @@ export interface BrandConfig {
    * - "garage" = blanc / gris neutre chaud, texte quasi noir, pensé pour le gabarit "garage".
    * - "dealer" = blanc / gris neutre froid, pensé pour le gabarit "dealer".
    * - "electricien" = blanc / bleu anthracite technique, pensé pour le gabarit "electricien".
+   * - "plombier" = blanc / gris bleuté clair, rassurant, pensé pour le gabarit "plombier".
    */
-  theme?: "dark" | "light" | "showroom" | "garage" | "dealer" | "electricien";
+  theme?: "dark" | "light" | "showroom" | "garage" | "dealer" | "electricien" | "plombier";
 
   /**
    * Active un traitement visuel plus premium pour les composants du gabarit

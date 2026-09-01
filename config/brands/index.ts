@@ -4,6 +4,7 @@ import { eagledrive } from "./eagledrive";
 import { elegancyrent } from "./elegancyrent";
 import { garagecarlos } from "./garagecarlos";
 import { lamarbrerie } from "./lamarbrerie";
+import { leplombier } from "./leplombier";
 import { luxurcars } from "./luxurcars";
 import { luxurydrive } from "./luxurydrive";
 import { nlprestige } from "./nlprestige";
@@ -27,6 +28,7 @@ export const brands: Record<string, BrandConfig> = {
   lamarbrerie,
   topcarsoccasions,
   distefano,
+  leplombier,
 };
 
 export const DEFAULT_BRAND_ID = "nlprestige";

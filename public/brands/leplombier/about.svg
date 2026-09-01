@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#eaf3fb"/>
+    </linearGradient>
+    <linearGradient id="rule" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ea580c" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#ea580c" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#ea580c" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#bg)"/>
+  <g opacity="0.08" stroke="#0b6fb8" stroke-width="1">
+    <line x1="0" y1="0" x2="1600" y2="0"/>
+    <line x1="0" y1="120" x2="1600" y2="120"/>
+    <line x1="0" y1="240" x2="1600" y2="240"/>
+    <line x1="0" y1="360" x2="1600" y2="360"/>
+    <line x1="0" y1="480" x2="1600" y2="480"/>
+    <line x1="0" y1="600" x2="1600" y2="600"/>
+    <line x1="0" y1="720" x2="1600" y2="720"/>
+    <line x1="0" y1="840" x2="1600" y2="840"/>
+    <line x1="0" y1="960" x2="1600" y2="960"/>
+    <line x1="0" y1="1080" x2="1600" y2="1080"/>
+    <line x1="0" y1="1200" x2="1600" y2="1200"/>
+  </g>
+  <rect x="0" y="816" width="1600" height="3" fill="url(#rule)"/>
+  <g transform="translate(800, 600) scale(6)" fill="#0b6fb8" opacity="0.9">
+    <path d="M 0 -34 C 16 -10 26 8 26 22 C 26 38 14 48 0 48 C -14 48 -26 38 -26 22 C -26 8 -16 -10 0 -34 Z"/>
+  </g>
+  <text x="50%" y="1032" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="48" fill="#0f172a" letter-spacing="1">L'ARTISAN — PLUS DE 20 ANS D'EXPÉRIENCE</text>
+  <text x="50%" y="1081" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#54627a" letter-spacing="4">IMAGE DE DÉMONSTRATION — À REMPLACER</text>
+</svg>

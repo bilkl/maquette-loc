@@ -21,8 +21,8 @@ export const metadata: Metadata = {
 };
 
 export default function VehiculesPage() {
-  // Route sans objet pour les gabarits "garage" et "electricien" (pas de flotte à louer ou vendre).
-  if (isGarage || siteConfig.template === "electricien") {
+  // Route sans objet pour les gabarits "garage", "electricien" et "plombier" (pas de flotte à louer ou vendre).
+  if (isGarage || siteConfig.template === "electricien" || siteConfig.template === "plombier") {
     notFound();
   }
 

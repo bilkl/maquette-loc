@@ -99,6 +99,25 @@ export async function submitElectricienQuoteRequest(
 }
 
 /**
+ * Demande de devis / intervention du gabarit "plombier". Une demande marquée
+ * urgente (fuite d'eau, voir PlombierQuoteFormValues.isUrgent) mériterait,
+ * avec un service réel branché, une notification prioritaire (SMS/appel)
+ * plutôt qu'un simple accusé de réception — à adapter selon le canal retenu.
+ */
+export async function submitPlombierQuoteRequest(
+  values: unknown,
+): Promise<SubmissionResult> {
+  await simulateNetworkDelay();
+  console.log(`[${siteConfig.name}] Nouvelle demande d'intervention :`, values);
+
+  return {
+    success: true,
+    message:
+      "Votre demande a bien été envoyée. Nous vous recontactons par téléphone ou WhatsApp dans les plus brefs délais pour confirmer votre devis ou votre intervention.",
+  };
+}
+
+/**
  * Demande "vendre ou reprendre mon véhicule" du gabarit "dealer".
  * L'estimation sous 24h annoncée au client est traitée manuellement par
  * l'équipe une fois cette demande reçue ; brancher ici un service réel

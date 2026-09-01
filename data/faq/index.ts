@@ -5,6 +5,7 @@ import { faqItems as eagledrive } from "./eagledrive";
 import { faqItems as elegancyrent } from "./elegancyrent";
 import { faqItems as garagecarlos } from "./garagecarlos";
 import { faqItems as lamarbrerie } from "./lamarbrerie";
+import { faqItems as leplombier } from "./leplombier";
 import { faqItems as luxurcars } from "./luxurcars";
 import { faqItems as luxurydrive } from "./luxurydrive";
 import { faqItems as nlprestige } from "./nlprestige";
@@ -28,6 +29,7 @@ const faqByBrand: Record<string, FaqItem[]> = {
   lamarbrerie,
   topcarsoccasions,
   distefano,
+  leplombier,
 };
 
 export const faqItems: FaqItem[] = faqByBrand[getActiveBrand().id] ?? nlprestige;

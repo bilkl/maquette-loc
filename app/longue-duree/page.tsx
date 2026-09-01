@@ -49,11 +49,12 @@ const includedServices = [
 ];
 
 export default function LongTermPage() {
-  // Route sans objet pour les gabarits "garage", "dealer" et "electricien" (pas de location de véhicules).
+  // Route sans objet pour les gabarits "garage", "dealer", "electricien" et "plombier" (pas de location de véhicules).
   if (
     siteConfig.template === "garage" ||
     siteConfig.template === "dealer" ||
-    siteConfig.template === "electricien"
+    siteConfig.template === "electricien" ||
+    siteConfig.template === "plombier"
   ) {
     notFound();
   }
