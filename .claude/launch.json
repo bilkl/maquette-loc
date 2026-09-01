@@ -24,6 +24,12 @@
       "runtimeExecutable": "bash",
       "runtimeArgs": ["-lc", "NEXT_PUBLIC_BRAND=lamarbrerie npm run dev -- --port 3040"],
       "port": 3040
+    },
+    {
+      "name": "distefano",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-lc", "NEXT_PUBLIC_BRAND=distefano npm run dev -- --port 3050"],
+      "port": 3050
     }
   ]
 }

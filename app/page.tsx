@@ -10,6 +10,7 @@ import { FAQSection } from "@/components/sections/FAQSection";
 import { ShowroomHome } from "@/components/showroom/ShowroomHome";
 import { GarageHome } from "@/components/garage/GarageHome";
 import { DealerHome } from "@/components/dealer/DealerHome";
+import { ElectricienHome } from "@/components/electricien/ElectricienHome";
 
 export default function Home() {
   // Le gabarit est choisi par agence dans config/brands/<id>.ts.
@@ -21,6 +22,9 @@ export default function Home() {
   }
   if (siteConfig.template === "dealer") {
     return <DealerHome />;
+  }
+  if (siteConfig.template === "electricien") {
+    return <ElectricienHome />;
   }
 
   return (

@@ -80,6 +80,25 @@ export async function submitAppointmentRequest(
 }
 
 /**
+ * Demande de devis / rendez-vous du gabarit "electricien". Une demande
+ * marquée urgente (voir ElectricienQuoteFormValues.isUrgent) mériterait, avec
+ * un service réel branché, une notification prioritaire (SMS/appel) plutôt
+ * qu'un simple accusé de réception — à adapter selon le canal retenu.
+ */
+export async function submitElectricienQuoteRequest(
+  values: unknown,
+): Promise<SubmissionResult> {
+  await simulateNetworkDelay();
+  console.log(`[${siteConfig.name}] Nouvelle demande de devis :`, values);
+
+  return {
+    success: true,
+    message:
+      "Votre demande a bien été envoyée. Nous vous recontactons par téléphone ou WhatsApp dans les plus brefs délais pour confirmer votre devis ou votre rendez-vous.",
+  };
+}
+
+/**
  * Demande "vendre ou reprendre mon véhicule" du gabarit "dealer".
  * L'estimation sous 24h annoncée au client est traitée manuellement par
  * l'équipe une fois cette demande reçue ; brancher ici un service réel

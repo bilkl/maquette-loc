@@ -62,6 +62,23 @@ export interface AppointmentFormValues {
 
 export type AppointmentFormErrors = Partial<Record<keyof AppointmentFormValues, string>>;
 
+export interface ElectricienQuoteFormValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  /** Slug du type d'intervention souhaité (voir data/electricien/<id>.ts), ou "autre" */
+  interventionType: string;
+  /** true pour une situation urgente : priorise la demande, sans imposer de date/créneau */
+  isUrgent: boolean;
+  preferredDate: string;
+  preferredTime: AppointmentTimeSlot;
+  message: string;
+  consent: boolean;
+}
+
+export type ElectricienQuoteFormErrors = Partial<Record<keyof ElectricienQuoteFormValues, string>>;
+
 export type VehicleConditionInput = "excellent" | "tres-bon" | "bon" | "a-revoir";
 
 export interface SellVehicleFormValues {

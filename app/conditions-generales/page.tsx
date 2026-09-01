@@ -4,11 +4,14 @@ import { siteConfig } from "@/config/site";
 
 const isGarage = siteConfig.template === "garage";
 const isDealer = siteConfig.template === "dealer";
+const isElectricien = siteConfig.template === "electricien";
 const pageTitle = isGarage
   ? "Conditions générales de service"
   : isDealer
     ? "Conditions générales de vente"
-    : "Conditions générales de location";
+    : isElectricien
+      ? "Conditions générales de prestation"
+      : "Conditions générales de location";
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -16,7 +19,9 @@ export const metadata: Metadata = {
     ? `Conditions générales applicables aux prestations d'entretien et de réparation de ${siteConfig.name}.`
     : isDealer
       ? `Conditions générales applicables à l'achat, la vente et la reprise de véhicules d'occasion chez ${siteConfig.name}.`
-      : `Conditions générales de location applicables aux véhicules ${siteConfig.name}.`,
+      : isElectricien
+        ? `Conditions générales applicables aux prestations d'installation, de contrôle et de dépannage électrique de ${siteConfig.name}.`
+        : `Conditions générales de location applicables aux véhicules ${siteConfig.name}.`,
   alternates: { canonical: "/conditions-generales" },
   robots: { index: false, follow: true },
 };
@@ -135,6 +140,68 @@ export default function TermsPage() {
               {/* TODO: remplacer par l'information officielle du garage */}
               Étendue de la responsabilité du garage, conditions de prise en charge du véhicule sur
               site et modalités en cas de désaccord sur une intervention à définir par{" "}
+              {siteConfig.name} avant publication.
+            </p>
+          </section>
+        </div>
+      </div>
+    );
+  }
+
+  if (isElectricien) {
+    return (
+      <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6 lg:px-8">
+        <h1 className="text-3xl font-bold tracking-tight text-brand-ivory">{pageTitle}</h1>
+
+        <div className="mt-8">
+          <LegalDisclaimer />
+        </div>
+
+        <div className="space-y-8 text-sm leading-relaxed text-brand-silver">
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">1. Objet</h2>
+            <p className="mt-2">
+              Les présentes conditions générales encadrent les prestations d&apos;installation,
+              de contrôle (OIBT) et de dépannage électrique proposées par {siteConfig.name}.
+              Elles s&apos;appliquent à toute intervention réalisée sur rendez-vous, en urgence,
+              ou après acceptation d&apos;un devis.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">2. Devis et acceptation</h2>
+            <p className="mt-2 text-xs text-brand-silver/70">
+              {/* TODO: remplacer par l'information officielle de l'entreprise */}
+              Un devis est communiqué avant toute intervention non couverte par le rendez-vous
+              initial. Modalités d&apos;acceptation (signature, confirmation orale ou écrite) à
+              préciser par {siteConfig.name}.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">3. Interventions d&apos;urgence</h2>
+            <p className="mt-2 text-xs text-brand-silver/70">
+              {/* TODO: remplacer par l'information officielle de l'entreprise */}
+              Conditions de prise en charge, majoration éventuelle et délais indicatifs
+              d&apos;intervention en dehors des horaires habituels à préciser par {siteConfig.name}.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">4. Matériel et garantie des travaux</h2>
+            <p className="mt-2 text-xs text-brand-silver/70">
+              {/* TODO: remplacer par l'information officielle de l'entreprise */}
+              Origine du matériel utilisé et durée de garantie applicable aux installations et
+              réparations effectuées à préciser par {siteConfig.name}.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">5. Responsabilité</h2>
+            <p className="mt-2 text-xs text-brand-silver/70">
+              {/* TODO: remplacer par l'information officielle de l'entreprise */}
+              Étendue de la responsabilité de l&apos;entreprise, conformité aux normes OIBT en
+              vigueur et modalités en cas de désaccord sur une intervention à définir par{" "}
               {siteConfig.name} avant publication.
             </p>
           </section>

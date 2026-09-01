@@ -1,4 +1,5 @@
 import { bullrent } from "./bullrent";
+import { distefano } from "./distefano";
 import { eagledrive } from "./eagledrive";
 import { elegancyrent } from "./elegancyrent";
 import { garagecarlos } from "./garagecarlos";
@@ -25,6 +26,7 @@ export const brands: Record<string, BrandConfig> = {
   garagecarlos,
   lamarbrerie,
   topcarsoccasions,
+  distefano,
 };
 
 export const DEFAULT_BRAND_ID = "nlprestige";

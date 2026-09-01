@@ -1,4 +1,4 @@
-import { AppointmentFormErrors, AppointmentFormValues, BookingFormErrors, BookingFormValues, ContactFormErrors, ContactFormValues, LongTermFormErrors, LongTermFormValues, SellVehicleFormErrors, SellVehicleFormValues } from "@/types/booking";
+import { AppointmentFormErrors, AppointmentFormValues, BookingFormErrors, BookingFormValues, ContactFormErrors, ContactFormValues, ElectricienQuoteFormErrors, ElectricienQuoteFormValues, LongTermFormErrors, LongTermFormValues, SellVehicleFormErrors, SellVehicleFormValues } from "@/types/booking";
 import { todayIso } from "@/lib/utils";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -119,6 +119,38 @@ export function validateAppointmentForm(values: AppointmentFormValues): Appointm
     errors.preferredDate = "Veuillez indiquer une date souhaitée.";
   } else if (values.preferredDate < todayIso()) {
     errors.preferredDate = "La date souhaitée ne peut pas être dans le passé.";
+  }
+  if (!values.firstName.trim()) errors.firstName = "Le prénom est requis.";
+  if (!values.lastName.trim()) errors.lastName = "Le nom est requis.";
+  if (!values.email.trim()) {
+    errors.email = "L'e-mail est requis.";
+  } else if (!EMAIL_REGEX.test(values.email)) {
+    errors.email = "Le format de l'e-mail est invalide.";
+  }
+  if (!values.phone.trim()) errors.phone = "Le téléphone est requis.";
+  if (!values.consent) errors.consent = "Le consentement est requis pour envoyer la demande.";
+
+  return errors;
+}
+
+/**
+ * Validation du formulaire de devis du gabarit "electricien" :
+ * - la date souhaitée ne peut pas être dans le passé, sauf demande marquée urgente
+ *   (une urgence n'attend pas un créneau planifié — voir isUrgent) ;
+ * - le type d'intervention est requis pour orienter la demande.
+ */
+export function validateElectricienQuoteForm(
+  values: ElectricienQuoteFormValues,
+): ElectricienQuoteFormErrors {
+  const errors: ElectricienQuoteFormErrors = {};
+
+  if (!values.interventionType.trim()) errors.interventionType = "Veuillez sélectionner un type d'intervention.";
+  if (!values.isUrgent) {
+    if (!values.preferredDate) {
+      errors.preferredDate = "Veuillez indiquer une date souhaitée.";
+    } else if (values.preferredDate < todayIso()) {
+      errors.preferredDate = "La date souhaitée ne peut pas être dans le passé.";
+    }
   }
   if (!values.firstName.trim()) errors.firstName = "Le prénom est requis.";
   if (!values.lastName.trim()) errors.lastName = "Le nom est requis.";

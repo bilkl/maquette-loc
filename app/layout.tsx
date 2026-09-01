@@ -12,6 +12,8 @@ import { GarageHeader } from "@/components/garage/GarageHeader";
 import { GarageFooter } from "@/components/garage/GarageFooter";
 import { DealerHeader } from "@/components/dealer/DealerHeader";
 import { DealerFooter } from "@/components/dealer/DealerFooter";
+import { ElectricienHeader } from "@/components/electricien/ElectricienHeader";
+import { ElectricienFooter } from "@/components/electricien/ElectricienFooter";
 import { definedValues } from "@/lib/placeholders";
 
 const geistSans = Geist({
@@ -50,6 +52,7 @@ const template = siteConfig.template ?? "classic";
 const isShowroom = template === "showroom";
 const isGarage = template === "garage";
 const isDealer = template === "dealer";
+const isElectricien = template === "electricien";
 
 const pageTitle = `${siteConfig.name} | ${
   siteConfig.seo.pageTitleSuffix ?? "Location de véhicules de prestige en Suisse"
@@ -106,6 +109,14 @@ const themeTokens = {
     ivory: "#12181f",
     silver: "#57616e",
   },
+  electricien: {
+    black: "#0b1220",
+    charcoal: "#111a2e",
+    anthracite: "#182338",
+    line: "#28354d",
+    ivory: "#f4f6fb",
+    silver: "#9aa5bd",
+  },
 } as const;
 
 const activeTheme = themeTokens[siteConfig.theme ?? "dark"];
@@ -153,7 +164,7 @@ export const metadata: Metadata = {
 // omises du JSON-LD plutôt que publiées telles quelles (voir lib/placeholders.ts).
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
-  "@type": isGarage ? "AutoRepair" : isDealer ? "AutoDealer" : "AutoRental",
+  "@type": isGarage ? "AutoRepair" : isDealer ? "AutoDealer" : isElectricien ? "Electrician" : "AutoRental",
   name: siteConfig.name,
   description: siteConfig.description,
   ...(definedValues(siteConfig.contact.email).length > 0
@@ -194,7 +205,7 @@ export default function RootLayout({
           "--color-brand-accent-soft": siteConfig.colors.accentSoft,
           "--font-display": isShowroom
             ? "var(--font-display-showroom)"
-            : isGarage || isDealer
+            : isGarage || isDealer || isElectricien
               ? "var(--font-sans)"
               : "var(--font-display-classic)",
           "--background": activeTheme.black,
@@ -219,6 +230,8 @@ export default function RootLayout({
           <GarageHeader />
         ) : isDealer ? (
           <DealerHeader />
+        ) : isElectricien ? (
+          <ElectricienHeader />
         ) : (
           <Header />
         )}
@@ -231,10 +244,16 @@ export default function RootLayout({
           <GarageFooter />
         ) : isDealer ? (
           <DealerFooter />
+        ) : isElectricien ? (
+          <ElectricienFooter />
         ) : (
           <Footer />
         )}
-        {isShowroom ? <ShowroomWhatsAppButton /> : <WhatsAppButton />}
+        {isShowroom ? (
+          <ShowroomWhatsAppButton />
+        ) : isElectricien ? null : (
+          <WhatsAppButton />
+        )}
       </body>
     </html>
   );

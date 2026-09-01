@@ -20,8 +20,8 @@ const isDealer = siteConfig.template === "dealer";
 const isShowroom = siteConfig.template === "showroom";
 
 export function generateStaticParams() {
-  // Route sans objet pour le gabarit "garage" (pas de flotte à louer ou vendre).
-  if (isGarage) return [];
+  // Route sans objet pour les gabarits "garage" et "electricien" (pas de flotte à louer ou vendre).
+  if (isGarage || siteConfig.template === "electricien") return [];
   // "dealer" a son propre catalogue (data/occasion-vehicles), distinct de la
   // flotte de location (data/vehicles) utilisée par "classic"/"showroom".
   if (isDealer) return occasionVehicles.map((vehicle) => ({ slug: vehicle.slug }));
@@ -72,7 +72,7 @@ export async function generateMetadata({ params }: VehiclePageProps): Promise<Me
 }
 
 export default async function VehiclePage({ params }: VehiclePageProps) {
-  if (isGarage) {
+  if (isGarage || siteConfig.template === "electricien") {
     notFound();
   }
 

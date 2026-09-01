@@ -9,6 +9,7 @@ import { InstagramIcon } from "@/components/ui/icons";
 
 const isGarage = siteConfig.template === "garage";
 const isDealer = siteConfig.template === "dealer";
+const isElectricien = siteConfig.template === "electricien";
 const contactChannels = isWhatsAppEnabled() ? "formulaire, e-mail ou WhatsApp" : "formulaire, e-mail ou téléphone";
 
 export const metadata: Metadata = {
@@ -17,7 +18,9 @@ export const metadata: Metadata = {
     ? `Contactez ${siteConfig.name} par ${contactChannels} pour toute question sur l'entretien ou la réparation de votre véhicule.`
     : isDealer
       ? `Contactez ${siteConfig.name} par ${contactChannels} pour toute question sur l'achat, la vente ou la reprise d'un véhicule.`
-      : `Contactez ${siteConfig.name} par ${contactChannels} pour toute question sur la location de véhicules de prestige en Suisse.`,
+      : isElectricien
+        ? `Contactez ${siteConfig.name} par ${contactChannels} pour toute question sur vos installations électriques ou votre borne de recharge.`
+        : `Contactez ${siteConfig.name} par ${contactChannels} pour toute question sur la location de véhicules de prestige en Suisse.`,
   alternates: { canonical: "/contact" },
 };
 
@@ -31,7 +34,9 @@ export default function ContactPage() {
             ? "Une question sur votre véhicule ?"
             : isDealer
               ? "Une question sur un véhicule ou une reprise ?"
-              : "Parlons de votre projet de location"
+              : isElectricien
+                ? "Une question sur votre installation ?"
+                : "Parlons de votre projet de location"
         }
         description="Une question, une demande spécifique ? Notre équipe vous répond rapidement."
       />

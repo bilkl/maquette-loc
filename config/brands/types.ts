@@ -38,8 +38,12 @@ export interface BrandConfig {
    *   filtres, double parcours acheter/vendre, estimation de reprise. Une agence en
    *   "dealer" doit fournir son contenu métier dans data/dealer/<id>.ts et son catalogue
    *   dans data/occasion-vehicles/<id>.ts.
+   * - "electricien" : artisan électricien indépendant (voir components/electricien/).
+   *   Ton confiance/technique, prise de rendez-vous/devis en ligne et accès direct en
+   *   cas d'urgence. Une agence en "electricien" doit fournir son contenu métier dans
+   *   data/electricien/<id>.ts. Réutilisable pour un futur artisan proche.
    */
-  template?: "classic" | "showroom" | "garage" | "dealer";
+  template?: "classic" | "showroom" | "garage" | "dealer" | "electricien";
 
   /**
    * Palette globale du site pour cette agence.
@@ -48,8 +52,9 @@ export interface BrandConfig {
    * - "showroom" = noir profond / anthracite chaud, pensé pour le gabarit "showroom".
    * - "garage" = blanc / gris neutre chaud, texte quasi noir, pensé pour le gabarit "garage".
    * - "dealer" = blanc / gris neutre froid, pensé pour le gabarit "dealer".
+   * - "electricien" = blanc / bleu anthracite technique, pensé pour le gabarit "electricien".
    */
-  theme?: "dark" | "light" | "showroom" | "garage" | "dealer";
+  theme?: "dark" | "light" | "showroom" | "garage" | "dealer" | "electricien";
 
   /**
    * Active un traitement visuel plus premium pour les composants du gabarit
