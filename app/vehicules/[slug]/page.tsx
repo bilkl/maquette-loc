@@ -5,7 +5,7 @@ import { getVehicleBySlug, vehicles } from "@/data/vehicles";
 import { getOccasionVehicleBySlug, vehicles as occasionVehicles } from "@/data/occasion-vehicles";
 import { siteConfig } from "@/config/site";
 import { formatChf, formatKm } from "@/lib/utils";
-import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { getWhatsAppUrl, isWhatsAppEnabled } from "@/lib/whatsapp";
 import { VehicleGallery } from "@/components/vehicles/VehicleGallery";
 import { BookingForm } from "@/components/forms/BookingForm";
 import { ShowroomVehicleDetail } from "@/components/showroom/ShowroomVehicleDetail";
@@ -20,8 +20,14 @@ const isDealer = siteConfig.template === "dealer";
 const isShowroom = siteConfig.template === "showroom";
 
 export function generateStaticParams() {
-  // Route sans objet pour les gabarits "garage", "electricien" et "plombier" (pas de flotte à louer ou vendre).
-  if (isGarage || siteConfig.template === "electricien" || siteConfig.template === "plombier") return [];
+  // Route sans objet pour les gabarits artisan (garage, electricien, plombier, menuiserie) : pas de flotte à louer ou vendre.
+  if (
+    isGarage ||
+    siteConfig.template === "electricien" ||
+    siteConfig.template === "plombier" ||
+    siteConfig.template === "menuiserie"
+  )
+    return [];
   // "dealer" a son propre catalogue (data/occasion-vehicles), distinct de la
   // flotte de location (data/vehicles) utilisée par "classic"/"showroom".
   if (isDealer) return occasionVehicles.map((vehicle) => ({ slug: vehicle.slug }));
@@ -72,7 +78,12 @@ export async function generateMetadata({ params }: VehiclePageProps): Promise<Me
 }
 
 export default async function VehiclePage({ params }: VehiclePageProps) {
-  if (isGarage || siteConfig.template === "electricien" || siteConfig.template === "plombier") {
+  if (
+    isGarage ||
+    siteConfig.template === "electricien" ||
+    siteConfig.template === "plombier" ||
+    siteConfig.template === "menuiserie"
+  ) {
     notFound();
   }
 
@@ -185,17 +196,19 @@ export default async function VehiclePage({ params }: VehiclePageProps) {
             </p>
           </div>
 
-          <a
-            href={getWhatsAppUrl(
-              `Bonjour ${siteConfig.name}, je souhaiterais obtenir des informations concernant la location de la ${vehicle.brand} ${vehicle.model}.`,
-            )}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center gap-2 rounded-none border border-[#25D366] bg-[#25D366] px-8 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-black hover:shadow-lg hover:shadow-black/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
-          >
-            <MessageCircle className="h-4 w-4" aria-hidden="true" />
-            Discuter sur WhatsApp
-          </a>
+          {isWhatsAppEnabled() ? (
+            <a
+              href={getWhatsAppUrl(
+                `Bonjour ${siteConfig.name}, je souhaiterais obtenir des informations concernant la location de la ${vehicle.brand} ${vehicle.model}.`,
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-2 rounded-none border border-[#25D366] bg-[#25D366] px-8 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-black hover:shadow-lg hover:shadow-black/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
+            >
+              <MessageCircle className="h-4 w-4" aria-hidden="true" />
+              Discuter sur WhatsApp
+            </a>
+          ) : null}
         </div>
       </div>
 

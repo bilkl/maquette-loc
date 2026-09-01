@@ -118,6 +118,26 @@ export async function submitPlombierQuoteRequest(
 }
 
 /**
+ * Demande de devis du gabarit "menuiserie". Les éventuelles photos jointes
+ * (voir MenuiserieQuoteForm) sont gérées côté formulaire, pas transmises ici :
+ * un service réel branché nécessiterait un stockage de fichiers (ex. upload
+ * vers S3/Cloudinary) avant de journaliser leurs URLs plutôt que les objets
+ * File eux-mêmes.
+ */
+export async function submitMenuiserieQuoteRequest(
+  values: unknown,
+): Promise<SubmissionResult> {
+  await simulateNetworkDelay();
+  console.log(`[${siteConfig.name}] Nouvelle demande de devis :`, values);
+
+  return {
+    success: true,
+    message:
+      "Votre demande a bien été envoyée. Nous vous recontactons par téléphone ou WhatsApp dans les plus brefs délais pour organiser une visite d'estimation.",
+  };
+}
+
+/**
  * Demande "vendre ou reprendre mon véhicule" du gabarit "dealer".
  * L'estimation sous 24h annoncée au client est traitée manuellement par
  * l'équipe une fois cette demande reçue ; brancher ici un service réel

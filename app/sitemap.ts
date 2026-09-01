@@ -8,10 +8,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const isDealer = siteConfig.template === "dealer";
   const isElectricien = siteConfig.template === "electricien";
   const isPlombier = siteConfig.template === "plombier";
-  const isArtisan = isGarage || isElectricien || isPlombier;
+  const isMenuiserie = siteConfig.template === "menuiserie";
+  const isArtisan = isGarage || isElectricien || isPlombier || isMenuiserie;
 
   const commonRoutes = ["", "/a-propos", "/contact", "/mentions-legales", "/confidentialite", "/conditions-generales"];
-  const templateRoutes = isArtisan ? ["/prestations"] : isDealer ? ["/vehicules"] : ["/vehicules", "/longue-duree"];
+  const templateRoutes = isMenuiserie
+    ? ["/prestations", "/realisations"]
+    : isArtisan
+      ? ["/prestations"]
+      : isDealer
+        ? ["/vehicules"]
+        : ["/vehicules", "/longue-duree"];
 
   const staticRoutes = [...commonRoutes, ...templateRoutes].map((route) => ({
     url: `${siteConfig.url}${route}`,

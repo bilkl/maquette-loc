@@ -7,6 +7,7 @@ import { lamarbrerie } from "./lamarbrerie";
 import { leplombier } from "./leplombier";
 import { luxurcars } from "./luxurcars";
 import { luxurydrive } from "./luxurydrive";
+import { menuiseriebem } from "./menuiseriebem";
 import { nlprestige } from "./nlprestige";
 import { slgrent } from "./slgrent";
 import { swisselite } from "./swisselite";
@@ -29,6 +30,7 @@ export const brands: Record<string, BrandConfig> = {
   topcarsoccasions,
   distefano,
   leplombier,
+  menuiseriebem,
 };
 
 export const DEFAULT_BRAND_ID = "nlprestige";

@@ -11,6 +11,7 @@ const isGarage = siteConfig.template === "garage";
 const isDealer = siteConfig.template === "dealer";
 const isElectricien = siteConfig.template === "electricien";
 const isPlombier = siteConfig.template === "plombier";
+const isMenuiserie = siteConfig.template === "menuiserie";
 const contactChannels = isWhatsAppEnabled() ? "formulaire, e-mail ou WhatsApp" : "formulaire, e-mail ou téléphone";
 
 export const metadata: Metadata = {
@@ -23,7 +24,9 @@ export const metadata: Metadata = {
         ? `Contactez ${siteConfig.name} par ${contactChannels} pour toute question sur vos installations électriques ou votre borne de recharge.`
         : isPlombier
           ? `Contactez ${siteConfig.name} par ${contactChannels} pour toute question sur votre installation sanitaire ou une intervention.`
-          : `Contactez ${siteConfig.name} par ${contactChannels} pour toute question sur la location de véhicules de prestige en Suisse.`,
+          : isMenuiserie
+            ? `Contactez ${siteConfig.name} par ${contactChannels} pour toute question sur votre projet de menuiserie sur mesure.`
+            : `Contactez ${siteConfig.name} par ${contactChannels} pour toute question sur la location de véhicules de prestige en Suisse.`,
   alternates: { canonical: "/contact" },
 };
 
@@ -41,7 +44,9 @@ export default function ContactPage() {
                 ? "Une question sur votre installation ?"
                 : isPlombier
                   ? "Une question sur votre installation sanitaire ?"
-                  : "Parlons de votre projet de location"
+                  : isMenuiserie
+                    ? "Une question sur votre projet sur mesure ?"
+                    : "Parlons de votre projet de location"
         }
         description="Une question, une demande spécifique ? Notre équipe vous répond rapidement."
       />

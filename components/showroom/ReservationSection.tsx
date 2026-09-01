@@ -7,7 +7,7 @@ import { ContactValue } from "@/components/showroom/ContactValue";
 import { ShowroomBookingForm } from "@/components/forms/ShowroomBookingForm";
 import { WhatsAppIcon } from "@/components/ui/icons";
 import { externalHref, mailtoHref, telHref } from "@/lib/placeholders";
-import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { getWhatsAppUrl, isWhatsAppEnabled } from "@/lib/whatsapp";
 
 interface ReservationSectionProps {
   content: ShowroomContent["reservation"];
@@ -40,15 +40,17 @@ export function ReservationSection({ content, defaultVehicleSlug }: ReservationS
             </ul>
 
             <div className="mt-10 border-t border-brand-line/60 pt-8">
-              <a
-                href={getWhatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 border border-brand-line px-5 py-3.5 text-sm text-brand-ivory transition-colors hover:border-brand-accent hover:text-brand-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
-              >
-                <WhatsAppIcon className="h-4 w-4 text-[#25D366]" aria-hidden="true" />
-                {content.whatsappLabel}
-              </a>
+              {isWhatsAppEnabled() ? (
+                <a
+                  href={getWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 border border-brand-line px-5 py-3.5 text-sm text-brand-ivory transition-colors hover:border-brand-accent hover:text-brand-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
+                >
+                  <WhatsAppIcon className="h-4 w-4 text-[#25D366]" aria-hidden="true" />
+                  {content.whatsappLabel}
+                </a>
+              ) : null}
 
               <ul className="mt-8 space-y-3 text-sm">
                 <li className="flex items-start gap-2.5">

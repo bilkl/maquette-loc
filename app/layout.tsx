@@ -16,6 +16,8 @@ import { ElectricienHeader } from "@/components/electricien/ElectricienHeader";
 import { ElectricienFooter } from "@/components/electricien/ElectricienFooter";
 import { PlombierHeader } from "@/components/plombier/PlombierHeader";
 import { PlombierFooter } from "@/components/plombier/PlombierFooter";
+import { MenuiserieHeader } from "@/components/menuiserie/MenuiserieHeader";
+import { MenuiserieFooter } from "@/components/menuiserie/MenuiserieFooter";
 import { definedValues } from "@/lib/placeholders";
 
 const geistSans = Geist({
@@ -56,6 +58,7 @@ const isGarage = template === "garage";
 const isDealer = template === "dealer";
 const isElectricien = template === "electricien";
 const isPlombier = template === "plombier";
+const isMenuiserie = template === "menuiserie";
 
 const pageTitle = `${siteConfig.name} | ${
   siteConfig.seo.pageTitleSuffix ?? "Location de véhicules de prestige en Suisse"
@@ -128,6 +131,14 @@ const themeTokens = {
     ivory: "#0f172a",
     silver: "#54627a",
   },
+  menuiserie: {
+    black: "#faf7f2",
+    charcoal: "#f2ece1",
+    anthracite: "#ece2d3",
+    line: "#ddcdb2",
+    ivory: "#2b2320",
+    silver: "#6b5d4f",
+  },
 } as const;
 
 const activeTheme = themeTokens[siteConfig.theme ?? "dark"];
@@ -183,7 +194,9 @@ const localBusinessJsonLd = {
         ? "Electrician"
         : isPlombier
           ? "Plumber"
-          : "AutoRental",
+          : isMenuiserie
+            ? "Carpenter"
+            : "AutoRental",
   name: siteConfig.name,
   description: siteConfig.description,
   ...(definedValues(siteConfig.contact.email).length > 0
@@ -253,6 +266,8 @@ export default function RootLayout({
           <ElectricienHeader />
         ) : isPlombier ? (
           <PlombierHeader />
+        ) : isMenuiserie ? (
+          <MenuiserieHeader />
         ) : (
           <Header />
         )}
@@ -269,6 +284,8 @@ export default function RootLayout({
           <ElectricienFooter />
         ) : isPlombier ? (
           <PlombierFooter />
+        ) : isMenuiserie ? (
+          <MenuiserieFooter />
         ) : (
           <Footer />
         )}

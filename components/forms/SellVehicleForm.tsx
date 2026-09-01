@@ -6,7 +6,7 @@ import { siteConfig } from "@/config/site";
 import { SellVehicleFormErrors, SellVehicleFormValues, VehicleConditionInput } from "@/types/booking";
 import { validateSellVehicleForm } from "@/lib/validation";
 import { submitSellVehicleRequest } from "@/lib/booking-actions";
-import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { getWhatsAppUrl, isWhatsAppEnabled } from "@/lib/whatsapp";
 import { WhatsAppIcon } from "@/components/ui/icons";
 import { DealerButton } from "@/components/dealer/DealerButton";
 import { cn } from "@/lib/utils";
@@ -263,15 +263,17 @@ export function SellVehicleForm() {
           )}
         </DealerButton>
 
-        <a
-          href={getWhatsAppUrl(recapMessage)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-brand-silver transition-colors hover:text-brand-accent"
-        >
-          <WhatsAppIcon className="h-4 w-4 text-[#25D366]" aria-hidden="true" />
-          Ou écrire directement sur WhatsApp
-        </a>
+        {isWhatsAppEnabled() ? (
+          <a
+            href={getWhatsAppUrl(recapMessage)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-brand-silver transition-colors hover:text-brand-accent"
+          >
+            <WhatsAppIcon className="h-4 w-4 text-[#25D366]" aria-hidden="true" />
+            Ou écrire directement sur WhatsApp
+          </a>
+        ) : null}
       </div>
     </form>
   );

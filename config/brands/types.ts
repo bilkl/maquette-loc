@@ -46,8 +46,20 @@ export interface BrandConfig {
    *   confiance/urgence, palette claire et rassurante, accès d'urgence permanent
    *   (fuite d'eau). Une agence en "plombier" doit fournir son contenu métier dans
    *   data/plombier/<id>.ts.
+   * - "menuiserie" : artisan du bois (menuisier-ébéniste, voir components/menuiserie/).
+   *   Pas de ton urgence : le rendu visuel des réalisations prime (grande galerie photo,
+   *   avant/après), palette chaleureuse bois/beige, serif discret pour les titres. Une
+   *   agence en "menuiserie" doit fournir son contenu métier dans data/menuiserie/<id>.ts.
+   *   Réutilisable pour un futur artisan du bois/de la construction proche.
    */
-  template?: "classic" | "showroom" | "garage" | "dealer" | "electricien" | "plombier";
+  template?:
+    | "classic"
+    | "showroom"
+    | "garage"
+    | "dealer"
+    | "electricien"
+    | "plombier"
+    | "menuiserie";
 
   /**
    * Palette globale du site pour cette agence.
@@ -58,8 +70,17 @@ export interface BrandConfig {
    * - "dealer" = blanc / gris neutre froid, pensé pour le gabarit "dealer".
    * - "electricien" = blanc / bleu anthracite technique, pensé pour le gabarit "electricien".
    * - "plombier" = blanc / gris bleuté clair, rassurant, pensé pour le gabarit "plombier".
+   * - "menuiserie" = beige/bois chaud, pensé pour le gabarit "menuiserie".
    */
-  theme?: "dark" | "light" | "showroom" | "garage" | "dealer" | "electricien" | "plombier";
+  theme?:
+    | "dark"
+    | "light"
+    | "showroom"
+    | "garage"
+    | "dealer"
+    | "electricien"
+    | "plombier"
+    | "menuiserie";
 
   /**
    * Active un traitement visuel plus premium pour les composants du gabarit

@@ -8,6 +8,7 @@ import { faqItems as lamarbrerie } from "./lamarbrerie";
 import { faqItems as leplombier } from "./leplombier";
 import { faqItems as luxurcars } from "./luxurcars";
 import { faqItems as luxurydrive } from "./luxurydrive";
+import { faqItems as menuiseriebem } from "./menuiseriebem";
 import { faqItems as nlprestige } from "./nlprestige";
 import { faqItems as slgrent } from "./slgrent";
 import { faqItems as swisselite } from "./swisselite";
@@ -30,6 +31,7 @@ const faqByBrand: Record<string, FaqItem[]> = {
   topcarsoccasions,
   distefano,
   leplombier,
+  menuiseriebem,
 };
 
 export const faqItems: FaqItem[] = faqByBrand[getActiveBrand().id] ?? nlprestige;

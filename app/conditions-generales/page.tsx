@@ -6,6 +6,7 @@ const isGarage = siteConfig.template === "garage";
 const isDealer = siteConfig.template === "dealer";
 const isElectricien = siteConfig.template === "electricien";
 const isPlombier = siteConfig.template === "plombier";
+const isMenuiserie = siteConfig.template === "menuiserie";
 const pageTitle = isGarage
   ? "Conditions générales de service"
   : isDealer
@@ -14,7 +15,9 @@ const pageTitle = isGarage
       ? "Conditions générales de prestation"
       : isPlombier
         ? "Conditions générales de prestation"
-        : "Conditions générales de location";
+        : isMenuiserie
+          ? "Conditions générales de prestation"
+          : "Conditions générales de location";
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -26,7 +29,9 @@ export const metadata: Metadata = {
         ? `Conditions générales applicables aux prestations d'installation, de contrôle et de dépannage électrique de ${siteConfig.name}.`
         : isPlombier
           ? `Conditions générales applicables aux prestations d'installation, de dépannage et de rénovation sanitaire de ${siteConfig.name}.`
-          : `Conditions générales de location applicables aux véhicules ${siteConfig.name}.`,
+          : isMenuiserie
+            ? `Conditions générales applicables aux prestations de menuiserie et d'ébénisterie sur mesure de ${siteConfig.name}.`
+            : `Conditions générales de location applicables aux véhicules ${siteConfig.name}.`,
   alternates: { canonical: "/conditions-generales" },
   robots: { index: false, follow: true },
 };
@@ -269,6 +274,65 @@ export default function TermsPage() {
               {/* TODO: remplacer par l'information officielle de l'entreprise */}
               Étendue de la responsabilité de l&apos;entreprise et modalités en cas de désaccord
               sur une intervention à définir par {siteConfig.name} avant publication.
+            </p>
+          </section>
+        </div>
+      </div>
+    );
+  }
+
+  if (isMenuiserie) {
+    return (
+      <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6 lg:px-8">
+        <h1 className="text-3xl font-bold tracking-tight text-brand-ivory">{pageTitle}</h1>
+
+        <div className="mt-8">
+          <LegalDisclaimer />
+        </div>
+
+        <div className="space-y-8 text-sm leading-relaxed text-brand-silver">
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">1. Objet</h2>
+            <p className="mt-2">
+              Les présentes conditions générales encadrent les prestations de menuiserie et
+              d&apos;ébénisterie sur mesure proposées par {siteConfig.name}. Elles s&apos;appliquent
+              à toute intervention réalisée après acceptation d&apos;un devis.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">2. Devis et acceptation</h2>
+            <p className="mt-2 text-xs text-brand-silver/70">
+              {/* TODO: remplacer par l'information officielle de l'entreprise */}
+              Un devis détaillé est communiqué après une visite d&apos;estimation. Modalités
+              d&apos;acceptation (signature, acompte éventuel) à préciser par {siteConfig.name}.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">3. Délais de fabrication et de pose</h2>
+            <p className="mt-2 text-xs text-brand-silver/70">
+              {/* TODO: remplacer par l'information officielle de l'entreprise */}
+              Délais indicatifs de fabrication en atelier et de pose sur site, ainsi que les
+              conditions de report, à confirmer par {siteConfig.name} pour chaque projet.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">4. Matériaux et garantie des ouvrages</h2>
+            <p className="mt-2 text-xs text-brand-silver/70">
+              {/* TODO: remplacer par l'information officielle de l'entreprise */}
+              Essences de bois utilisées, traitements appliqués et durée de garantie applicable aux
+              ouvrages réalisés à préciser par {siteConfig.name}.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">5. Responsabilité</h2>
+            <p className="mt-2 text-xs text-brand-silver/70">
+              {/* TODO: remplacer par l'information officielle de l'entreprise */}
+              Étendue de la responsabilité de l&apos;entreprise et modalités en cas de désaccord sur
+              une réalisation à définir par {siteConfig.name} avant publication.
             </p>
           </section>
         </div>

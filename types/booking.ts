@@ -96,6 +96,22 @@ export interface PlombierQuoteFormValues {
 
 export type PlombierQuoteFormErrors = Partial<Record<keyof PlombierQuoteFormValues, string>>;
 
+export interface MenuiserieQuoteFormValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  /** Slug de la famille de savoir-faire concernée (voir data/menuiserie/<id>.ts), ou "autre" */
+  projectType: string;
+  /** Description libre du projet — champ requis, contrairement au "message" facultatif des autres gabarits */
+  description: string;
+  preferredDate: string;
+  preferredTime: AppointmentTimeSlot;
+  consent: boolean;
+}
+
+export type MenuiserieQuoteFormErrors = Partial<Record<keyof MenuiserieQuoteFormValues, string>>;
+
 export type VehicleConditionInput = "excellent" | "tres-bon" | "bon" | "a-revoir";
 
 export interface SellVehicleFormValues {

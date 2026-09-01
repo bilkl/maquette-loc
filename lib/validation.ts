@@ -1,4 +1,4 @@
-import { AppointmentFormErrors, AppointmentFormValues, BookingFormErrors, BookingFormValues, ContactFormErrors, ContactFormValues, ElectricienQuoteFormErrors, ElectricienQuoteFormValues, LongTermFormErrors, LongTermFormValues, PlombierQuoteFormErrors, PlombierQuoteFormValues, SellVehicleFormErrors, SellVehicleFormValues } from "@/types/booking";
+import { AppointmentFormErrors, AppointmentFormValues, BookingFormErrors, BookingFormValues, ContactFormErrors, ContactFormValues, ElectricienQuoteFormErrors, ElectricienQuoteFormValues, LongTermFormErrors, LongTermFormValues, MenuiserieQuoteFormErrors, MenuiserieQuoteFormValues, PlombierQuoteFormErrors, PlombierQuoteFormValues, SellVehicleFormErrors, SellVehicleFormValues } from "@/types/booking";
 import { todayIso } from "@/lib/utils";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -180,6 +180,36 @@ export function validatePlombierQuoteForm(values: PlombierQuoteFormValues): Plom
     } else if (values.preferredDate < todayIso()) {
       errors.preferredDate = "La date souhaitée ne peut pas être dans le passé.";
     }
+  }
+  if (!values.firstName.trim()) errors.firstName = "Le prénom est requis.";
+  if (!values.lastName.trim()) errors.lastName = "Le nom est requis.";
+  if (!values.email.trim()) {
+    errors.email = "L'e-mail est requis.";
+  } else if (!EMAIL_REGEX.test(values.email)) {
+    errors.email = "Le format de l'e-mail est invalide.";
+  }
+  if (!values.phone.trim()) errors.phone = "Le téléphone est requis.";
+  if (!values.consent) errors.consent = "Le consentement est requis pour envoyer la demande.";
+
+  return errors;
+}
+
+/**
+ * Validation du formulaire de devis du gabarit "menuiserie" : pas de champ
+ * "urgence" (contrairement aux gabarits electricien/plombier — un projet de
+ * menuiserie ne se traite pas dans l'urgence), la disponibilité pour une
+ * visite reste facultative, mais la description du projet est requise pour
+ * qu'un devis puisse être préparé.
+ */
+export function validateMenuiserieQuoteForm(
+  values: MenuiserieQuoteFormValues,
+): MenuiserieQuoteFormErrors {
+  const errors: MenuiserieQuoteFormErrors = {};
+
+  if (!values.projectType.trim()) errors.projectType = "Veuillez sélectionner un type de projet.";
+  if (!values.description.trim()) errors.description = "Veuillez décrire brièvement votre projet.";
+  if (values.preferredDate && values.preferredDate < todayIso()) {
+    errors.preferredDate = "La date souhaitée ne peut pas être dans le passé.";
   }
   if (!values.firstName.trim()) errors.firstName = "Le prénom est requis.";
   if (!values.lastName.trim()) errors.lastName = "Le nom est requis.";

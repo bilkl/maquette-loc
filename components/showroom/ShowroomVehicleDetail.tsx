@@ -8,7 +8,7 @@ import { Reveal } from "@/components/showroom/Reveal";
 import { ShowroomGallery } from "@/components/showroom/ShowroomGallery";
 import { ReservationSection } from "@/components/showroom/ReservationSection";
 import { WhatsAppIcon } from "@/components/ui/icons";
-import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { getWhatsAppUrl, isWhatsAppEnabled } from "@/lib/whatsapp";
 import { formatChf } from "@/lib/utils";
 
 interface ShowroomVehicleDetailProps {
@@ -85,17 +85,19 @@ export function ShowroomVehicleDetail({ vehicle }: ShowroomVehicleDetailProps) {
                   </span>{" "}
                   / jour
                 </p>
-                <a
-                  href={getWhatsAppUrl(
-                    `Bonjour ${siteConfig.name}, je souhaite des informations sur la ${vehicle.brand} ${vehicle.model}.`,
-                  )}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 border border-brand-line px-5 py-3 text-sm uppercase tracking-[0.2em] text-brand-ivory transition-colors hover:border-brand-accent hover:text-brand-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
-                >
-                  <WhatsAppIcon className="h-4 w-4 text-[#25D366]" aria-hidden="true" />
-                  Poser une question
-                </a>
+                {isWhatsAppEnabled() ? (
+                  <a
+                    href={getWhatsAppUrl(
+                      `Bonjour ${siteConfig.name}, je souhaite des informations sur la ${vehicle.brand} ${vehicle.model}.`,
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2.5 border border-brand-line px-5 py-3 text-sm uppercase tracking-[0.2em] text-brand-ivory transition-colors hover:border-brand-accent hover:text-brand-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
+                  >
+                    <WhatsAppIcon className="h-4 w-4 text-[#25D366]" aria-hidden="true" />
+                    Poser une question
+                  </a>
+                ) : null}
               </div>
             </Reveal>
           </div>

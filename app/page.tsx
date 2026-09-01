@@ -12,6 +12,7 @@ import { GarageHome } from "@/components/garage/GarageHome";
 import { DealerHome } from "@/components/dealer/DealerHome";
 import { ElectricienHome } from "@/components/electricien/ElectricienHome";
 import { PlombierHome } from "@/components/plombier/PlombierHome";
+import { MenuiserieHome } from "@/components/menuiserie/MenuiserieHome";
 
 export default function Home() {
   // Le gabarit est choisi par agence dans config/brands/<id>.ts.
@@ -29,6 +30,9 @@ export default function Home() {
   }
   if (siteConfig.template === "plombier") {
     return <PlombierHome />;
+  }
+  if (siteConfig.template === "menuiserie") {
+    return <MenuiserieHome />;
   }
 
   return (

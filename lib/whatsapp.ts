@@ -13,23 +13,25 @@ export function hasWhatsAppNumber(): boolean {
 }
 
 /**
- * `false` uniquement quand l'agence a explicitement désactivé WhatsApp
- * (`contact.whatsappEnabled: false`, ex. une entreprise qui ne communique que
- * par téléphone/e-mail) — à ne pas confondre avec `hasWhatsAppNumber()`, qui
- * ne fait que vérifier si un numéro a déjà été renseigné.
+ * `true` uniquement quand un CTA WhatsApp peut réellement être affiché :
+ * l'agence n'a pas explicitement désactivé WhatsApp (`contact.whatsappEnabled:
+ * false`, ex. une entreprise qui ne communique que par téléphone/e-mail) ET a
+ * renseigné un numéro exploitable (`hasWhatsAppNumber()`). Tant que le numéro
+ * n'est qu'un espace réservé (maquette non personnalisée), un lien wa.me sans
+ * destinataire (`wa.me/?text=…`) serait trompeur — mieux vaut masquer le CTA,
+ * comme telHref()/mailtoHref() le font déjà pour le téléphone et l'e-mail.
+ * Tous les CTA WhatsApp du site doivent être conditionnés par cette fonction.
  */
 export function isWhatsAppEnabled(): boolean {
-  return siteConfig.contact.whatsappEnabled !== false;
+  return siteConfig.contact.whatsappEnabled !== false && hasWhatsAppNumber();
 }
 
 /**
- * Construit une URL wa.me avec un message pré-rempli.
- * Le numéro et le message par défaut sont centralisés dans config/site.ts.
+ * Construit une URL wa.me avec un message pré-rempli. Le numéro et le message
+ * par défaut sont centralisés dans config/site.ts.
  *
- * Tant que le numéro n'est qu'un espace réservé (maquette non personnalisée),
- * on renvoie l'URL wa.me sans destinataire : WhatsApp s'ouvre malgré tout avec
- * le message pré-rempli et l'utilisateur choisit le contact, plutôt que
- * d'aboutir sur un lien cassé.
+ * À n'appeler que derrière un `isWhatsAppEnabled()` vrai : sans numéro
+ * exploitable, le résultat serait un lien wa.me sans destinataire.
  */
 export function getWhatsAppUrl(message?: string): string {
   const text = encodeURIComponent(message ?? siteConfig.contact.whatsappDefaultMessage);

@@ -1,49 +1,49 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 import { siteConfig } from "@/config/site";
-import type { DealerContent } from "@/data/dealer";
+import type { MenuiserieContent, MenuiserieFamily } from "@/data/menuiserie";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { ContactValue } from "@/components/showroom/ContactValue";
-import { SellVehicleForm } from "@/components/forms/SellVehicleForm";
+import { MenuiserieQuoteForm } from "@/components/forms/MenuiserieQuoteForm";
 import { WhatsAppIcon } from "@/components/ui/icons";
-import { Reveal } from "@/components/showroom/Reveal";
 import { externalHref, mailtoHref, telHref } from "@/lib/placeholders";
 import { getWhatsAppUrl, isWhatsAppEnabled } from "@/lib/whatsapp";
 
-interface SellSectionProps {
-  content: DealerContent["sell"];
+interface AppointmentSectionProps {
+  content: MenuiserieContent["appointment"];
+  families: MenuiserieFamily[];
+  defaultFamilySlug?: string;
 }
 
-export function SellSection({ content }: SellSectionProps) {
+export function AppointmentSection({ content, families, defaultFamilySlug }: AppointmentSectionProps) {
   const mapsUrl = externalHref(siteConfig.address.mapsUrl);
 
   return (
-    <section id="vendre" className="scroll-mt-20 bg-brand-charcoal py-16 sm:py-20">
+    <section id="devis" className="scroll-mt-20 bg-brand-black py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
-          <Reveal>
+          <div>
             <SectionTitle eyebrow={content.eyebrow} title={content.title} align="left" />
             <p className="mt-5 text-base leading-relaxed text-brand-silver">{content.intro}</p>
-
-            <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-brand-accent/40 bg-brand-accent/10 px-4 py-1.5 text-sm font-semibold text-brand-accent">
-              {content.responseTime}
-            </p>
 
             <ul className="mt-7 space-y-3">
               {content.reassurances.map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-sm text-brand-ivory">
-                  <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-accent" />
+                  <span
+                    aria-hidden="true"
+                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-accent"
+                  />
                   {item}
                 </li>
               ))}
             </ul>
 
             <div className="mt-8 border-t border-brand-line pt-6">
-              {isWhatsAppEnabled() ? (
+              {isWhatsAppEnabled() && content.whatsappLabel ? (
                 <a
                   href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 rounded-lg border border-brand-line bg-brand-black px-4 py-3 text-sm font-semibold text-brand-ivory shadow-sm transition-colors hover:border-brand-accent hover:text-brand-accent"
+                  className="inline-flex items-center gap-2.5 rounded-lg border border-brand-line bg-brand-charcoal px-4 py-3 text-sm font-semibold text-brand-ivory transition-colors hover:border-brand-accent hover:text-brand-accent"
                 >
                   <WhatsAppIcon className="h-4 w-4 text-[#25D366]" aria-hidden="true" />
                   {content.whatsappLabel}
@@ -69,11 +69,9 @@ export function SellSection({ content }: SellSectionProps) {
                 </li>
               </ul>
             </div>
-          </Reveal>
+          </div>
 
-          <Reveal delay={0.1}>
-            <SellVehicleForm />
-          </Reveal>
+          <MenuiserieQuoteForm families={families} defaultFamilySlug={defaultFamilySlug} />
         </div>
       </div>
     </section>

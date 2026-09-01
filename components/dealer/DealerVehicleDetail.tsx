@@ -6,7 +6,7 @@ import { VehicleGallery } from "@/components/vehicles/VehicleGallery";
 import { DealerLinkButton } from "@/components/dealer/DealerButton";
 import { WhatsAppIcon } from "@/components/ui/icons";
 import { formatChf, formatKm } from "@/lib/utils";
-import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { getWhatsAppUrl, isWhatsAppEnabled } from "@/lib/whatsapp";
 
 interface DealerVehicleDetailProps {
   vehicle: OccasionVehicle;
@@ -88,27 +88,29 @@ export function DealerVehicleDetail({ vehicle }: DealerVehicleDetailProps) {
           </div>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a
-              href={getWhatsAppUrl(
-                `Bonjour ${siteConfig.name}, je suis intéressé(e) par la ${vehicle.brand} ${vehicle.model} (${vehicle.year}).`,
-              )}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-lg px-6 py-3.5 text-sm font-semibold text-white shadow-md shadow-brand-accent/25 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand-accent/35"
-              style={{
-                backgroundImage:
-                  "linear-gradient(135deg, var(--color-brand-accent) 0%, var(--color-brand-accent-soft) 100%)",
-              }}
-            >
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 -translate-x-full bg-[linear-gradient(115deg,transparent_35%,rgba(255,255,255,0.3)_50%,transparent_65%)] transition-transform duration-700 ease-out group-hover:translate-x-full motion-reduce:hidden"
-              />
-              <span className="relative z-10 inline-flex items-center gap-2">
-                <WhatsAppIcon className="h-4 w-4" aria-hidden="true" />
-                Poser une question sur WhatsApp
-              </span>
-            </a>
+            {isWhatsAppEnabled() ? (
+              <a
+                href={getWhatsAppUrl(
+                  `Bonjour ${siteConfig.name}, je suis intéressé(e) par la ${vehicle.brand} ${vehicle.model} (${vehicle.year}).`,
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-lg px-6 py-3.5 text-sm font-semibold text-white shadow-md shadow-brand-accent/25 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand-accent/35"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(135deg, var(--color-brand-accent) 0%, var(--color-brand-accent-soft) 100%)",
+                }}
+              >
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 -translate-x-full bg-[linear-gradient(115deg,transparent_35%,rgba(255,255,255,0.3)_50%,transparent_65%)] transition-transform duration-700 ease-out group-hover:translate-x-full motion-reduce:hidden"
+                />
+                <span className="relative z-10 inline-flex items-center gap-2">
+                  <WhatsAppIcon className="h-4 w-4" aria-hidden="true" />
+                  Poser une question sur WhatsApp
+                </span>
+              </a>
+            ) : null}
             <DealerLinkButton href="/contact" variant="secondary">
               Nous contacter
             </DealerLinkButton>

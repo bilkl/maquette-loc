@@ -10,7 +10,7 @@ import { BookingFormErrors, BookingFormValues } from "@/types/booking";
 import { pickErrors, validateShowroomRequest } from "@/lib/validation";
 import { submitBookingRequest } from "@/lib/booking-actions";
 import { countRentalDays, formatChf, formatDateFr, todayIso } from "@/lib/utils";
-import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { getWhatsAppUrl, isWhatsAppEnabled } from "@/lib/whatsapp";
 import { WhatsAppIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 
@@ -593,17 +593,19 @@ export function ShowroomBookingForm({ defaultVehicleSlug }: ShowroomBookingFormP
           )}
         </div>
 
-        <p className="mt-6 text-sm text-brand-silver">
-          <a
-            href={getWhatsAppUrl(recapMessage)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-brand-silver transition-colors hover:text-brand-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
-          >
-            <WhatsAppIcon className="h-4 w-4 text-[#25D366]" aria-hidden="true" />
-            Reprendre cette demande sur WhatsApp
-          </a>
-        </p>
+        {isWhatsAppEnabled() ? (
+          <p className="mt-6 text-sm text-brand-silver">
+            <a
+              href={getWhatsAppUrl(recapMessage)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-brand-silver transition-colors hover:text-brand-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent"
+            >
+              <WhatsAppIcon className="h-4 w-4 text-[#25D366]" aria-hidden="true" />
+              Reprendre cette demande sur WhatsApp
+            </a>
+          </p>
+        ) : null}
       </div>
     </form>
   );
