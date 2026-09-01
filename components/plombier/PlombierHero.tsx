@@ -36,8 +36,8 @@ export function PlombierHero({ content, emergency }: PlombierHeroProps) {
             sizes="100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/50" />
-          <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-white/10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/75 to-white/15" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/50 via-transparent to-white/5" />
         </div>
       ) : null}
 

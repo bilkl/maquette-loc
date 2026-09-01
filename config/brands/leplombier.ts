@@ -11,6 +11,10 @@ import type { BrandConfig } from "./types";
  * puisse être prise pour une donnée réelle avant personnalisation.
  * Voir lib/placeholders.ts : les valeurs entre crochets ne sont jamais
  * transformées en lien cliquable (tel:, mailto:, Maps, Instagram, WhatsApp).
+ *
+ * Photo de hero générique libre de droits (Wikimedia Commons, licence CC BY 2.0,
+ * « Hands are washed at a modern sink in a well-lit bathroom », Shixart1985),
+ * en attendant une vraie photo de l'entreprise ou de ses réalisations.
  */
 export const leplombier: BrandConfig = {
   id: "leplombier",
@@ -37,7 +41,7 @@ export const leplombier: BrandConfig = {
   },
 
   images: {
-    hero: "/brands/leplombier/hero.svg",
+    hero: "/brands/leplombier/hero.jpg",
     about: "/brands/leplombier/about.svg",
   },
 
