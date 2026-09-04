@@ -21,12 +21,13 @@ export const metadata: Metadata = {
 };
 
 export default function VehiculesPage() {
-  // Route sans objet pour les gabarits artisan (garage, electricien, plombier, menuiserie) : pas de flotte à louer ou vendre.
+  // Route sans objet pour les gabarits artisan/immobilier (garage, electricien, plombier, menuiserie, immobilier) : pas de flotte à louer ou vendre.
   if (
     isGarage ||
     siteConfig.template === "electricien" ||
     siteConfig.template === "plombier" ||
-    siteConfig.template === "menuiserie"
+    siteConfig.template === "menuiserie" ||
+    siteConfig.template === "immobilier"
   ) {
     notFound();
   }

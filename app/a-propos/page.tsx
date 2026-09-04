@@ -9,16 +9,19 @@ import { DealerAboutPage } from "@/components/dealer/DealerAboutPage";
 import { ElectricienAboutPage } from "@/components/electricien/ElectricienAboutPage";
 import { PlombierAboutPage } from "@/components/plombier/PlombierAboutPage";
 import { MenuiserieAboutPage } from "@/components/menuiserie/MenuiserieAboutPage";
+import { ImmobilierAboutPage } from "@/components/immobilier/ImmobilierAboutPage";
 import { getGarageContent } from "@/data/garage";
 import { getElectricienContent } from "@/data/electricien";
 import { getPlombierContent } from "@/data/plombier";
 import { getMenuiserieContent } from "@/data/menuiserie";
+import { getImmobilierContent } from "@/data/immobilier";
 
 const isGarage = siteConfig.template === "garage";
 const isDealer = siteConfig.template === "dealer";
 const isElectricien = siteConfig.template === "electricien";
 const isPlombier = siteConfig.template === "plombier";
 const isMenuiserie = siteConfig.template === "menuiserie";
+const isImmobilier = siteConfig.template === "immobilier";
 
 export const metadata: Metadata = {
   title: "À propos",
@@ -32,7 +35,9 @@ export const metadata: Metadata = {
           ? getPlombierContent().about.description
           : isMenuiserie
             ? getMenuiserieContent().about.description
-            : `${siteConfig.name} est un service suisse spécialisé dans la location de véhicules de prestige en courte et longue durée.`,
+            : isImmobilier
+              ? getImmobilierContent().about.description
+              : `${siteConfig.name} est un service suisse spécialisé dans la location de véhicules de prestige en courte et longue durée.`,
   alternates: { canonical: "/a-propos" },
 };
 
@@ -58,6 +63,9 @@ export default function AboutPage() {
   }
   if (isMenuiserie) {
     return <MenuiserieAboutPage />;
+  }
+  if (isImmobilier) {
+    return <ImmobilierAboutPage />;
   }
 
   return (

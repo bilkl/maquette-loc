@@ -7,6 +7,7 @@ const isDealer = siteConfig.template === "dealer";
 const isElectricien = siteConfig.template === "electricien";
 const isPlombier = siteConfig.template === "plombier";
 const isMenuiserie = siteConfig.template === "menuiserie";
+const isImmobilier = siteConfig.template === "immobilier";
 const pageTitle = isGarage
   ? "Conditions générales de service"
   : isDealer
@@ -17,7 +18,9 @@ const pageTitle = isGarage
         ? "Conditions générales de prestation"
         : isMenuiserie
           ? "Conditions générales de prestation"
-          : "Conditions générales de location";
+          : isImmobilier
+            ? "Conditions générales de mandat"
+            : "Conditions générales de location";
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -31,7 +34,9 @@ export const metadata: Metadata = {
           ? `Conditions générales applicables aux prestations d'installation, de dépannage et de rénovation sanitaire de ${siteConfig.name}.`
           : isMenuiserie
             ? `Conditions générales applicables aux prestations de menuiserie et d'ébénisterie sur mesure de ${siteConfig.name}.`
-            : `Conditions générales de location applicables aux véhicules ${siteConfig.name}.`,
+            : isImmobilier
+              ? `Conditions générales applicables aux mandats de vente, d'achat et d'estimation de ${siteConfig.name}.`
+              : `Conditions générales de location applicables aux véhicules ${siteConfig.name}.`,
   alternates: { canonical: "/conditions-generales" },
   robots: { index: false, follow: true },
 };
@@ -333,6 +338,66 @@ export default function TermsPage() {
               {/* TODO: remplacer par l'information officielle de l'entreprise */}
               Étendue de la responsabilité de l&apos;entreprise et modalités en cas de désaccord sur
               une réalisation à définir par {siteConfig.name} avant publication.
+            </p>
+          </section>
+        </div>
+      </div>
+    );
+  }
+
+  if (isImmobilier) {
+    return (
+      <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6 lg:px-8">
+        <h1 className="text-3xl font-bold tracking-tight text-brand-ivory">{pageTitle}</h1>
+
+        <div className="mt-8">
+          <LegalDisclaimer />
+        </div>
+
+        <div className="space-y-8 text-sm leading-relaxed text-brand-silver">
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">1. Objet</h2>
+            <p className="mt-2">
+              Les présentes conditions générales encadrent les mandats de vente, d&apos;achat et
+              d&apos;estimation confiés à {siteConfig.name}. Elles s&apos;appliquent à toute
+              transaction conclue à la suite d&apos;une mise en relation par l&apos;agence.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">2. Estimation gratuite</h2>
+            <p className="mt-2 text-xs text-brand-silver/70">
+              {/* TODO: remplacer par l'information officielle de l'agence */}
+              L&apos;estimation communiquée via ce site est indicative et gratuite ; elle ne
+              constitue pas une offre d&apos;achat. Modalités précises à confirmer par{" "}
+              {siteConfig.name}.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">3. Mandat de vente</h2>
+            <p className="mt-2 text-xs text-brand-silver/70">
+              {/* TODO: remplacer par l'information officielle de l'agence */}
+              Durée, exclusivité éventuelle et conditions de résiliation du mandat de vente à
+              préciser par {siteConfig.name} avant signature.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">4. Honoraires d&apos;agence</h2>
+            <p className="mt-2 text-xs text-brand-silver/70">
+              {/* TODO: remplacer par l'information officielle de l'agence */}
+              Taux et modalités de calcul des honoraires, ainsi que la partie à laquelle ils
+              incombent, à définir par {siteConfig.name} pour chaque mandat.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">5. Responsabilité</h2>
+            <p className="mt-2 text-xs text-brand-silver/70">
+              {/* TODO: remplacer par l'information officielle de l'agence */}
+              Étendue de la responsabilité de l&apos;agence et modalités en cas de désaccord sur une
+              transaction à définir par {siteConfig.name} avant publication.
             </p>
           </section>
         </div>

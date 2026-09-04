@@ -18,6 +18,8 @@ import { PlombierHeader } from "@/components/plombier/PlombierHeader";
 import { PlombierFooter } from "@/components/plombier/PlombierFooter";
 import { MenuiserieHeader } from "@/components/menuiserie/MenuiserieHeader";
 import { MenuiserieFooter } from "@/components/menuiserie/MenuiserieFooter";
+import { ImmobilierHeader } from "@/components/immobilier/ImmobilierHeader";
+import { ImmobilierFooter } from "@/components/immobilier/ImmobilierFooter";
 import { definedValues } from "@/lib/placeholders";
 
 const geistSans = Geist({
@@ -59,6 +61,7 @@ const isDealer = template === "dealer";
 const isElectricien = template === "electricien";
 const isPlombier = template === "plombier";
 const isMenuiserie = template === "menuiserie";
+const isImmobilier = template === "immobilier";
 
 const pageTitle = `${siteConfig.name} | ${
   siteConfig.seo.pageTitleSuffix ?? "Location de véhicules de prestige en Suisse"
@@ -139,6 +142,14 @@ const themeTokens = {
     ivory: "#2b2320",
     silver: "#6b5d4f",
   },
+  immobilier: {
+    black: "#ffffff",
+    charcoal: "#f6f7f8",
+    anthracite: "#eef0f2",
+    line: "#e0e2e6",
+    ivory: "#1b1f24",
+    silver: "#5a616b",
+  },
 } as const;
 
 const activeTheme = themeTokens[siteConfig.theme ?? "dark"];
@@ -196,7 +207,9 @@ const localBusinessJsonLd = {
           ? "Plumber"
           : isMenuiserie
             ? "Carpenter"
-            : "AutoRental",
+            : isImmobilier
+              ? "RealEstateAgent"
+              : "AutoRental",
   name: siteConfig.name,
   description: siteConfig.description,
   ...(definedValues(siteConfig.contact.email).length > 0
@@ -268,6 +281,8 @@ export default function RootLayout({
           <PlombierHeader />
         ) : isMenuiserie ? (
           <MenuiserieHeader />
+        ) : isImmobilier ? (
+          <ImmobilierHeader />
         ) : (
           <Header />
         )}
@@ -286,6 +301,8 @@ export default function RootLayout({
           <PlombierFooter />
         ) : isMenuiserie ? (
           <MenuiserieFooter />
+        ) : isImmobilier ? (
+          <ImmobilierFooter />
         ) : (
           <Footer />
         )}

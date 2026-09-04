@@ -138,6 +138,22 @@ export async function submitMenuiserieQuoteRequest(
 }
 
 /**
+ * Demande d'estimation gratuite du gabarit "immobilier".
+ */
+export async function submitEstimateRequest(
+  values: unknown,
+): Promise<SubmissionResult> {
+  await simulateNetworkDelay();
+  console.log(`[${siteConfig.name}] Nouvelle demande d'estimation :`, values);
+
+  return {
+    success: true,
+    message:
+      "Votre demande a bien été envoyée. Nous vous transmettons une première estimation sous 24 heures, par téléphone ou WhatsApp.",
+  };
+}
+
+/**
  * Demande "vendre ou reprendre mon véhicule" du gabarit "dealer".
  * L'estimation sous 24h annoncée au client est traitée manuellement par
  * l'équipe une fois cette demande reçue ; brancher ici un service réel

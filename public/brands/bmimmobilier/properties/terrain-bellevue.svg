@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200" viewBox="0 0 1800 1200">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#dbe7f0"/>
+      <stop offset="100%" stop-color="#eef4f8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1800" height="1200" fill="url(#sky)"/>
+  <rect y="760" width="1800" height="440" fill="#c9dbc4"/>
+  <g stroke="#1f3a52" stroke-width="6" stroke-dasharray="18 14" fill="none" opacity="0.55">
+    <path d="M 260 1080 L 340 800 L 980 740 L 1500 860 L 1420 1120 Z"/>
+  </g>
+  <g fill="#1f3a52" opacity="0.55">
+    <circle cx="260" cy="1080" r="10"/>
+    <circle cx="340" cy="800" r="10"/>
+    <circle cx="980" cy="740" r="10"/>
+    <circle cx="1500" cy="860" r="10"/>
+    <circle cx="1420" cy="1120" r="10"/>
+  </g>
+  <g fill="#8fac86" opacity="0.8">
+    <ellipse cx="1580" cy="980" rx="70" ry="46"/>
+    <ellipse cx="1650" cy="1010" rx="50" ry="34"/>
+    <ellipse cx="180" cy="920" rx="60" ry="40"/>
+  </g>
+  <text x="50%" y="200" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="42" fill="#1f3a52" letter-spacing="2" opacity="0.75">TERRAIN À BÂTIR — BELLEVUE</text>
+  <text x="50%" y="252" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#4a5f6e" letter-spacing="4" opacity="0.7">SCHÉMA DE DÉMONSTRATION — À REMPLACER PAR UN PLAN CADASTRAL</text>
+</svg>

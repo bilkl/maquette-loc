@@ -1,4 +1,4 @@
-import { AppointmentFormErrors, AppointmentFormValues, BookingFormErrors, BookingFormValues, ContactFormErrors, ContactFormValues, ElectricienQuoteFormErrors, ElectricienQuoteFormValues, LongTermFormErrors, LongTermFormValues, MenuiserieQuoteFormErrors, MenuiserieQuoteFormValues, PlombierQuoteFormErrors, PlombierQuoteFormValues, SellVehicleFormErrors, SellVehicleFormValues } from "@/types/booking";
+import { AppointmentFormErrors, AppointmentFormValues, BookingFormErrors, BookingFormValues, ContactFormErrors, ContactFormValues, ElectricienQuoteFormErrors, ElectricienQuoteFormValues, EstimateFormErrors, EstimateFormValues, LongTermFormErrors, LongTermFormValues, MenuiserieQuoteFormErrors, MenuiserieQuoteFormValues, PlombierQuoteFormErrors, PlombierQuoteFormValues, SellVehicleFormErrors, SellVehicleFormValues } from "@/types/booking";
 import { todayIso } from "@/lib/utils";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -181,6 +181,37 @@ export function validatePlombierQuoteForm(values: PlombierQuoteFormValues): Plom
       errors.preferredDate = "La date souhaitée ne peut pas être dans le passé.";
     }
   }
+  if (!values.firstName.trim()) errors.firstName = "Le prénom est requis.";
+  if (!values.lastName.trim()) errors.lastName = "Le nom est requis.";
+  if (!values.email.trim()) {
+    errors.email = "L'e-mail est requis.";
+  } else if (!EMAIL_REGEX.test(values.email)) {
+    errors.email = "Le format de l'e-mail est invalide.";
+  }
+  if (!values.phone.trim()) errors.phone = "Le téléphone est requis.";
+  if (!values.consent) errors.consent = "Le consentement est requis pour envoyer la demande.";
+
+  return errors;
+}
+
+/**
+ * Validation du formulaire d'estimation gratuite du gabarit "immobilier" :
+ * la surface doit être un nombre positif plausible, les autres règles
+ * reprennent celles des autres formulaires "devis intelligent" du dépôt.
+ */
+export function validateEstimateForm(values: EstimateFormValues): EstimateFormErrors {
+  const errors: EstimateFormErrors = {};
+
+  if (!values.propertyType.trim()) errors.propertyType = "Veuillez sélectionner un type de bien.";
+
+  const surface = Number(values.surface);
+  if (!values.surface.trim()) {
+    errors.surface = "La surface est requise.";
+  } else if (!Number.isFinite(surface) || surface <= 0) {
+    errors.surface = "Veuillez indiquer une surface valide.";
+  }
+
+  if (!values.location.trim()) errors.location = "La localisation est requise.";
   if (!values.firstName.trim()) errors.firstName = "Le prénom est requis.";
   if (!values.lastName.trim()) errors.lastName = "Le nom est requis.";
   if (!values.email.trim()) {

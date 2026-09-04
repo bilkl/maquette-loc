@@ -129,3 +129,22 @@ export interface SellVehicleFormValues {
 }
 
 export type SellVehicleFormErrors = Partial<Record<keyof SellVehicleFormValues, string>>;
+
+/** État général du bien, tel que déclaré par le propriétaire pour une première estimation */
+export type PropertyConditionInput = "neuf" | "tres-bon" | "bon" | "a-renover";
+
+export interface EstimateFormValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  /** Type de bien (voir types/property.ts PropertyType), en minuscules pour le formulaire */
+  propertyType: string;
+  surface: string;
+  location: string;
+  condition: PropertyConditionInput;
+  message: string;
+  consent: boolean;
+}
+
+export type EstimateFormErrors = Partial<Record<keyof EstimateFormValues, string>>;

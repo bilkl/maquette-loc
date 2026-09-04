@@ -1,3 +1,4 @@
+import { bmimmobilier } from "./bmimmobilier";
 import { bullrent } from "./bullrent";
 import { distefano } from "./distefano";
 import { eagledrive } from "./eagledrive";
@@ -31,6 +32,7 @@ export const brands: Record<string, BrandConfig> = {
   distefano,
   leplombier,
   menuiseriebem,
+  bmimmobilier,
 };
 
 export const DEFAULT_BRAND_ID = "nlprestige";

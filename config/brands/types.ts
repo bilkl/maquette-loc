@@ -51,6 +51,11 @@ export interface BrandConfig {
    *   avant/après), palette chaleureuse bois/beige, serif discret pour les titres. Une
    *   agence en "menuiserie" doit fournir son contenu métier dans data/menuiserie/<id>.ts.
    *   Réutilisable pour un futur artisan du bois/de la construction proche.
+   * - "immobilier" : agence immobilière indépendante (voir components/immobilier/).
+   *   Catalogue de biens avec filtres (type, prix, localisation, surface), formulaire
+   *   d'estimation gratuite plutôt que prise de rendez-vous. Une agence en "immobilier"
+   *   doit fournir son contenu métier dans data/immobilier/<id>.ts et son catalogue dans
+   *   data/properties/<id>.ts. Réutilisable pour un futur courtier indépendant.
    */
   template?:
     | "classic"
@@ -59,7 +64,8 @@ export interface BrandConfig {
     | "dealer"
     | "electricien"
     | "plombier"
-    | "menuiserie";
+    | "menuiserie"
+    | "immobilier";
 
   /**
    * Palette globale du site pour cette agence.
@@ -71,6 +77,7 @@ export interface BrandConfig {
    * - "electricien" = blanc / bleu anthracite technique, pensé pour le gabarit "electricien".
    * - "plombier" = blanc / gris bleuté clair, rassurant, pensé pour le gabarit "plombier".
    * - "menuiserie" = beige/bois chaud, pensé pour le gabarit "menuiserie".
+   * - "immobilier" = blanc / gris anthracite, pensé pour le gabarit "immobilier".
    */
   theme?:
     | "dark"
@@ -80,7 +87,8 @@ export interface BrandConfig {
     | "dealer"
     | "electricien"
     | "plombier"
-    | "menuiserie";
+    | "menuiserie"
+    | "immobilier";
 
   /**
    * Active un traitement visuel plus premium pour les composants du gabarit
