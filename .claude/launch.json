@@ -48,6 +48,12 @@
       "runtimeExecutable": "bash",
       "runtimeArgs": ["-lc", "NEXT_PUBLIC_BRAND=bmimmobilier npm run dev -- --port 3080"],
       "port": 3080
+    },
+    {
+      "name": "amcoach",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-lc", "NEXT_PUBLIC_BRAND=amcoach npm run dev -- --port 3090"],
+      "port": 3090
     }
   ]
 }

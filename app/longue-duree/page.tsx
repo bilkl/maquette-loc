@@ -49,14 +49,15 @@ const includedServices = [
 ];
 
 export default function LongTermPage() {
-  // Route sans objet pour les gabarits "garage", "dealer", "electricien", "plombier", "menuiserie" et "immobilier" (pas de location de véhicules).
+  // Route sans objet pour les gabarits "garage", "dealer", "electricien", "plombier", "menuiserie", "immobilier" et "coach" (pas de location de véhicules).
   if (
     siteConfig.template === "garage" ||
     siteConfig.template === "dealer" ||
     siteConfig.template === "electricien" ||
     siteConfig.template === "plombier" ||
     siteConfig.template === "menuiserie" ||
-    siteConfig.template === "immobilier"
+    siteConfig.template === "immobilier" ||
+    siteConfig.template === "coach"
   ) {
     notFound();
   }

@@ -148,3 +148,22 @@ export interface EstimateFormValues {
 }
 
 export type EstimateFormErrors = Partial<Record<keyof EstimateFormValues, string>>;
+
+/** Niveau d'activité physique actuel, tel que déclaré par la personne pour préparer le bilan */
+export type ActivityLevelInput = "sedentaire" | "peu-actif" | "actif";
+
+export interface BilanFormValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  /** Objectif principal (voir data/coach/<id>.ts pour les libellés affichés), ou "autre" */
+  objective: string;
+  activityLevel: ActivityLevelInput;
+  preferredDate: string;
+  preferredTime: AppointmentTimeSlot;
+  message: string;
+  consent: boolean;
+}
+
+export type BilanFormErrors = Partial<Record<keyof BilanFormValues, string>>;

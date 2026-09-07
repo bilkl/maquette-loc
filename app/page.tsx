@@ -14,6 +14,7 @@ import { ElectricienHome } from "@/components/electricien/ElectricienHome";
 import { PlombierHome } from "@/components/plombier/PlombierHome";
 import { MenuiserieHome } from "@/components/menuiserie/MenuiserieHome";
 import { ImmobilierHome } from "@/components/immobilier/ImmobilierHome";
+import { CoachHome } from "@/components/coach/CoachHome";
 
 export default function Home() {
   // Le gabarit est choisi par agence dans config/brands/<id>.ts.
@@ -37,6 +38,9 @@ export default function Home() {
   }
   if (siteConfig.template === "immobilier") {
     return <ImmobilierHome />;
+  }
+  if (siteConfig.template === "coach") {
+    return <CoachHome />;
   }
 
   return (

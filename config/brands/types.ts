@@ -56,6 +56,12 @@ export interface BrandConfig {
    *   d'estimation gratuite plutôt que prise de rendez-vous. Une agence en "immobilier"
    *   doit fournir son contenu métier dans data/immobilier/<id>.ts et son catalogue dans
    *   data/properties/<id>.ts. Réutilisable pour un futur courtier indépendant.
+   * - "coach" : coach sportif / professionnel du fitness indépendant (voir
+   *   components/coach/). Ton énergie/transformation plutôt que confiance/urgence :
+   *   palette sombre à accent vif, typographie impactante, section "Résultats" en
+   *   placeholders explicites (jamais de vraies photos avant/après sans consentement).
+   *   Une agence en "coach" doit fournir son contenu métier dans data/coach/<id>.ts.
+   *   Réutilisable pour un futur coach ou professionnel du fitness indépendant.
    */
   template?:
     | "classic"
@@ -65,7 +71,8 @@ export interface BrandConfig {
     | "electricien"
     | "plombier"
     | "menuiserie"
-    | "immobilier";
+    | "immobilier"
+    | "coach";
 
   /**
    * Palette globale du site pour cette agence.
@@ -78,6 +85,7 @@ export interface BrandConfig {
    * - "plombier" = blanc / gris bleuté clair, rassurant, pensé pour le gabarit "plombier".
    * - "menuiserie" = beige/bois chaud, pensé pour le gabarit "menuiserie".
    * - "immobilier" = blanc / gris anthracite, pensé pour le gabarit "immobilier".
+   * - "coach" = noir/anthracite profond à accent vif, pensé pour le gabarit "coach".
    */
   theme?:
     | "dark"
@@ -88,7 +96,8 @@ export interface BrandConfig {
     | "electricien"
     | "plombier"
     | "menuiserie"
-    | "immobilier";
+    | "immobilier"
+    | "coach";
 
   /**
    * Active un traitement visuel plus premium pour les composants du gabarit

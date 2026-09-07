@@ -1,4 +1,5 @@
 import { getActiveBrand } from "@/config/brands";
+import { faqItems as amcoach } from "./amcoach";
 import { faqItems as bmimmobilier } from "./bmimmobilier";
 import { faqItems as bullrent } from "./bullrent";
 import { faqItems as distefano } from "./distefano";
@@ -34,6 +35,7 @@ const faqByBrand: Record<string, FaqItem[]> = {
   leplombier,
   menuiseriebem,
   bmimmobilier,
+  amcoach,
 };
 
 export const faqItems: FaqItem[] = faqByBrand[getActiveBrand().id] ?? nlprestige;

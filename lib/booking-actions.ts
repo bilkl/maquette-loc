@@ -154,6 +154,22 @@ export async function submitEstimateRequest(
 }
 
 /**
+ * Demande de bilan gratuit du gabarit "coach".
+ */
+export async function submitBilanRequest(
+  values: unknown,
+): Promise<SubmissionResult> {
+  await simulateNetworkDelay();
+  console.log(`[${siteConfig.name}] Nouvelle demande de bilan :`, values);
+
+  return {
+    success: true,
+    message:
+      "Votre demande a bien été envoyée. Nous vous recontactons sous 24 heures, par téléphone ou WhatsApp, pour organiser votre bilan gratuit.",
+  };
+}
+
+/**
  * Demande "vendre ou reprendre mon véhicule" du gabarit "dealer".
  * L'estimation sous 24h annoncée au client est traitée manuellement par
  * l'équipe une fois cette demande reçue ; brancher ici un service réel

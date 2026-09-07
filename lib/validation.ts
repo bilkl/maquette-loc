@@ -1,4 +1,4 @@
-import { AppointmentFormErrors, AppointmentFormValues, BookingFormErrors, BookingFormValues, ContactFormErrors, ContactFormValues, ElectricienQuoteFormErrors, ElectricienQuoteFormValues, EstimateFormErrors, EstimateFormValues, LongTermFormErrors, LongTermFormValues, MenuiserieQuoteFormErrors, MenuiserieQuoteFormValues, PlombierQuoteFormErrors, PlombierQuoteFormValues, SellVehicleFormErrors, SellVehicleFormValues } from "@/types/booking";
+import { AppointmentFormErrors, AppointmentFormValues, BilanFormErrors, BilanFormValues, BookingFormErrors, BookingFormValues, ContactFormErrors, ContactFormValues, ElectricienQuoteFormErrors, ElectricienQuoteFormValues, EstimateFormErrors, EstimateFormValues, LongTermFormErrors, LongTermFormValues, MenuiserieQuoteFormErrors, MenuiserieQuoteFormValues, PlombierQuoteFormErrors, PlombierQuoteFormValues, SellVehicleFormErrors, SellVehicleFormValues } from "@/types/booking";
 import { todayIso } from "@/lib/utils";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -212,6 +212,31 @@ export function validateEstimateForm(values: EstimateFormValues): EstimateFormEr
   }
 
   if (!values.location.trim()) errors.location = "La localisation est requise.";
+  if (!values.firstName.trim()) errors.firstName = "Le prénom est requis.";
+  if (!values.lastName.trim()) errors.lastName = "Le nom est requis.";
+  if (!values.email.trim()) {
+    errors.email = "L'e-mail est requis.";
+  } else if (!EMAIL_REGEX.test(values.email)) {
+    errors.email = "Le format de l'e-mail est invalide.";
+  }
+  if (!values.phone.trim()) errors.phone = "Le téléphone est requis.";
+  if (!values.consent) errors.consent = "Le consentement est requis pour envoyer la demande.";
+
+  return errors;
+}
+
+/**
+ * Validation du formulaire "Réserver mon bilan" du gabarit "coach" : la date
+ * souhaitée reste facultative (le bilan initial se cale souvent au
+ * téléphone), mais l'objectif principal est requis pour préparer l'échange.
+ */
+export function validateBilanForm(values: BilanFormValues): BilanFormErrors {
+  const errors: BilanFormErrors = {};
+
+  if (!values.objective.trim()) errors.objective = "Veuillez sélectionner un objectif principal.";
+  if (values.preferredDate && values.preferredDate < todayIso()) {
+    errors.preferredDate = "La date souhaitée ne peut pas être dans le passé.";
+  }
   if (!values.firstName.trim()) errors.firstName = "Le prénom est requis.";
   if (!values.lastName.trim()) errors.lastName = "Le nom est requis.";
   if (!values.email.trim()) {

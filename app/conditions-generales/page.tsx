@@ -8,6 +8,7 @@ const isElectricien = siteConfig.template === "electricien";
 const isPlombier = siteConfig.template === "plombier";
 const isMenuiserie = siteConfig.template === "menuiserie";
 const isImmobilier = siteConfig.template === "immobilier";
+const isCoach = siteConfig.template === "coach";
 const pageTitle = isGarage
   ? "Conditions générales de service"
   : isDealer
@@ -20,7 +21,9 @@ const pageTitle = isGarage
           ? "Conditions générales de prestation"
           : isImmobilier
             ? "Conditions générales de mandat"
-            : "Conditions générales de location";
+            : isCoach
+              ? "Conditions générales de coaching"
+              : "Conditions générales de location";
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -36,7 +39,9 @@ export const metadata: Metadata = {
             ? `Conditions générales applicables aux prestations de menuiserie et d'ébénisterie sur mesure de ${siteConfig.name}.`
             : isImmobilier
               ? `Conditions générales applicables aux mandats de vente, d'achat et d'estimation de ${siteConfig.name}.`
-              : `Conditions générales de location applicables aux véhicules ${siteConfig.name}.`,
+              : isCoach
+                ? `Conditions générales applicables aux séances et bilans de coaching sportif de ${siteConfig.name}.`
+                : `Conditions générales de location applicables aux véhicules ${siteConfig.name}.`,
   alternates: { canonical: "/conditions-generales" },
   robots: { index: false, follow: true },
 };
@@ -398,6 +403,67 @@ export default function TermsPage() {
               {/* TODO: remplacer par l'information officielle de l'agence */}
               Étendue de la responsabilité de l&apos;agence et modalités en cas de désaccord sur une
               transaction à définir par {siteConfig.name} avant publication.
+            </p>
+          </section>
+        </div>
+      </div>
+    );
+  }
+
+  if (isCoach) {
+    return (
+      <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6 lg:px-8">
+        <h1 className="text-3xl font-bold tracking-tight text-brand-ivory">{pageTitle}</h1>
+
+        <div className="mt-8">
+          <LegalDisclaimer />
+        </div>
+
+        <div className="space-y-8 text-sm leading-relaxed text-brand-silver">
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">1. Objet</h2>
+            <p className="mt-2">
+              Les présentes conditions générales encadrent les séances et bilans de coaching
+              sportif proposés par {siteConfig.name}. Elles s&apos;appliquent à toute prestation
+              réservée via ce site ou convenue directement avec le coach.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">2. Bilan gratuit</h2>
+            <p className="mt-2 text-xs text-brand-silver/70">
+              {/* TODO: remplacer par l'information officielle du coach */}
+              Le bilan initial communiqué comme gratuit et sans engagement ne constitue pas un
+              engagement de résultat. Modalités précises à confirmer par {siteConfig.name}.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">3. Aptitude physique et avertissement santé</h2>
+            <p className="mt-2 text-xs text-brand-silver/70">
+              {/* TODO: remplacer par l'information officielle du coach */}
+              Toute personne s&apos;engageant dans un programme d&apos;entraînement est invitée à
+              consulter un professionnel de santé au préalable si nécessaire. Modalités précises
+              (certificat médical, questionnaire de santé) à définir par {siteConfig.name}.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">4. Annulation et report de séance</h2>
+            <p className="mt-2 text-xs text-brand-silver/70">
+              {/* TODO: remplacer par l'information officielle du coach */}
+              Délais de prévenance et conditions de report ou d&apos;annulation d&apos;une séance à
+              préciser par {siteConfig.name}.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-brand-ivory">5. Résultats et responsabilité</h2>
+            <p className="mt-2 text-xs text-brand-silver/70">
+              {/* TODO: remplacer par l'information officielle du coach */}
+              Les résultats individuels varient selon chaque personne ; aucune garantie de résultat
+              n&apos;est offerte. Étendue de la responsabilité du coach à définir par{" "}
+              {siteConfig.name} avant publication.
             </p>
           </section>
         </div>

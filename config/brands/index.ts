@@ -1,3 +1,4 @@
+import { amcoach } from "./amcoach";
 import { bmimmobilier } from "./bmimmobilier";
 import { bullrent } from "./bullrent";
 import { distefano } from "./distefano";
@@ -33,6 +34,7 @@ export const brands: Record<string, BrandConfig> = {
   leplombier,
   menuiseriebem,
   bmimmobilier,
+  amcoach,
 };
 
 export const DEFAULT_BRAND_ID = "nlprestige";

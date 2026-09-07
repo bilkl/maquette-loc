@@ -20,13 +20,14 @@ const isDealer = siteConfig.template === "dealer";
 const isShowroom = siteConfig.template === "showroom";
 
 export function generateStaticParams() {
-  // Route sans objet pour les gabarits artisan/immobilier (garage, electricien, plombier, menuiserie, immobilier) : pas de flotte à louer ou vendre.
+  // Route sans objet pour les gabarits artisan/immobilier/coach (pas de flotte à louer ou vendre).
   if (
     isGarage ||
     siteConfig.template === "electricien" ||
     siteConfig.template === "plombier" ||
     siteConfig.template === "menuiserie" ||
-    siteConfig.template === "immobilier"
+    siteConfig.template === "immobilier" ||
+    siteConfig.template === "coach"
   )
     return [];
   // "dealer" a son propre catalogue (data/occasion-vehicles), distinct de la
@@ -84,7 +85,8 @@ export default async function VehiclePage({ params }: VehiclePageProps) {
     siteConfig.template === "electricien" ||
     siteConfig.template === "plombier" ||
     siteConfig.template === "menuiserie" ||
-    siteConfig.template === "immobilier"
+    siteConfig.template === "immobilier" ||
+    siteConfig.template === "coach"
   ) {
     notFound();
   }

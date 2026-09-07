@@ -20,6 +20,8 @@ import { MenuiserieHeader } from "@/components/menuiserie/MenuiserieHeader";
 import { MenuiserieFooter } from "@/components/menuiserie/MenuiserieFooter";
 import { ImmobilierHeader } from "@/components/immobilier/ImmobilierHeader";
 import { ImmobilierFooter } from "@/components/immobilier/ImmobilierFooter";
+import { CoachHeader } from "@/components/coach/CoachHeader";
+import { CoachFooter } from "@/components/coach/CoachFooter";
 import { definedValues } from "@/lib/placeholders";
 
 const geistSans = Geist({
@@ -62,6 +64,7 @@ const isElectricien = template === "electricien";
 const isPlombier = template === "plombier";
 const isMenuiserie = template === "menuiserie";
 const isImmobilier = template === "immobilier";
+const isCoach = template === "coach";
 
 const pageTitle = `${siteConfig.name} | ${
   siteConfig.seo.pageTitleSuffix ?? "Location de véhicules de prestige en Suisse"
@@ -150,6 +153,14 @@ const themeTokens = {
     ivory: "#1b1f24",
     silver: "#5a616b",
   },
+  coach: {
+    black: "#0a0a0b",
+    charcoal: "#141416",
+    anthracite: "#1c1c1f",
+    line: "#2d2d31",
+    ivory: "#f5f5f4",
+    silver: "#9a9aa0",
+  },
 } as const;
 
 const activeTheme = themeTokens[siteConfig.theme ?? "dark"];
@@ -209,7 +220,9 @@ const localBusinessJsonLd = {
             ? "Carpenter"
             : isImmobilier
               ? "RealEstateAgent"
-              : "AutoRental",
+              : isCoach
+                ? "ExerciseGym"
+                : "AutoRental",
   name: siteConfig.name,
   description: siteConfig.description,
   ...(definedValues(siteConfig.contact.email).length > 0
@@ -250,7 +263,7 @@ export default function RootLayout({
           "--color-brand-accent-soft": siteConfig.colors.accentSoft,
           "--font-display": isShowroom
             ? "var(--font-display-showroom)"
-            : isGarage || isDealer || isElectricien || isPlombier
+            : isGarage || isDealer || isElectricien || isPlombier || isCoach
               ? "var(--font-sans)"
               : "var(--font-display-classic)",
           "--background": activeTheme.black,
@@ -283,6 +296,8 @@ export default function RootLayout({
           <MenuiserieHeader />
         ) : isImmobilier ? (
           <ImmobilierHeader />
+        ) : isCoach ? (
+          <CoachHeader />
         ) : (
           <Header />
         )}
@@ -303,6 +318,8 @@ export default function RootLayout({
           <MenuiserieFooter />
         ) : isImmobilier ? (
           <ImmobilierFooter />
+        ) : isCoach ? (
+          <CoachFooter />
         ) : (
           <Footer />
         )}

@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const isPlombier = siteConfig.template === "plombier";
   const isMenuiserie = siteConfig.template === "menuiserie";
   const isImmobilier = siteConfig.template === "immobilier";
+  const isCoach = siteConfig.template === "coach";
   const isArtisan = isGarage || isElectricien || isPlombier || isMenuiserie;
 
   const commonRoutes = ["", "/a-propos", "/contact", "/mentions-legales", "/confidentialite", "/conditions-generales"];
@@ -20,16 +21,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       ? ["/biens"]
       : isArtisan
         ? ["/prestations"]
-        : isDealer
-          ? ["/vehicules"]
-          : ["/vehicules", "/longue-duree"];
+        : isCoach
+          ? []
+          : isDealer
+            ? ["/vehicules"]
+            : ["/vehicules", "/longue-duree"];
 
   const staticRoutes = [...commonRoutes, ...templateRoutes].map((route) => ({
     url: `${siteConfig.url}${route}`,
     lastModified: new Date(),
   }));
 
-  if (isArtisan) {
+  if (isArtisan || isCoach) {
     return staticRoutes;
   }
 
