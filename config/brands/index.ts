@@ -9,6 +9,7 @@ import { lamarbrerie } from "./lamarbrerie";
 import { leplombier } from "./leplombier";
 import { luxurcars } from "./luxurcars";
 import { luxurydrive } from "./luxurydrive";
+import { marenghi } from "./marenghi";
 import { menuiseriebem } from "./menuiseriebem";
 import { nlprestige } from "./nlprestige";
 import { slgrent } from "./slgrent";
@@ -35,6 +36,7 @@ export const brands: Record<string, BrandConfig> = {
   menuiseriebem,
   bmimmobilier,
   amcoach,
+  marenghi,
 };
 
 export const DEFAULT_BRAND_ID = "nlprestige";

@@ -54,6 +54,12 @@
       "runtimeExecutable": "bash",
       "runtimeArgs": ["-lc", "NEXT_PUBLIC_BRAND=amcoach npm run dev -- --port 3090"],
       "port": 3090
+    },
+    {
+      "name": "marenghi",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-lc", "NEXT_PUBLIC_BRAND=marenghi npm run dev -- --port 3100"],
+      "port": 3100
     }
   ]
 }
