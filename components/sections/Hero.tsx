@@ -6,14 +6,16 @@ import { Clock3, Sparkles, Timer } from "lucide-react";
 import { LinkButton } from "@/components/ui/Button";
 import { siteConfig } from "@/config/site";
 
-const infoBlocks = [
-  { icon: Timer, label: "Location courte durée" },
-  { icon: Clock3, label: "Location longue durée" },
-  { icon: Sparkles, label: "Service personnalisé" },
-];
+const infoBlockIcons = [Timer, Clock3, Sparkles];
+const defaultHighlights = ["Location courte durée", "Location longue durée", "Service personnalisé"];
 
 export function Hero() {
   const shouldReduceMotion = useReducedMotion();
+  const copy = siteConfig.hero;
+  const infoBlocks = (copy?.highlights ?? defaultHighlights).map((label, index) => ({
+    icon: infoBlockIcons[index],
+    label,
+  }));
 
   return (
     <section className="relative flex min-h-[100svh] items-center overflow-hidden bg-brand-black">
@@ -45,7 +47,7 @@ export function Hero() {
           className="flex items-center gap-4 text-sm font-semibold uppercase tracking-[0.35em] text-brand-accent"
         >
           <span className="h-px w-10 bg-brand-accent/60" aria-hidden="true" />
-          {siteConfig.name} — Suisse
+          {copy?.eyebrow ?? `${siteConfig.name} — Suisse`}
         </motion.p>
 
         <motion.h1
@@ -54,7 +56,7 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="font-display mt-8 max-w-4xl text-balance text-6xl font-semibold leading-[0.98] tracking-tight text-brand-ivory sm:text-7xl lg:text-8xl"
         >
-          L&apos;excellence automobile, le temps d&apos;un trajet.
+          {copy?.title ?? "L’excellence automobile, le temps d’un trajet."}
         </motion.h1>
 
         <motion.p
@@ -63,7 +65,7 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="mt-8 max-w-xl text-xl leading-relaxed text-brand-silver"
         >
-          Location de véhicules de prestige en Suisse, en courte et longue durée.
+          {copy?.subtitle ?? "Location de véhicules de prestige en Suisse, en courte et longue durée."}
         </motion.p>
 
         <motion.div

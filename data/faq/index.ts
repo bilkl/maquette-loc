@@ -3,6 +3,7 @@ import { faqItems as amcoach } from "./amcoach";
 import { faqItems as bmimmobilier } from "./bmimmobilier";
 import { faqItems as bullrent } from "./bullrent";
 import { faqItems as distefano } from "./distefano";
+import { faqItems as easyloc } from "./easyloc";
 import { faqItems as eagledrive } from "./eagledrive";
 import { faqItems as elegancyrent } from "./elegancyrent";
 import { faqItems as garagecarlos } from "./garagecarlos";
@@ -38,6 +39,7 @@ const faqByBrand: Record<string, FaqItem[]> = {
   bmimmobilier,
   amcoach,
   marenghi,
+  easyloc,
 };
 
 export const faqItems: FaqItem[] = faqByBrand[getActiveBrand().id] ?? nlprestige;

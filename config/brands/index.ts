@@ -3,6 +3,7 @@ import { bmimmobilier } from "./bmimmobilier";
 import { bullrent } from "./bullrent";
 import { distefano } from "./distefano";
 import { eagledrive } from "./eagledrive";
+import { easyloc } from "./easyloc";
 import { elegancyrent } from "./elegancyrent";
 import { garagecarlos } from "./garagecarlos";
 import { lamarbrerie } from "./lamarbrerie";
@@ -37,6 +38,7 @@ export const brands: Record<string, BrandConfig> = {
   bmimmobilier,
   amcoach,
   marenghi,
+  easyloc,
 };
 
 export const DEFAULT_BRAND_ID = "nlprestige";

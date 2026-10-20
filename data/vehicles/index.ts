@@ -2,6 +2,7 @@ import { getActiveBrand } from "@/config/brands";
 import { Vehicle } from "@/types/vehicle";
 import { vehicles as bullrent } from "./bullrent";
 import { vehicles as eagledrive } from "./eagledrive";
+import { vehicles as easyloc } from "./easyloc";
 import { vehicles as elegancyrent } from "./elegancyrent";
 import { vehicles as luxurcars } from "./luxurcars";
 import { vehicles as luxurydrive } from "./luxurydrive";
@@ -20,6 +21,7 @@ const vehiclesByBrand: Record<string, Vehicle[]> = {
   slgrent,
   luxurydrive,
   luxurcars,
+  easyloc,
 };
 
 export const vehicles: Vehicle[] = vehiclesByBrand[getActiveBrand().id] ?? nlprestige;

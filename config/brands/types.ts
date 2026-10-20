@@ -107,6 +107,18 @@ export interface BrandConfig {
    */
   premium?: boolean;
 
+  /**
+   * Textes du hero du gabarit "classic" (facultatif, chaque champ retombe sur le
+   * texte générique s'il est absent). `highlights` remplace les trois repères
+   * affichés sous les boutons, dans l'ordre de leurs icônes.
+   */
+  hero?: {
+    eyebrow?: string;
+    title?: string;
+    subtitle?: string;
+    highlights?: [string, string, string];
+  };
+
   images: {
     /** Image de fond de la section hero, doublée comme image OG/Twitter */
     hero: string;

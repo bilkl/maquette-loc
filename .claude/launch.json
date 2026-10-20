@@ -60,6 +60,12 @@
       "runtimeExecutable": "bash",
       "runtimeArgs": ["-lc", "NEXT_PUBLIC_BRAND=marenghi npm run dev -- --port 3100"],
       "port": 3100
+    },
+    {
+      "name": "easyloc",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-lc", "NEXT_PUBLIC_BRAND=easyloc npm run dev -- --port 3110"],
+      "port": 3110
     }
   ]
 }
